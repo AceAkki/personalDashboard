@@ -6,12 +6,15 @@ import QuickLinks from "../components/QuickLinks"
 const Dashboard = () => {
   return (
     <>
-      <Header title="Dashboard" />
       <QuickLinks />
-      
+      <section>
+      <Header title="Dashboard" />
       <div>   
           <h1>Welcome to the Bento Grid Dashboard</h1>    
       </div>
+
+      </section>
+      
     </>
     )   
 }
