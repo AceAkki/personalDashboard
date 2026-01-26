@@ -1,4 +1,5 @@
 import { type ReactElement } from "react";
+import "./Header.css";
 
 // Define the props for the Header component
 type HeaderProps = {title?: string};
@@ -6,7 +7,12 @@ type HeaderProps = {title?: string};
 export function Header({title}: HeaderProps): ReactElement {
   return (
     <header className="header">
+     <div>
       <h1>{title}</h1>
+     </div>
+     <div>
+      <p>User</p>
+     </div>
     </header>
   );
 }
