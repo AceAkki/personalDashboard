@@ -1,4 +1,4 @@
-
+import "./QuickLinks.css"
 
 const QuickLinks = () => {
   return (
