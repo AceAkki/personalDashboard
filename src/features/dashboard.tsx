@@ -1,10 +1,11 @@
 
+import type { ReactElement } from "react"
 import { Header } from "../components/Header"
 import QuickLinks from "../components/QuickLinks"
 
 import "./dashboard.css"
 
-const Dashboard = () => {
+const Dashboard = (): ReactElement => {
   return (
     <>
       <QuickLinks />

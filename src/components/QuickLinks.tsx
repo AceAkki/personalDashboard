@@ -1,6 +1,7 @@
+import type { ReactElement } from "react"
 import "./QuickLinks.css"
 
-const QuickLinks = () => {
+const QuickLinks = ():ReactElement => {
   return (
     <div className="quick-wrap">       
         <ul>
