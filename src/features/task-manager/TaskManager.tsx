@@ -1,6 +1,6 @@
 // react based import statements
 import { useEffect, useState } from 'react';
-import { Form, useActionData, type ActionFunctionArgs } from 'react-router-dom';
+import { Form, useActionData, type ActionFunctionArgs, useOutletContext } from 'react-router-dom';
 
 // component imports
 import CurrentTasks from './components/CurrentTasks';
@@ -13,7 +13,6 @@ interface TaskActionData {
   id: number;
 }
 
-
 // action function to handle form submissions
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -23,7 +22,8 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 const TaskManager = () => {
-   const [tasks, setTasks] = useState<string[]>([]);
+  const contextData = useOutletContext() as [string[], React.Dispatch<React.SetStateAction<string[]>>];
+  const [tasks, setTasks] = contextData;
    const actionData = useActionData() as TaskActionData | null; 
 
    useEffect(() => {
