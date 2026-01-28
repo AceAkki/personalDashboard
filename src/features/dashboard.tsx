@@ -1,6 +1,6 @@
 
 import { useState, type ReactElement } from "react"
-import {Outlet} from "react-router-dom"
+import {Link, Outlet} from "react-router-dom"
 import { Header } from "../components/Header"
 import QuickLinks from "../components/QuickLinks"
 
@@ -18,7 +18,9 @@ const Dashboard = (): ReactElement => {
           <h1>Welcome to the Bento Grid Dashboard</h1>    
       </div>
       <div>
+        <Link to="taskmanager">
          <CurrentTasks taskData={tasks} />
+        </Link>
       </div>
 
       <Outlet context={[tasks, setTasks]}/>
