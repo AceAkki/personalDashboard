@@ -21,7 +21,7 @@ const Pomodoro = () => {
       <div>
         Pomodoro timer
         <p>
-          {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}
+          {Math.floor(timer / 60)}:{`0${timer % 60}`.slice(-2)}
         </p>
         <button onClick={() => setIsActive(!isActive)}>
           {isActive ? "Pause" : "Start"}
