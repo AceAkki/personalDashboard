@@ -19,7 +19,6 @@ const Pomodoro = () => {
   return (
     <>
       <div>
-        Pomodoro timer
         <p>
           {Math.floor(timer / 60)}:{`0${timer % 60}`.slice(-2)}
         </p>
