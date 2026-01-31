@@ -1,12 +1,12 @@
 import Task from "./Task";
 
-import { type TasksProps } from "../types";
+import { TasksProps } from "../types";
 
-const CompletedTasks = ({ taskData, taskSet }: TasksProps) => {
-  let filterTasks = taskData.filter((task) => task.type.Completed);
+const PriorityTasks = ({ taskData, taskSet }: TasksProps) => {
+  let filterTasks = taskData.filter((task) => task.type.Priority);
   return (
     <>
-      <h3>Completed Tasks</h3>
+      <h3>Priority Tasks</h3>
       <div className="tasks-wrap">
         {filterTasks.map((task, index) => (
           <Task key={`${task}-${index}`} taskTxt={task} taskSet={taskSet} />
@@ -16,4 +16,4 @@ const CompletedTasks = ({ taskData, taskSet }: TasksProps) => {
   );
 };
 
-export default CompletedTasks;
+export default PriorityTasks;

@@ -12,8 +12,6 @@ import TaskManager, {
   action as taskManagerAction,
 } from "./features/task-manager/TaskManager";
 
-import Pomodoro from "./features/pomodoro/pomodoro";
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -24,10 +22,9 @@ const router = createBrowserRouter(
           element={<TaskManager />}
           action={taskManagerAction}
         />
-        <Route path="pomodoro" element={<Pomodoro />} />
       </Route>
-    </>,
-  ),
+    </>
+  )
 );
 
 function App() {

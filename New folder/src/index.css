@@ -5,6 +5,6 @@
 }
 
 body {
-  background: url("assets/mountains.jpg") no-repeat center center fixed;
+  background: url("./assets/mountains.jpg") no-repeat center center fixed;
   background-size: cover;
 }

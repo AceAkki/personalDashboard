@@ -13,8 +13,7 @@ import CompletedTasks from "./components/CompletedTasks";
 import PriorityTasks from "./components/PriorityTasks";
 
 // all type definitions
-import { type TaskActionData } from "./types";
-import { nanoid } from "nanoid";
+import { TaskActionData } from "./types";
 
 // action function to handle form submissions
 export async function action({ request }: ActionFunctionArgs) {
@@ -23,7 +22,7 @@ export async function action({ request }: ActionFunctionArgs) {
   if (!task) return null;
   let newTask = {
     taskName: task,
-    id: nanoid(),
+    id: Date.now(),
     type: { Current: true, Priority: false, Completed: false },
   } as TaskActionData;
   return newTask;
@@ -32,7 +31,7 @@ export async function action({ request }: ActionFunctionArgs) {
 const TaskManager = () => {
   const [tasks, setTasks] = useOutletContext() as [
     TaskActionData[],
-    React.Dispatch<React.SetStateAction<TaskActionData[]>>,
+    React.Dispatch<React.SetStateAction<TaskActionData[]>>
   ];
   const actionData = useActionData() as TaskActionData | null;
 
@@ -55,8 +54,8 @@ const TaskManager = () => {
 
       <div>
         <CurrentTasks taskData={tasks} taskSet={setTasks} />
+        <CompletedTasks />
         <PriorityTasks taskData={tasks} taskSet={setTasks} />
-        <CompletedTasks taskData={tasks} taskSet={setTasks} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import Task from "./Task";
 
-import { type TasksProps } from "../types";
+import { TasksProps } from "../types";
 
 const CurrentTasks = ({ taskData, taskSet }: TasksProps) => {
   let filterTasks = taskData.filter((task) => task.type.Current);

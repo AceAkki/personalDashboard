@@ -9,7 +9,7 @@ export function Header({ title }: HeaderProps): ReactElement {
   return (
     <div className="header">
       <div>
-        <Link to=".">
+        <Link to="./">
           <h1>{title}</h1>
         </Link>
       </div>
