@@ -1,12 +1,9 @@
 import { Link, useOutletContext } from "react-router-dom";
-
-import CurrentTasks from "../task-manager/components/CurrentTasks";
+import type { OutletContextType } from "../task-manager/types";
+import TasksMain from "../task-manager/components/TasksMain";
 
 const BentoStructure = () => {
-  const [tasks, setTasks] = useOutletContext() as [
-    string[],
-    React.Dispatch<React.SetStateAction<string[]>>
-  ];
+  const [tasks, setTasks] = useOutletContext<OutletContextType>();
   return (
     <>
       <div>
@@ -14,7 +11,7 @@ const BentoStructure = () => {
       </div>
       <div>
         <Link to="../taskmanager">
-          <CurrentTasks taskData={tasks} />
+          <TasksMain taskData={tasks} taskSet={setTasks} Type="Current" />
         </Link>
       </div>
     </>

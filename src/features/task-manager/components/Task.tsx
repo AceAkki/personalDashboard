@@ -3,7 +3,7 @@ import { useRef } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import "./Task.css";
 
-import { type TaskType, type TasksProps } from "../types";
+import type { TaskType } from "../types";
 
 import OptionsPopup from "./OptionsPopup";
 

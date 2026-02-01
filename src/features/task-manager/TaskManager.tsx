@@ -7,13 +7,14 @@ import {
   useOutletContext,
 } from "react-router-dom";
 
+// css import statements
+import "./TaskManager.css";
+
 // component imports
-import CurrentTasks from "./components/CurrentTasks";
-import CompletedTasks from "./components/CompletedTasks";
-import PriorityTasks from "./components/PriorityTasks";
+import TasksMain from "./components/TasksMain";
 
 // all type definitions
-import { type TaskActionData } from "./types";
+import type { TaskActionData, TasksProps, OutletContextType } from "./types";
 import { nanoid } from "nanoid";
 
 // action function to handle form submissions
@@ -29,16 +30,18 @@ export async function action({ request }: ActionFunctionArgs) {
   return newTask;
 }
 
+const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
+  return ["Current", "Priority", "Completed"].map((Type) => (
+    <TasksMain key={Type} taskData={taskData} taskSet={taskSet} Type={Type} />
+  ));
+};
+
 const TaskManager = () => {
-  const [tasks, setTasks] = useOutletContext() as [
-    TaskActionData[],
-    React.Dispatch<React.SetStateAction<TaskActionData[]>>,
-  ];
+  const [tasks, setTasks] = useOutletContext<OutletContextType>();
   const actionData = useActionData() as TaskActionData | null;
 
   useEffect(() => {
     if (actionData?.taskName) {
-      console.log(actionData);
       setTasks((prev) => [...prev, actionData]);
     }
   }, [actionData]);
@@ -53,10 +56,8 @@ const TaskManager = () => {
         <button type="submit">Add Task</button>
       </Form>
 
-      <div>
-        <CurrentTasks taskData={tasks} taskSet={setTasks} />
-        <PriorityTasks taskData={tasks} taskSet={setTasks} />
-        <CompletedTasks taskData={tasks} taskSet={setTasks} />
+      <div className="tasks-grid-wrap">
+        <TasksMainWrapper taskData={tasks} taskSet={setTasks} />
       </div>
     </div>
   );
