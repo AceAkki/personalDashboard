@@ -12,7 +12,7 @@ import TaskManager, {
   action as taskManagerAction,
 } from "./features/task-manager/TaskManager";
 
-import Pomodoro from "./features/pomodoro/pomodoro";
+import Pomodoro from "./features/pomodoro/Pomodoro";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
