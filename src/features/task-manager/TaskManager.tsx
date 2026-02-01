@@ -1,21 +1,19 @@
 // react based import statements
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Form,
   useActionData,
   type ActionFunctionArgs,
   useOutletContext,
 } from "react-router-dom";
-
-// css import statements
-import "./TaskManager.css";
+import { nanoid } from "nanoid";
 
 // component imports
 import TasksMain from "./components/TasksMain";
-
 // all type definitions
 import type { TaskActionData, TasksProps, OutletContextType } from "./types";
-import { nanoid } from "nanoid";
+// css import statements
+import "./TaskManager.css";
 
 // action function to handle form submissions
 export async function action({ request }: ActionFunctionArgs) {
@@ -39,27 +37,37 @@ const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
 const TaskManager = () => {
   const [tasks, setTasks] = useOutletContext<OutletContextType>();
   const actionData = useActionData() as TaskActionData | null;
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (actionData?.taskName) {
       setTasks((prev) => [...prev, actionData]);
+      if (inputRef && inputRef.current) {
+        inputRef.current.value = "";
+      }
     }
   }, [actionData]);
 
   return (
-    <div>
-      <h2>Task Manager</h2>
-      <p>This is the Task Manager component.</p>
+    <section>
+      <h2 className="task-manager-title">Task Manager</h2>
+      <p>Track your tasks here and keep your brain free for another things.</p>
 
       <Form method="post">
-        <input type="text" name="task" placeholder="New Task" required />
+        <input
+          type="text"
+          name="task"
+          placeholder="Add a New Task"
+          required
+          ref={inputRef}
+        />
         <button type="submit">Add Task</button>
       </Form>
 
       <div className="tasks-grid-wrap">
         <TasksMainWrapper taskData={tasks} taskSet={setTasks} />
       </div>
-    </div>
+    </section>
   );
 };
 

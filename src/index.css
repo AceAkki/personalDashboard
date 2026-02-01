@@ -10,3 +10,11 @@
 body {
   background: url("assets/mountains.jpg") no-repeat center center / cover fixed;
 }
+
+.hide {
+  display: none;
+}
+
+section {
+  margin: 2rem 0;
+}

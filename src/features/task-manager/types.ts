@@ -9,6 +9,11 @@ export type OutletContextType = [
   React.Dispatch<React.SetStateAction<TaskActionData[]>>,
 ];
 
+export type TaskIDMainType = [
+  string | null,
+  React.Dispatch<React.SetStateAction<string | null>>,
+];
+
 export interface TasksTypes {
   Current: boolean;
   Priority: boolean;
@@ -32,7 +37,7 @@ export interface TaskType extends ReactSet {
 }
 
 export interface RefUse extends ReactSet, TaskType {
-  refer: React.LegacyRef<HTMLDivElement>;
+  refer: React.RefObject<HTMLDivElement | null>;
 }
 
 export interface MoveBtnsProps extends OptionsMain {

@@ -1,23 +1,33 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import TuneIcon from "@mui/icons-material/Tune";
 import "./Task.css";
 
-import type { TaskType } from "../types";
+import type { TaskType, TaskIDMainType } from "../types";
 
 import OptionsPopup from "./OptionsPopup";
 
-const Task = ({ taskTxt, taskSet }: TaskType) => {
+const Task = ({
+  taskTxt,
+  taskSet,
+  taskIDMain,
+}: TaskType & { taskIDMain: TaskIDMainType }) => {
   const optionRef = useRef<HTMLDivElement>(null);
+  const [activeTaskID, setActiveTaskID] = taskIDMain;
   return (
     <div className="task-wrap">
       <p>{taskTxt.taskName}</p>
       <div
         className="task-btn"
-        onClick={() => optionRef.current?.classList.toggle("hide")}
+        onClick={() => {
+          setActiveTaskID((prev) => (prev === taskTxt.id ? null : taskTxt.id));
+        }}
       >
         <TuneIcon />
-        <OptionsPopup refer={optionRef} taskSet={taskSet} taskTxt={taskTxt} />
+
+        {activeTaskID === taskTxt.id && (
+          <OptionsPopup refer={optionRef} taskSet={taskSet} taskTxt={taskTxt} />
+        )}
       </div>
     </div>
   );

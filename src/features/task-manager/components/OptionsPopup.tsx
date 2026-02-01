@@ -1,6 +1,7 @@
-import type { RefUse } from "../types";
-
 import useOptions from "../hooks/useOptions";
+
+import type { RefUse } from "../types";
+import "./OptionsPopup.css";
 
 export default function OptionsPopup({ refer, taskSet, taskTxt }: RefUse) {
   const { MoveBtns, getCurrentType } = useOptions();
@@ -10,7 +11,7 @@ export default function OptionsPopup({ refer, taskSet, taskTxt }: RefUse) {
     new Set(typesArr.filter((type) => type !== currentType)),
   );
   return (
-    <div className={`options-wrap hide`} ref={refer}>
+    <div className={`options-wrap`} ref={refer}>
       <ul>
         <MoveBtns
           typesArr={newArr}

@@ -13,20 +13,3 @@
   align-items: baseline;
   justify-content: right;
 }
-
-.options-wrap {
-  position: absolute;
-  z-index: 5;
-}
-
-.options-wrap ul {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  gap: 0.5rem;
-  padding: 1rem;
-}
-
-.hide {
-  display: none;
-}

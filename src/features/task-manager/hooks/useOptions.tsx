@@ -38,7 +38,7 @@ function MoveBtns({ typesArr, taskSet, taskTxt, currentType }: MoveBtnsProps) {
             optionToMove({ taskSet, taskTxt, currentType, targetType })
           }
         >
-          Move to {targetType}
+          {targetType}
         </button>
       </li>
     );
