@@ -1,6 +1,9 @@
 import useOptions from "../hooks/useOptions";
 
+// type imports
 import type { RefUse } from "../types";
+
+// css imports
 import "./OptionsPopup.css";
 
 export default function OptionsPopup({ refer, taskSet, taskTxt }: RefUse) {

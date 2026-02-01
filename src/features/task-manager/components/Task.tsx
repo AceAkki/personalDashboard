@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
-
 import TuneIcon from "@mui/icons-material/Tune";
-import "./Task.css";
 
+// components imports
+import OptionsPopup from "./OptionsPopup";
+
+// type imports
 import type { TaskType, TaskIDMainType } from "../types";
 
-import OptionsPopup from "./OptionsPopup";
+// css imports
+import "./Task.css";
 
 const Task = ({
   taskTxt,

@@ -1,5 +1,6 @@
 import { Link, useOutletContext } from "react-router-dom";
 
+// components imports
 import TasksMain from "../task-manager/components/TasksMain";
 import Weather from "../weather/Weather";
 import Pomodoro from "../pomodoro/Pomodoro";
@@ -7,8 +8,10 @@ import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
 import Notes from "../Notes/Notes";
 
+// type imports
 import type { OutletContextType } from "../task-manager/types";
 
+// css imports
 import "./BentoStructure.css";
 
 const BentoStructure = () => {

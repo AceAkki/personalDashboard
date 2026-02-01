@@ -10,9 +10,9 @@ import { nanoid } from "nanoid";
 
 // component imports
 import TasksMain from "./components/TasksMain";
-// all type definitions
+// type imports
 import type { TaskActionData, TasksProps, OutletContextType } from "./types";
-// css import statements
+// css imports
 import "./TaskManager.css";
 
 // action function to handle form submissions

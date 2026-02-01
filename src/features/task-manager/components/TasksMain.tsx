@@ -1,7 +1,12 @@
 import { useState } from "react";
+
+// component imports
 import Task from "./Task";
 
+// type imports
 import type { TasksMainProps } from "../types";
+
+// css imports
 import "./TasksMain.css";
 
 const TasksMain = ({ taskData, taskSet, Type }: TasksMainProps) => {
