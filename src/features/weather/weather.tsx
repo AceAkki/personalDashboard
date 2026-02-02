@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { useLoaderData, Await } from "react-router-dom";
 
 import RenderAnime from "./useLottieAnime";
-
+import { DropSimple, Wind, Gauge } from "@phosphor-icons/react";
 import "./weather.css";
 
 const Weather = ({ data }: any) => {
@@ -34,19 +34,28 @@ const Weather = ({ data }: any) => {
         <RenderAnime code={parseInt(weatherData.current.weather_code)} />
       </div>
 
-      <div className="weather-info">
-        <h2>
-          {weatherData.current.relative_humidity_2m}
-          {weatherData.current_units.relative_humidity_2m}
-        </h2>
-        <h2>
-          {weatherData.current.wind_speed_10m}
-          {weatherData.current_units.wind_speed_10m}
-        </h2>
-        <h2>
-          {weatherData.current.surface_pressure}
-          {weatherData.current_units.surface_pressure}
-        </h2>
+      <div className="weather-info-wrap">
+        <div className="weather-info">
+          <DropSimple size={32} />
+          <h2>
+            {weatherData.current.relative_humidity_2m}
+            {weatherData.current_units.relative_humidity_2m}
+          </h2>
+        </div>
+        <div className="weather-info">
+          <Wind size={32} />
+          <h2>
+            {weatherData.current.wind_speed_10m}
+            {weatherData.current_units.wind_speed_10m}
+          </h2>
+        </div>
+        <div className="weather-info">
+          <Gauge size={32} />
+          <h2>
+            {weatherData.current.surface_pressure}
+            {weatherData.current_units.surface_pressure}
+          </h2>
+        </div>
       </div>
     </section>
   );

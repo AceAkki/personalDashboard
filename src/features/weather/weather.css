@@ -7,3 +7,16 @@
 .weather-temp .temp {
   font-size: 4rem;
 }
+
+.weather-info-wrap {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.weather-info {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
