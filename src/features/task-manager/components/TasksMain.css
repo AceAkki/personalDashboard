@@ -6,7 +6,7 @@
   margin: 2rem 0;
   height: 30vh;
 
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--bg-rgba);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   overflow: auto;
@@ -16,5 +16,5 @@
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
-  color: #333;
+  color: var(--txt-clr);
 }

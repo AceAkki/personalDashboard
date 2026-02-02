@@ -1,3 +1,12 @@
+.weather-card {
+  background: var(--bg-rgba);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 16px;
+  color: var(--txt-clr);
+}
+
 .weather-temp {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -17,6 +26,7 @@
 .weather-info {
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
