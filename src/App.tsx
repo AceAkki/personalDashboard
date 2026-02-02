@@ -13,18 +13,21 @@ import TaskManager, {
 } from "./features/task-manager/TaskManager";
 
 import Pomodoro from "./features/pomodoro/Pomodoro";
+import Weather from "./features/weather/Weather";
+import { getWeather } from "./features/weather/getWeather";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Dashboard />}>
-        <Route index element={<BentoStructure />} />
+        <Route index element={<BentoStructure />} loader={getWeather} />
         <Route
           path="taskmanager"
           element={<TaskManager />}
           action={taskManagerAction}
         />
         <Route path="pomodoro" element={<Pomodoro />} />
+        <Route path="weather" element={<Weather />} loader={getWeather} />
       </Route>
     </>,
   ),

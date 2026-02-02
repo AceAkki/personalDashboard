@@ -1,0 +1,9 @@
+.weather-temp {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.weather-temp .temp {
+  font-size: 4rem;
+}

@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useLoaderData } from "react-router-dom";
 
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
@@ -8,6 +8,8 @@ import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
 import Notes from "../Notes/Notes";
 
+import { getWeather } from "../weather/getWeather";
+
 // type imports
 import type { OutletContextType } from "../task-manager/types";
 
@@ -16,6 +18,7 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   const [tasks, setTasks] = useOutletContext<OutletContextType>();
+  const weatherData = useLoaderData();
   return (
     <>
       <div>
@@ -28,7 +31,7 @@ const BentoStructure = () => {
         </div>
 
         <div className="grid-item">
-          <Weather />
+          <Weather data={weatherData} />
         </div>
         <div className="grid-item">
           <Inspire />
