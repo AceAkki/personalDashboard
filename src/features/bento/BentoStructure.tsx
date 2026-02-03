@@ -2,22 +2,23 @@ import { Link, useOutletContext, useLoaderData } from "react-router-dom";
 
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
-import Weather from "../weather/Weather";
+// import Weather from "../weather/Weather";
 import Pomodoro from "../pomodoro/Pomodoro";
 import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
 import Notes from "../Notes/Notes";
 
-import { getWeather } from "../weather/hooks/getWeather";
-
 // type imports
-import type { OutletContextType } from "../task-manager/types";
+// import type { OutletContextType } from "../task-manager/types";
+import type { DashboardContext } from "../weather/weatherType";
 
 // css imports
 import "./BentoStructure.css";
+import WeatherCard from "../weather/components/WeatherCard";
 
 const BentoStructure = () => {
-  const [tasks, setTasks] = useOutletContext<OutletContextType>();
+  // const [tasks, setTasks] = useOutletContext<OutletContextType>();
+  const [tasks, setTasks, weatherData] = useOutletContext<DashboardContext>();
   return (
     <>
       <div>
@@ -30,7 +31,10 @@ const BentoStructure = () => {
         </div>
 
         <div className="grid-item">
-          <Weather />
+          <WeatherCard
+            current={weatherData.current}
+            current_units={weatherData.current_units}
+          />
         </div>
         <div className="grid-item">
           <Inspire />

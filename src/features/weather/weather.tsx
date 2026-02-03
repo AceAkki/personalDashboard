@@ -1,5 +1,10 @@
 import { Suspense, useEffect } from "react";
-import { useLoaderData, Await, useRouteLoaderData } from "react-router-dom";
+import {
+  useLoaderData,
+  Await,
+  useRouteLoaderData,
+  useOutletContext,
+} from "react-router-dom";
 
 import WeatherCard from "./components/WeatherCard";
 import Hourly from "./components/Hourly";
