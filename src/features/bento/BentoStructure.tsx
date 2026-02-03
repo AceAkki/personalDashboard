@@ -18,7 +18,6 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const weatherData = useLoaderData();
   return (
     <>
       <div>
@@ -31,7 +30,7 @@ const BentoStructure = () => {
         </div>
 
         <div className="grid-item">
-          <Weather data={weatherData} />
+          <Weather />
         </div>
         <div className="grid-item">
           <Inspire />
