@@ -1,16 +1,16 @@
 import { useLottie } from "lottie-react";
 
-import sunny from "./lottieAnime/Weather-sunny.json";
-import night from "./lottieAnime/Weather-night.json";
+import sunny from "../lottieAnime/Weather-sunny.json";
+import night from "../lottieAnime/Weather-night.json";
 
-import foggy from "./lottieAnime/Foggy.json";
-import mist from "./lottieAnime/Weather-mist.json";
-import partlyCloudy from "./lottieAnime/Weather-partly-cloudy.json";
-import partlyShower from "./lottieAnime/Weather-partly-shower.json";
-import snow from "./lottieAnime/Weather-snow.json";
-import storm from "./lottieAnime/Weather-storm.json";
-import thunder from "./lottieAnime/Weather-thunder.json";
-import windy from "./lottieAnime/Weather-windy.json";
+import foggy from "../lottieAnime/Foggy.json";
+import mist from "../lottieAnime/Weather-mist.json";
+import partlyCloudy from "../lottieAnime/Weather-partly-cloudy.json";
+import partlyShower from "../lottieAnime/Weather-partly-shower.json";
+import snow from "../lottieAnime/Weather-snow.json";
+import storm from "../lottieAnime/Weather-storm.json";
+import thunder from "../lottieAnime/Weather-thunder.json";
+import windy from "../lottieAnime/Weather-windy.json";
 
 const weatherRef = [
   {

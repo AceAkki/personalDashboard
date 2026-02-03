@@ -8,7 +8,7 @@ import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
 import Notes from "../Notes/Notes";
 
-import { getWeather } from "../weather/getWeather";
+import { getWeather } from "../weather/hooks/getWeather";
 
 // type imports
 import type { OutletContextType } from "../task-manager/types";

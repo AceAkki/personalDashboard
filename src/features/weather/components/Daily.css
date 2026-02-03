@@ -1,0 +1,11 @@
+.weather-daily-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.daily-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

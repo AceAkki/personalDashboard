@@ -14,22 +14,20 @@ import TaskManager, {
 
 import Pomodoro from "./features/pomodoro/Pomodoro";
 import Weather from "./features/weather/Weather";
-import { getWeather } from "./features/weather/getWeather";
+import { getWeather } from "./features/weather/hooks/getWeather";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<Dashboard />}>
-        <Route index element={<BentoStructure />} loader={getWeather} />
-        <Route
-          path="taskmanager"
-          element={<TaskManager />}
-          action={taskManagerAction}
-        />
-        <Route path="pomodoro" element={<Pomodoro />} />
-        <Route path="weather" element={<Weather />} loader={getWeather} />
-      </Route>
-    </>,
+    <Route path="/" element={<Dashboard />} loader={getWeather} id="root">
+      <Route index element={<BentoStructure />} />
+      <Route
+        path="taskmanager"
+        element={<TaskManager />}
+        action={taskManagerAction}
+      />
+      <Route path="pomodoro" element={<Pomodoro />} />
+      <Route path="weather" element={<Weather />} />
+    </Route>,
   ),
 );
 
