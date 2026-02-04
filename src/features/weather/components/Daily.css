@@ -5,7 +5,8 @@
 }
 
 .daily-wrap {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40% 30% 20%;
   align-items: center;
   justify-content: space-between;
   background: var(--bg-rgba);
