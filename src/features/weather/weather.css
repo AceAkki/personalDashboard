@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 1080px) {
   .weather-main-wrap {
-    grid-template-columns: fit-content(500px) auto;
+    grid-template-columns: repeat(2, 1fr);
   }
   .span-column {
     grid-column: span 2;

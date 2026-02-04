@@ -7,7 +7,7 @@ const Daily = ({ daily, tempUnit }: DailyProps) => {
   let dailyData = daily.time.map((day, index) => {
     return (
       <div className="daily-wrap" key={day}>
-        <div className="day-det">
+        <div className="daily-date">
           <p>
             {new Date(day).toLocaleDateString(undefined, {
               month: "short",

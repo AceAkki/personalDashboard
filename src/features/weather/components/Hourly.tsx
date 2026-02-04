@@ -11,19 +11,21 @@ const Hourly = ({ hourly, tempUnit }: HourlyProps) => {
     let newIndex = startIndex + index;
     return (
       <div className="hour-wrap" key={hour}>
-        <div className="hour-det">
-          <p>
-            {new Date(hour)
-              .toLocaleDateString(undefined, { hour: "2-digit" })
-              .split(",")[1]
-              .replace(/(\s)+/gm, "")}
-          </p>
-        </div>
-        <div className="hour-temp">
-          <p>
-            {hourly.temperature_2m[newIndex]}
-            {tempUnit}
-          </p>
+        <div className="hourly-content">
+          <div className="hour-det">
+            <p>
+              {new Date(hour)
+                .toLocaleDateString(undefined, { hour: "2-digit" })
+                .split(",")[1]
+                .replace(/(\s)+/gm, "")}
+            </p>
+          </div>
+          <div className="hour-temp">
+            <p>
+              {hourly.temperature_2m[newIndex]}
+              {tempUnit}
+            </p>
+          </div>
         </div>
         <div className="hour-anime">
           <RenderAnime code={hourly.weather_code[newIndex]} />
