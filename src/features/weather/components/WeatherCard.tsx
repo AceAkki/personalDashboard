@@ -28,24 +28,24 @@ const WeatherCard = ({ current, current_units }: WeatherCardProps) => {
       <div className="weather-info-wrap">
         <div className="weather-info">
           <DropSimple size={32} />
-          <h2>
+          <p>
             {current.relative_humidity_2m}
             {current_units.relative_humidity_2m}
-          </h2>
+          </p>
         </div>
         <div className="weather-info">
           <Wind size={32} />
-          <h2>
+          <p>
             {current.wind_speed_10m}
             {current_units.wind_speed_10m}
-          </h2>
+          </p>
         </div>
         <div className="weather-info">
           <Gauge size={32} />
-          <h2>
+          <p>
             {current.surface_pressure}
             {current_units.surface_pressure}
-          </h2>
+          </p>
         </div>
       </div>
     </div>

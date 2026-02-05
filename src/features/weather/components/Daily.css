@@ -9,8 +9,9 @@
 
 .daily-main-wrap {
   background: var(--bg-rgba);
+  backdrop-filter: blur(16px);
   border-radius: 16px;
-  padding: 1rem 2rem;
+  padding: 1rem;
   gap: 1rem;
 }
 
@@ -25,7 +26,6 @@
 
 .daily-date {
   font-size: 1.4rem;
-  font-weight: 200;
 }
 
 .daily-temp {
@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: flex-end;
 }
 
 @media screen and (min-width: 1080px) {
@@ -51,5 +52,16 @@
 
   .daily-sun-wrap {
     flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2rem;
+  }
+
+  .daily-date {
+    font-size: 3.4rem;
+    font-weight: 200;
+  }
+
+  .daily-temp {
+    font-size: 3.5rem;
   }
 }
