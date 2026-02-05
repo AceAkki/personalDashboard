@@ -7,15 +7,20 @@
   overflow: auto;
 }
 
-.daily-wrap {
+.daily-main-wrap {
+  background: var(--bg-rgba);
+  border-radius: 16px;
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
+
+.daily-weather-wrap {
   display: grid;
-  grid-template-columns: 40% 30% 20%;
   align-items: center;
   justify-content: space-between;
-  background: var(--bg-rgba);
   padding: 1rem 2rem;
   border-radius: 16px;
-  max-height: 20vh;
+  gap: 1rem;
 }
 
 .daily-date {
@@ -25,4 +30,22 @@
 
 .daily-temp {
   font-size: 2rem;
+}
+
+.daily-sun-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .daily-weather-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    gap: 1rem;
+  }
 }
