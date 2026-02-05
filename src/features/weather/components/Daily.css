@@ -41,11 +41,15 @@
 @media screen and (min-width: 1080px) {
   .daily-weather-wrap {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 20% 20% 30%;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
     border-radius: 16px;
     gap: 1rem;
+  }
+
+  .daily-sun-wrap {
+    flex-direction: row;
   }
 }
