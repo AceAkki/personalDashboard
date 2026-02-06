@@ -13,7 +13,7 @@ import Daily from "./components/Daily";
 import "./weather.css";
 
 const Weather = () => {
-  const weatherData = useRouteLoaderData("root");
+  const { weatherData } = useRouteLoaderData("root");
   return (
     <section>
       {/* <RenderAnime isDay={parseInt(weatherData.current.is_day)} /> */}

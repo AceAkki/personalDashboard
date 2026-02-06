@@ -6,6 +6,7 @@ import type { WeatherCardProps } from "../weatherType";
 import "./WeatherCard.css";
 
 const WeatherCard = ({ current, current_units }: WeatherCardProps) => {
+  console.log(current);
   return (
     <div className="weather-card">
       <div>
