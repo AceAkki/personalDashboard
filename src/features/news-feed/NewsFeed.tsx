@@ -1,6 +1,7 @@
 import { useRouteLoaderData } from "react-router-dom";
 
 import type { NewsFeedProps } from "./newsTypes";
+import "./news.css";
 const NewsFeed = () => {
   const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
   console.log(newsData);
@@ -11,12 +12,14 @@ const NewsFeed = () => {
       return (
         <div className="news-details-wrap" key={news.link}>
           <div className="news-content">
-            <h1>{news.title}</h1>
-            <p>{news.description}</p>
+            <h5 className="news-title">{news.title}</h5>
+            <p className="news-para">{news.description}</p>
           </div>
-          {news.thumbnail ? (
-            <img src={news.thumbnail} alt={news.title} />
-          ) : null}
+          <div className="news-image">
+            {news.thumbnail ? (
+              <img src={news.thumbnail} alt={news.title} />
+            ) : null}
+          </div>
           <a href={news.link}>Read More</a>
         </div>
       );
