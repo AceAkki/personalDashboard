@@ -14,7 +14,7 @@ const NewsFeed = () => {
           <div className="news-content">
             <h5 className="news-title">{news.title}</h5>
             <p className="news-para">{news.description}</p>
-            <a href={news.link} target="_blank">
+            <a href={news.link} className="news-btn" target="_blank">
               Read More
             </a>
           </div>

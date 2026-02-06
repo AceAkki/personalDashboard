@@ -12,7 +12,7 @@
   border-radius: 16px;
   backdrop-filter: blur(16px);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 70% auto;
   gap: 1rem;
 }
 
@@ -33,6 +33,15 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.news-btn {
+  background: var(--primary);
+  width: fit-content;
+  padding: 0.5rem 0.8rem;
+  color: var(--soft-clr);
+  border-radius: 16px;
+  text-decoration: none;
 }
 
 .news-image img {
