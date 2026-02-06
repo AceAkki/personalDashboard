@@ -15,6 +15,8 @@ import TaskManager, {
 import Pomodoro from "./features/pomodoro/Pomodoro";
 import Weather from "./features/weather/Weather";
 import { getWeather } from "./features/weather/hooks/getWeather";
+
+import NewsFeed from "./features/news-feed/NewsFeed";
 import useFetchNews from "./features/news-feed/hooks/useFetchNews";
 
 const router = createBrowserRouter(
@@ -38,6 +40,7 @@ const router = createBrowserRouter(
       />
       <Route path="pomodoro" element={<Pomodoro />} />
       <Route path="weather" element={<Weather />} />
+      <Route path="newsfeed" element={<NewsFeed />} />
     </Route>,
   ),
 );
