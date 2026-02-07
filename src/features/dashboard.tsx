@@ -7,6 +7,7 @@ import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
   const [tasks, setTasks] = useState<string[]>([]);
+  const [notes, setNotes] = useState<string[]>([]);
   const { weatherData } = useLoaderData();
   return (
     <>
@@ -14,7 +15,7 @@ const Dashboard = (): ReactElement => {
       <section className="dashboard-section">
         <Header title="Dashboard" />
 
-        <Outlet context={[tasks, setTasks, weatherData]} />
+        <Outlet context={{ tasks, setTasks, notes, setNotes, weatherData }} />
       </section>
     </>
   );

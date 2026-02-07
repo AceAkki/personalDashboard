@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 :root {
-  --primary: #4f8cff;
-  --primary-hover: #3b78e7;
-  --primary-soft: rgba(79, 140, 255, 0.15);
+  --primary: #333;
+  --primary-hover: #555;
+  --primary-soft: rgba(51, 51, 51, 0.15);
   --success: #2ecc71;
   --warning: #f1c40f;
   --error: #e74c3c;

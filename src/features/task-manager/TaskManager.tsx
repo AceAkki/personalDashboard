@@ -11,7 +11,11 @@ import { nanoid } from "nanoid";
 // component imports
 import TasksMain from "./components/TasksMain";
 // type imports
-import type { TaskActionData, TasksProps, OutletContextType } from "./types";
+import type {
+  TaskActionData,
+  TasksProps,
+  OutletContextType,
+} from "./taskTypes";
 // css imports
 import "./TaskManager.css";
 

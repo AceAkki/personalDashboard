@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 
-import type { MoveBtnsProps, OptionsMain, TasksTypes } from "../types";
+import type { MoveBtnsProps, OptionsMain, TasksTypes } from "../taskTypes";
 export default function useOptions() {
   return {
     MoveBtns,

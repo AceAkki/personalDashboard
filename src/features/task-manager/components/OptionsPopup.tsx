@@ -1,7 +1,7 @@
 import useOptions from "../hooks/useOptions";
 
 // type imports
-import type { RefUse } from "../types";
+import type { RefUse } from "../taskTypes";
 
 // css imports
 import "./OptionsPopup.css";

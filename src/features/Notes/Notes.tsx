@@ -1,5 +1,9 @@
 const Notes = () => {
-  return <h1>Notes</h1>;
+  return (
+    <form method="post">
+      <textarea name="note" id="note"></textarea>
+    </form>
+  );
 };
 
 export default Notes;

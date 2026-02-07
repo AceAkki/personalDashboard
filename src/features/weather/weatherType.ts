@@ -115,6 +115,3 @@ export interface DailyProps {
     weather_code: number[];
   };
 }
-
-import type { OutletContextType } from "../task-manager/types";
-export type DashboardContext = [...OutletContextType, weatherData: WeatherData];

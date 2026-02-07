@@ -10,7 +10,7 @@ import Notes from "../Notes/Notes";
 
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
-import type { DashboardContext } from "../weather/weatherType";
+import type { DashboardContext } from "../mainTypes";
 
 // css imports
 import "./BentoStructure.css";
@@ -18,7 +18,7 @@ import WeatherCard from "../weather/components/WeatherCard";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const [tasks, setTasks, weatherData] = useOutletContext<DashboardContext>();
+  const { tasks, setTasks, weatherData } = useOutletContext<DashboardContext>();
   return (
     <>
       <div>

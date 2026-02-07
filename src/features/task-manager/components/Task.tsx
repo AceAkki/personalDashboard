@@ -5,7 +5,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import OptionsPopup from "./OptionsPopup";
 
 // type imports
-import type { TaskType, TaskIDMainType } from "../types";
+import type { TaskType, TaskIDMainType } from "../taskTypes";
 
 // css imports
 import "./Task.css";

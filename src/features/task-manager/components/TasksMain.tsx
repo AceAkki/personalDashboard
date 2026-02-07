@@ -4,7 +4,7 @@ import { useState } from "react";
 import Task from "./Task";
 
 // type imports
-import type { TasksMainProps } from "../types";
+import type { TasksMainProps } from "../taskTypes";
 
 // css imports
 import "./TasksMain.css";

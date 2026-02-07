@@ -4,7 +4,6 @@ import type { NewsFeedProps } from "./newsTypes";
 import "./news.css";
 const NewsFeed = () => {
   const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
-  console.log(newsData);
   const successDataArr = newsData.filter((news) => news.status === "ok");
   const newsArr = successDataArr.map((news) => news.items).flat();
   const RenderNews = () => {
@@ -18,11 +17,11 @@ const NewsFeed = () => {
               Read More
             </a>
           </div>
-          <div className="news-image">
+          {/* <div className="news-image">
             {news.thumbnail ? (
               <img src={news.thumbnail} alt={news.title} />
             ) : null}
-          </div>
+          </div> */}
         </div>
       );
     });
