@@ -4,11 +4,6 @@ export interface TaskActionData {
   type: TasksTypes;
 }
 
-export type OutletContextType = [
-  TaskActionData[],
-  React.Dispatch<React.SetStateAction<TaskActionData[]>>,
-];
-
 export type TaskIDMainType = [
   string | null,
   React.Dispatch<React.SetStateAction<string | null>>,

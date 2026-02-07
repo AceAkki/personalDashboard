@@ -11,11 +11,10 @@ import { nanoid } from "nanoid";
 // component imports
 import TasksMain from "./components/TasksMain";
 // type imports
-import type {
-  TaskActionData,
-  TasksProps,
-  OutletContextType,
-} from "./taskTypes";
+import type { TaskActionData, TasksProps } from "./taskTypes";
+
+import type { DashboardContext } from "../mainTypes";
+
 // css imports
 import "./TaskManager.css";
 
@@ -39,7 +38,7 @@ const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
 };
 
 const TaskManager = () => {
-  const [tasks, setTasks] = useOutletContext<OutletContextType>();
+  const { tasks, setTasks } = useOutletContext<DashboardContext>();
   const actionData = useActionData() as TaskActionData | null;
   const inputRef = useRef<HTMLInputElement | null>(null);
 
