@@ -19,6 +19,8 @@ import { getWeather } from "./features/weather/hooks/getWeather";
 import NewsFeed from "./features/news-feed/NewsFeed";
 import useFetchNews from "./features/news-feed/hooks/useFetchNews";
 
+import Notes from "./features/notes/Notes";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
@@ -41,6 +43,7 @@ const router = createBrowserRouter(
       <Route path="pomodoro" element={<Pomodoro />} />
       <Route path="weather" element={<Weather />} />
       <Route path="newsfeed" element={<NewsFeed />} />
+      <Route path="notes" element={<Notes />} />
     </Route>,
   ),
 );

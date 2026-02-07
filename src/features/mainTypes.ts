@@ -8,3 +8,7 @@ export type DashboardContext = {
   setNotes: React.Dispatch<React.SetStateAction<string[]>>;
   weatherData: WeatherData;
 };
+
+export type stringSet = {
+  setNotes: React.Dispatch<React.SetStateAction<string[]>>;
+};

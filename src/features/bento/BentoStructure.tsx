@@ -6,7 +6,8 @@ import TasksMain from "../task-manager/components/TasksMain";
 import Pomodoro from "../pomodoro/Pomodoro";
 import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
-import Notes from "../Notes/Notes";
+import NotesForm from "../notes/NotesForm";
+import WeatherCard from "../weather/components/WeatherCard";
 
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
@@ -14,11 +15,11 @@ import type { DashboardContext } from "../mainTypes";
 
 // css imports
 import "./BentoStructure.css";
-import WeatherCard from "../weather/components/WeatherCard";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const { tasks, setTasks, weatherData } = useOutletContext<DashboardContext>();
+  const { tasks, setTasks, notes, setNotes, weatherData } =
+    useOutletContext<DashboardContext>();
   return (
     <>
       <div>
@@ -40,7 +41,7 @@ const BentoStructure = () => {
           <Inspire />
         </div>
         <div className="grid-item">
-          <Notes />
+          <NotesForm setNotes={setNotes} />
         </div>
         <div className="grid-item">
           <Pomodoro />

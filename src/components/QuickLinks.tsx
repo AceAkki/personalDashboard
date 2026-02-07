@@ -16,6 +16,9 @@ const QuickLinks = (): ReactElement => {
         <li>
           <Link to="/pomodoro">Pomodoro</Link>
         </li>
+        <li>
+          <Link to="/notes">Notes</Link>
+        </li>
       </ul>
     </div>
   );
