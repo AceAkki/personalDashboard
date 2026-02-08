@@ -15,7 +15,7 @@ const Notes = () => {
   return (
     <>
       <h1>Notes</h1>
-      <div>{RenderNotes}</div>
+      <div className="notes-main-wrap">{RenderNotes}</div>
     </>
   );
 };

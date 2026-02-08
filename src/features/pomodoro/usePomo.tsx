@@ -1,4 +1,4 @@
-import type { PomoProps, TimerObj } from "./Pomo";
+import type { PomoProps } from "./Pomo";
 const usePomo = ({ timeObj, setTimeObj }: PomoProps) => {
   function startPomodoro() {
     const endTime = new Date().getTime() + 25 * 60 * 1000;
@@ -7,7 +7,10 @@ const usePomo = ({ timeObj, setTimeObj }: PomoProps) => {
     });
   }
 
-  function getRemainingTime() {
+  function getRemainingTime(): {
+    remainingMinutes: number;
+    remainingSeconds: number;
+  } {
     const milliDiff = timeObj.endTime - new Date().getTime();
     // Total number of seconds in the difference
     const totalSeconds = Math.floor(milliDiff / 1000);

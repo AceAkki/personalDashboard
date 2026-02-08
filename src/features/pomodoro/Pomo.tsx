@@ -14,26 +14,30 @@ export interface PomoProps {
 const Pomo = () => {
   let [timeObj, setTimeObj] = useState({ endTime: 0 });
   let [isActive, setIsActive] = useState(false);
-  let [runningTime, setRunningTime] = useState(0);
+
   let [startPomodoro, getRemainingTime] = usePomo({
     timeObj: timeObj,
     setTimeObj: setTimeObj,
   });
-  let remainingMin = "25",
-    remainingSec = "00";
 
   useEffect(() => {
-    console.log(timeObj, isActive, runningTime);
     if (isActive && timeObj.endTime === 0) {
       startPomodoro();
-    } else if (isActive && timeObj.endTime !== 0) {
-      let { remainingMinutes, remainingSeconds } = getRemainingTime();
-      remainingMin = remainingMinutes;
-      remainingSec = remainingSeconds;
-      setRunningTime(timeObj.endTime - new Date().getTime());
     }
-    console.log(runningTime);
-  }, [timeObj, runningTime]);
+  }, [isActive, timeObj.endTime]);
+
+  let remainingMin = 25;
+  let remainingSec = 0;
+
+  if (timeObj.endTime !== 0) {
+    const { remainingMinutes, remainingSeconds } =
+      getRemainingTime() as unknown as {
+        remainingMinutes: number;
+        remainingSeconds: number;
+      };
+    remainingMin = remainingMinutes;
+    remainingSec = remainingSeconds;
+  }
 
   return (
     <div className="pomo-main-wrap">

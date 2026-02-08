@@ -4,6 +4,7 @@ import { Link, useOutletContext, useLoaderData } from "react-router-dom";
 import TasksMain from "../task-manager/components/TasksMain";
 // import Weather from "../weather/Weather";
 import Pomodoro from "../pomodoro/Pomodoro";
+import Pomo from "../pomodoro/Pomo";
 import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
 import NotesForm from "../notes/NotesForm";
@@ -50,7 +51,7 @@ const BentoStructure = () => {
           <NewsFeed />
         </div>
         <div className="grid-item">
-          <Pomodoro />
+          <Pomo />
         </div>
       </div>
     </>
