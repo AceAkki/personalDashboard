@@ -12,6 +12,7 @@
   --txt-clr: #333;
   --muted-text: #666666;
   --disabled-text: #999999;
+  --default-radius: 1rem;
 }
 
 * {

@@ -1,7 +1,7 @@
 .weather-card {
   background: var(--bg-rgba);
   backdrop-filter: blur(10px);
-  padding: 2rem;
+  padding: 1rem;
   margin: 2rem 0;
   border-radius: 16px;
   color: var(--txt-clr);
@@ -34,11 +34,11 @@
 
 @media screen and (min-width: 1080px) {
   .weather-temp {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 70% auto;
   }
 
   .weather-temp .temp {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
   }
 
   .weather-info {

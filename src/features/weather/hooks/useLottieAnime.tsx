@@ -64,7 +64,11 @@ const RenderAnime = ({ code }: codeProps) => {
     loop: true,
     autoplay: true,
   };
-  const { View } = useLottie(options);
+  const style = {
+    width: "100%",
+    height: "100%",
+  };
+  const { View } = useLottie(options, style);
   return View;
 };
 
