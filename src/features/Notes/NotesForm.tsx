@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import type { stringSet } from "../mainTypes";
+
+import "./notes.css";
 const NotesForm = ({ setNotes }: stringSet) => {
   const [note, setNote] = useState("");
   const timeoutRef = useRef<number | null>(null);
@@ -13,11 +15,12 @@ const NotesForm = ({ setNotes }: stringSet) => {
     }
     timeoutRef.current = window.setTimeout(() => {
       updateNote(value);
-    }, 500);
+    }, 10000);
   };
 
   const updateNote = (value: string) => {
     setNotes((prevNotes) => [...prevNotes, value]);
+    setNote("");
   };
 
   return (
@@ -26,6 +29,8 @@ const NotesForm = ({ setNotes }: stringSet) => {
       id="note"
       value={note}
       onChange={handleChange}
+      className="notes-textarea"
+      placeholder="Whats on your mind..."
     ></textarea>
   );
 };
