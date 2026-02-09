@@ -1,8 +1,10 @@
 import { useOutletContext } from "react-router-dom";
+import NotesForm from "./NotesForm";
 
 import type { DashboardContext } from "../mainTypes";
+
 const Notes = () => {
-  const { notes } = useOutletContext<DashboardContext>();
+  const { notes, setNotes } = useOutletContext<DashboardContext>();
 
   const RenderNotes = notes.map((note) => {
     return (
@@ -15,6 +17,9 @@ const Notes = () => {
   return (
     <>
       <h1>Notes</h1>
+      <div className="notes-form-wrap">
+        <NotesForm setNotes={setNotes} />
+      </div>
       <div className="notes-main-wrap">{RenderNotes}</div>
     </>
   );

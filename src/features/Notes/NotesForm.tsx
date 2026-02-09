@@ -15,7 +15,7 @@ const NotesForm = ({ setNotes }: stringSet) => {
     }
     timeoutRef.current = window.setTimeout(() => {
       updateNote(value);
-    }, 6000);
+    }, 4000);
   };
 
   const updateNote = (value: string) => {
