@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1.5rem;
   padding: 1rem;
-  height: clamp(30vh, 20cqw, 55vh);
+  height: clamp(100%, 20cqw, 55vh);
 
   background: var(--bg-rgba);
   backdrop-filter: blur(10px);

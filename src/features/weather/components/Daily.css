@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   grid-template-columns: repeat(2, 1fr);
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 16px;
   gap: 1rem;
 }
@@ -32,6 +32,17 @@
 
 .daily-temp {
   font-size: 2rem;
+}
+
+.daily-anime div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.daily-anime svg {
+  width: 5rem !important;
+  height: 5rem !important;
 }
 
 .daily-sun-wrap {
@@ -65,5 +76,10 @@
 
   .daily-temp {
     font-size: 3.5rem;
+  }
+
+  .daily-anime svg {
+    width: 10rem !important;
+    height: 10rem !important;
   }
 }
