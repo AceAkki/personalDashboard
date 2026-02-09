@@ -9,9 +9,10 @@ import {
 import WeatherCard from "./components/WeatherCard";
 import Hourly from "./components/Hourly";
 import Daily from "./components/Daily";
+import WeatherTile from "./components/WeatherTile";
 
 import "./weather.css";
-
+let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
   const { weatherData } = useRouteLoaderData("root");
   return (
@@ -21,14 +22,31 @@ const Weather = () => {
         <Await resolve={weatherData}>
           {(weatherData) => (
             <div className="weather-main-wrap">
-              <WeatherCard
-                current={weatherData.current}
-                current_units={weatherData.current_units}
-              />
-              <Daily
-                daily={weatherData.daily}
-                tempUnit={weatherData.daily_units.temperature_2m_max}
-              />
+              <div className="weather-left-wrap">
+                <WeatherCard
+                  current={weatherData.current}
+                  current_units={weatherData.current_units}
+                />
+                <Daily
+                  daily={weatherData.daily}
+                  tempUnit={weatherData.daily_units.temperature_2m_max}
+                />
+              </div>
+              <div className="weather-tile-wrap">
+                {Object.keys(weatherData.current)
+                  .filter((key) => !arr.includes(key))
+                  .map((key) => {
+                    return (
+                      <WeatherTile
+                        key={key}
+                        icon={key}
+                        current={weatherData.current[key]}
+                        current_units={weatherData.current_units[key]}
+                      />
+                    );
+                  })}
+              </div>
+
               <Hourly
                 hourly={weatherData.hourly}
                 tempUnit={weatherData.hourly_units.temperature_2m}

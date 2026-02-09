@@ -40,10 +40,10 @@ const router = createBrowserRouter(
         element={<TaskManager />}
         action={taskManagerAction}
       />
-      <Route path="pomodoro" element={<Pomodoro />} />
       <Route path="weather" element={<Weather />} />
-      <Route path="newsfeed" element={<NewsFeed />} />
+      <Route path="pomodoro" element={<Pomodoro />} />
       <Route path="notes" element={<Notes />} />
+      <Route path="newsfeed" element={<NewsFeed />} />
     </Route>,
   ),
 );

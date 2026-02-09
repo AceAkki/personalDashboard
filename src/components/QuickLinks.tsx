@@ -8,16 +8,19 @@ const QuickLinks = (): ReactElement => {
     <div className="quick-wrap">
       <ul className="quick-links">
         <li>
-          <a href="#link1">Link 1</a>
+          <Link to="/taskmanager">Tasks</Link>
         </li>
         <li>
-          <a href="#link2">Link 2</a>
+          <Link to="/weather">Weather</Link>
         </li>
         <li>
           <Link to="/pomodoro">Pomodoro</Link>
         </li>
         <li>
           <Link to="/notes">Notes</Link>
+        </li>
+        <li>
+          <Link to="/newsfeed">News</Link>
         </li>
       </ul>
     </div>

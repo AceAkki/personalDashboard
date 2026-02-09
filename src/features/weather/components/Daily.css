@@ -3,8 +3,9 @@
   flex-direction: column;
   gap: 1rem;
   margin: 2rem 0;
-  max-height: 55vh;
   overflow: auto;
+  max-height: 55vh;
+  border-radius: var(--default-radius);
 }
 
 .daily-main-wrap {
@@ -19,6 +20,7 @@
   display: grid;
   align-items: center;
   justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
   padding: 1rem 2rem;
   border-radius: 16px;
   gap: 1rem;
@@ -42,7 +44,7 @@
 @media screen and (min-width: 1080px) {
   .daily-weather-wrap {
     display: grid;
-    grid-template-columns: 20% 20% 30%;
+    /* grid-template-columns: repeat(3, 1fr); */
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;

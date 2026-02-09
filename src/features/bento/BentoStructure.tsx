@@ -29,7 +29,6 @@ const BentoStructure = () => {
       <div className="bento-grid-layout">
         <div className="grid-item span-row">
           <TasksMain taskData={tasks} taskSet={setTasks} Type="Priority" />
-          <Link to="../taskmanager">Go</Link>
         </div>
 
         <div className="grid-item">

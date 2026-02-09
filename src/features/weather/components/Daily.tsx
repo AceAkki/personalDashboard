@@ -9,19 +9,21 @@ const Daily = ({ daily, tempUnit }: DailyProps) => {
     return (
       <div className="daily-main-wrap" key={day}>
         <div className="daily-weather-wrap">
-          <div className="daily-date">
-            <p>
-              {new Date(day).toLocaleDateString(undefined, {
-                month: "short",
-                day: "2-digit",
-              })}
-            </p>
-          </div>
-          <div className="daily-temp">
-            <p>
-              {daily.temperature_2m_max[newIndex]}
-              {tempUnit}
-            </p>
+          <div className="daily-content-wrap">
+            <div className="daily-date">
+              <p>
+                {new Date(day).toLocaleDateString(undefined, {
+                  month: "short",
+                  day: "2-digit",
+                })}
+              </p>
+            </div>
+            <div className="daily-temp">
+              <p>
+                {daily.temperature_2m_max[newIndex]}
+                {tempUnit}
+              </p>
+            </div>
           </div>
           <div className="daily-anime">
             <RenderAnime code={daily.weather_code[newIndex]} />
