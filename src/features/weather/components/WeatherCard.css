@@ -42,10 +42,11 @@
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
+  container-type: inline-size;
 }
 
 .aqi-txt {
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 5cqw, 8rem);
 }
 
 @media screen and (min-width: 1080px) {
