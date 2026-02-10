@@ -66,6 +66,28 @@ export type WeatherData = {
   };
 };
 
+export type AQIData = {
+  latitude: number;
+  longitude: number;
+  generationtime_ms: number;
+  utc_offset_seconds: number;
+  timezone: string;
+  timezone_abbreviation: string;
+  elevation: number;
+  current_units: {
+    time: string;
+    interval: string;
+    pm10: string;
+    pm2_5: string;
+  };
+  current: {
+    time: string;
+    interval: number;
+    pm10: number;
+    pm2_5: number;
+  };
+};
+
 export interface WeatherCardProps {
   current_units: {
     time: string;
@@ -92,6 +114,18 @@ export interface WeatherCardProps {
     weather_code: number;
     rain: number;
     snowfall: number;
+  };
+  aqiCurrent_units: {
+    time: string;
+    interval: string;
+    pm10: string;
+    pm2_5: string;
+  };
+  aqiCurrent: {
+    time: string;
+    interval: number;
+    pm10: number;
+    pm2_5: number;
   };
 }
 

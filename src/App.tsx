@@ -14,7 +14,7 @@ import TaskManager, {
 
 import Pomodoro from "./features/pomodoro/Pomodoro";
 import Weather from "./features/weather/Weather";
-import { getWeather } from "./features/weather/hooks/getWeather";
+import { getWeather, getAQI } from "./features/weather/hooks/getWeather";
 
 import NewsFeed from "./features/news-feed/NewsFeed";
 import useFetchNews from "./features/news-feed/hooks/useFetchNews";
@@ -27,10 +27,23 @@ const router = createBrowserRouter(
       path="/"
       element={<Dashboard />}
       loader={async () => {
+        const [weatherData, aqiData, newsData] = await Promise.all([
+          getWeather(),
+          getAQI(),
+          useFetchNews(),
+        ]).then((value) => value);
+
         return {
-          weatherData: await getWeather(),
-          newsData: await useFetchNews(),
+          weatherData,
+          aqiData,
+          newsData,
         };
+
+        // return {
+        //   weatherData: await getWeather(),
+        //   aqiData: await getAQI(),
+        //   newsData: await useFetchNews(),
+        // };
       }}
       id="root"
     >

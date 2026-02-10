@@ -17,6 +17,8 @@
   padding: 1rem 3.5rem;
   border-radius: 16px;
   height: 10rem;
+  min-width: 3rem;
+  max-width: 3rem;
 }
 
 .daily-content {

@@ -14,18 +14,20 @@ import WeatherTile from "./components/WeatherTile";
 import "./weather.css";
 let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
-  const { weatherData } = useRouteLoaderData("root");
+  const { weatherData, aqiData } = useRouteLoaderData("root");
   return (
     <section>
       {/* <RenderAnime isDay={parseInt(weatherData.current.is_day)} /> */}
       <Suspense fallback={<h1>Loading </h1>}>
-        <Await resolve={weatherData}>
-          {(weatherData) => (
+        <Await resolve={{ weatherData, aqiData }}>
+          {({ weatherData, aqiData }) => (
             <div className="weather-main-wrap">
               <div className="weather-left-wrap">
                 <WeatherCard
                   current={weatherData.current}
                   current_units={weatherData.current_units}
+                  aqiCurrent={aqiData.current}
+                  aqiCurrent_units={aqiData.current_units}
                 />
                 <Daily
                   daily={weatherData.daily}

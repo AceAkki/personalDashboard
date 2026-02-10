@@ -1,5 +1,5 @@
 import type { TaskActionData } from "./task-manager/taskTypes";
-import type { WeatherData } from "./weather/weatherType";
+import type { WeatherData, AQIData } from "./weather/weatherType";
 
 export type DashboardContext = {
   tasks: TaskActionData[];
@@ -7,6 +7,7 @@ export type DashboardContext = {
   notes: string[];
   setNotes: React.Dispatch<React.SetStateAction<string[]>>;
   weatherData: WeatherData;
+  aqiData: AQIData;
 };
 
 export type stringSet = {

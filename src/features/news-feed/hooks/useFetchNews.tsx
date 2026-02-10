@@ -1,4 +1,5 @@
-const useFetchNews = async () => {
+import type { NewsObject } from "../newsTypes";
+const useFetchNews = async (): Promise<NewsObject> => {
   const newsSources = {
     GlobalNews: {
       BBCNews: "https://feeds.bbci.co.uk/news/world/rss.xml",

@@ -9,6 +9,7 @@ import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
 import NotesForm from "../notes/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
+import LinkStorage from "../linkStorage/LinkStorage";
 
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
@@ -19,7 +20,7 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const { tasks, setTasks, notes, setNotes, weatherData } =
+  const { tasks, setTasks, notes, setNotes, weatherData, aqiData } =
     useOutletContext<DashboardContext>();
   return (
     <>
@@ -35,6 +36,8 @@ const BentoStructure = () => {
           <WeatherCard
             current={weatherData.current}
             current_units={weatherData.current_units}
+            aqiCurrent={aqiData.current}
+            aqiCurrent_units={aqiData.current_units}
           />
         </div>
         <div className="grid-item">
@@ -49,8 +52,12 @@ const BentoStructure = () => {
         <div className="grid-item span-column">
           <NewsFeed />
         </div>
+        <div className="grid-item"></div>
         <div className="grid-item">
           <Pomo />
+        </div>
+        <div className="grid-item">
+          <LinkStorage />
         </div>
       </div>
     </>

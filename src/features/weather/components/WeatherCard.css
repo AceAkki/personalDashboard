@@ -37,6 +37,17 @@
   font-weight: 300;
 }
 
+.weather-aqui {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.aqi-txt {
+  font-size: 0.9rem;
+}
+
 @media screen and (min-width: 1080px) {
   .weather-temp {
     grid-template-columns: 70% auto;
