@@ -7,7 +7,7 @@ import Pomodoro from "../pomodoro/Pomodoro";
 import Pomo from "../pomodoro/Pomo";
 import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
-import NotesForm from "../notes/NotesForm";
+import NotesForm from "../notes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
 import LinkStorage from "../linkStorage/LinkStorage";
 
@@ -20,8 +20,16 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const { tasks, setTasks, notes, setNotes, weatherData, aqiData } =
-    useOutletContext<DashboardContext>();
+  const {
+    tasks,
+    setTasks,
+    notes,
+    setNotes,
+    links,
+    setLinks,
+    weatherData,
+    aqiData,
+  } = useOutletContext<DashboardContext>();
   return (
     <>
       <div>

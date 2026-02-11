@@ -1,6 +1,6 @@
 import RenderAnime from "../hooks/useLottieAnime";
+import { getAQILevel, USAQI } from "../hooks/useAQI";
 import type { WeatherCardProps } from "../weatherType";
-
 import "./WeatherCard.css";
 
 const WeatherCard = ({
@@ -9,7 +9,6 @@ const WeatherCard = ({
   aqiCurrent,
   aqiCurrent_units,
 }: WeatherCardProps) => {
-  console.log(current, current_units, aqiCurrent, aqiCurrent_units);
   return (
     <div className="weather-card">
       <div>
@@ -31,14 +30,13 @@ const WeatherCard = ({
       </div>
       <div className="weather-aqui">
         <p className="aqi-txt">
-          <strong>PM 10 : </strong>
-          {aqiCurrent.pm10}
-          {aqiCurrent_units.pm10}
-        </p>
-        <p className="aqi-txt">
-          <strong>PM 2.5 : </strong>
-          {aqiCurrent.pm2_5}
-          {aqiCurrent_units.pm2_5}
+          <strong>AQI : </strong>
+          {aqiCurrent.us_aqi}
+          <span> {aqiCurrent_units.us_aqi}</span> |
+          <strong>
+            &nbsp;
+            {getAQILevel(aqiCurrent.us_aqi, USAQI).toSentenceCase() as string}
+          </strong>
         </p>
       </div>
     </div>

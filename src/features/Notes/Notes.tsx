@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import NotesForm from "./NotesForm";
+import NotesForm from "./components/NotesForm";
 
 import type { DashboardContext } from "../mainTypes";
 

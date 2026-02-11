@@ -32,4 +32,14 @@ body {
 
 section {
   margin: 2rem 0;
+  overflow:auto;
+}
+
+section.overflow-unset {
+  overflow:unset;
+}
+
+.scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-rgba);
 }

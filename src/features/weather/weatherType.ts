@@ -7,33 +7,9 @@ export type WeatherData = {
   timezone_abbreviation: string;
   elevation: number;
 
-  current_units: {
-    time: string;
-    interval: string;
-    temperature_2m: string;
-    relative_humidity_2m: string;
-    wind_speed_10m: string;
-    surface_pressure: string;
-    is_day: string;
-    apparent_temperature: string;
-    weather_code: string;
-    rain: string;
-    snowfall: string;
-  };
+  current_units: Weather_current_units;
 
-  current: {
-    time: string;
-    interval: number;
-    temperature_2m: number;
-    relative_humidity_2m: number;
-    wind_speed_10m: number;
-    surface_pressure: number;
-    is_day: number;
-    apparent_temperature: number;
-    weather_code: number;
-    rain: number;
-    snowfall: number;
-  };
+  current: Weather_current;
 
   hourly_units: {
     time: string;
@@ -66,6 +42,34 @@ export type WeatherData = {
   };
 };
 
+type Weather_current_units = {
+  time: string;
+  interval: string;
+  temperature_2m: string;
+  relative_humidity_2m: string;
+  wind_speed_10m: string;
+  surface_pressure: string;
+  is_day: string;
+  apparent_temperature: string;
+  weather_code: string;
+  rain: string;
+  snowfall: string;
+};
+
+type Weather_current = {
+  time: string;
+  interval: number;
+  temperature_2m: number;
+  relative_humidity_2m: number;
+  wind_speed_10m: number;
+  surface_pressure: number;
+  is_day: number;
+  apparent_temperature: number;
+  weather_code: number;
+  rain: number;
+  snowfall: number;
+};
+
 export type AQIData = {
   latitude: number;
   longitude: number;
@@ -74,59 +78,31 @@ export type AQIData = {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
-  current_units: {
-    time: string;
-    interval: string;
-    pm10: string;
-    pm2_5: string;
-  };
-  current: {
-    time: string;
-    interval: number;
-    pm10: number;
-    pm2_5: number;
-  };
+  current_units: AQI_current_units;
+  current: AQI_current;
+};
+
+type AQI_current = {
+  time: string;
+  interval: number;
+  pm10: number;
+  pm2_5: number;
+  us_aqi: number;
+};
+
+type AQI_current_units = {
+  time: string;
+  interval: string;
+  pm10: string;
+  pm2_5: string;
+  us_aqi: string;
 };
 
 export interface WeatherCardProps {
-  current_units: {
-    time: string;
-    interval: string;
-    temperature_2m: string;
-    relative_humidity_2m: string;
-    wind_speed_10m: string;
-    surface_pressure: string;
-    is_day: string;
-    apparent_temperature: string;
-    weather_code: string;
-    rain: string;
-    snowfall: string;
-  };
-  current: {
-    time: string;
-    interval: number;
-    temperature_2m: number;
-    relative_humidity_2m: number;
-    wind_speed_10m: number;
-    surface_pressure: number;
-    is_day: number;
-    apparent_temperature: number;
-    weather_code: number;
-    rain: number;
-    snowfall: number;
-  };
-  aqiCurrent_units: {
-    time: string;
-    interval: string;
-    pm10: string;
-    pm2_5: string;
-  };
-  aqiCurrent: {
-    time: string;
-    interval: number;
-    pm10: number;
-    pm2_5: number;
-  };
+  current_units: Weather_current_units;
+  current: Weather_current;
+  aqiCurrent_units: AQI_current_units;
+  aqiCurrent: AQI_current;
 }
 
 export interface HourlyProps {
@@ -149,3 +125,13 @@ export interface DailyProps {
     weather_code: number[];
   };
 }
+
+export type objUSAQI = {
+  good: number[];
+  moderate: number[];
+  unhealthy: number[];
+  very_unhealthy: number[];
+  hazardous: number[];
+};
+
+export type AQILevel = keyof objUSAQI;

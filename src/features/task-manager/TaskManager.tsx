@@ -52,7 +52,7 @@ const TaskManager = () => {
   }, [actionData]);
 
   return (
-    <section>
+    <section className="overflow-unset">
       <h2 className="task-manager-title">Task Manager</h2>
       <p>Track your tasks here and keep your brain free for another things.</p>
 

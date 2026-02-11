@@ -10,7 +10,7 @@ export const getWeather = async (): Promise<WeatherData> => {
 
 export const getAQI = async (): Promise<AQIData> => {
   const res = await fetch(
-    "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=52.52&longitude=13.41&current=pm10,pm2_5",
+    "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=52.52&longitude=13.41&current=pm10,pm2_5,us_aqi",
   );
   const data = await res.json();
   return data;

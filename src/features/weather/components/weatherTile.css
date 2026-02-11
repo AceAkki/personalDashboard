@@ -1,6 +1,6 @@
 .weather-tile-wrap {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
@@ -13,7 +13,7 @@
   padding: 2rem 0;
   backdrop-filter: blur(16px);
   border-radius: var(--default-radius);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .weather-tile svg {

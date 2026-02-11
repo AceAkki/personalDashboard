@@ -5,7 +5,6 @@ import {
   Route,
 } from "react-router-dom";
 
-import "./App.css";
 import Dashboard from "./features/Dashboard";
 import BentoStructure from "./features/bento/BentoStructure";
 import TaskManager, {
@@ -20,6 +19,9 @@ import NewsFeed from "./features/news-feed/NewsFeed";
 import useFetchNews from "./features/news-feed/hooks/useFetchNews";
 
 import Notes from "./features/notes/Notes";
+
+import "./global/customProto";
+import "./App.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

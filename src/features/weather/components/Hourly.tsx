@@ -33,6 +33,6 @@ const Hourly = ({ hourly, tempUnit }: HourlyProps) => {
       </div>
     );
   });
-  return <div className="weather-hourly-wrap span-column">{hourlyData}</div>;
+  return <div className="weather-hourly-wrap scroll">{hourlyData}</div>;
 };
 export default Hourly;

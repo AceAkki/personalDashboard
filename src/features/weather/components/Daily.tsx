@@ -62,6 +62,6 @@ const Daily = ({ daily, tempUnit }: DailyProps) => {
       </div>
     );
   });
-  return <div className="weather-daily-wrap">{dailyData}</div>;
+  return <div className="weather-daily-wrap scroll">{dailyData}</div>;
 };
 export default Daily;

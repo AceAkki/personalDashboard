@@ -1,26 +1,37 @@
+import { useOutletContext } from "react-router-dom";
+import LinkForm from "./components/LinkForm";
+import type { DashboardContext } from "../mainTypes";
+
 const LinkStorage = () => {
+  const { links, setLinks } = useOutletContext<DashboardContext>();
+
+  const RenderLinks = links.map((link) => {
+    return (
+      <div className="link-pen-item">
+        <div className="favIcon-wrap">
+          <img
+            src={`http://www.google.com/s2/favicons?domain=${link}`}
+            alt="favicon"
+          />
+        </div>
+        <div className="url-title-wrap">
+          <p>{link}</p>
+        </div>
+        <div className="exp-hour-wrap">
+          <p>24h</p>
+        </div>
+      </div>
+    );
+  });
   return (
     <div className="link-pen">
       <div className="linkpen-input">
-        <input type="text" placeholder="Paste a link here to triage..." />
-        <button>+</button>
+        <LinkForm setLinks={setLinks} />
       </div>
-      <div className="linkpen-list-wrap">
-        <div className="link-pen-item">
-          <div className="favIcon-wrap">
-            <img src="https://via.placeholder.com/16" alt="favicon" />
-          </div>
-          <div className="url-title-wrap">
-            <p>How to Build a Personal Dashboard...</p>
-          </div>
-          <div className="exp-hour-wrap">
-            <p>24h</p>
-          </div>
-        </div>
-      </div>
+      <div className="linkpen-list-wrap">{RenderLinks}</div>
       <div className="linkpen-footer-wrap">
         <div>
-          <p>Items: </p>
+          <p>Items: {links.length}</p>
         </div>
         <div>
           <button>Clear All</button>
