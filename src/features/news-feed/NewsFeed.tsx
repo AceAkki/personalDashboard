@@ -27,9 +27,11 @@ const NewsFeed = () => {
     });
   };
   return (
-    <div className="news-main-wrap">
-      <RenderNews />
-    </div>
+    <section>
+      <div className="news-main-wrap">
+        <RenderNews />
+      </div>
+    </section>
   );
 };
 

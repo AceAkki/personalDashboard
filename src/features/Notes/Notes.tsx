@@ -16,11 +16,13 @@ const Notes = () => {
 
   return (
     <>
-      <h1>Notes</h1>
-      <div className="notes-form-wrap">
-        <NotesForm setNotes={setNotes} />
-      </div>
-      <div className="notes-main-wrap">{RenderNotes}</div>
+      <section>
+        <h1>Notes</h1>
+        <div className="notes-form-wrap">
+          <NotesForm setNotes={setNotes} />
+        </div>
+        <div className="notes-main-wrap">{RenderNotes}</div>
+      </section>
     </>
   );
 };
