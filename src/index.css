@@ -32,11 +32,11 @@ body {
 
 section {
   margin: 2rem 0;
-  overflow:auto;
+  overflow: auto;
 }
 
 section.overflow-unset {
-  overflow:unset;
+  overflow: unset;
 }
 
 .scroll {

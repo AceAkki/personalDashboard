@@ -1,7 +1,7 @@
 import useLinkMain from "../hooks/useLinkMain";
-import type { reactStringSet } from "../../mainTypes";
+import type { linkObjectSet } from "../linkTypes";
 
-const LinksForm = ({ setLinks }: { setLinks: reactStringSet }) => {
+const LinksForm = ({ setLinks }: { setLinks: linkObjectSet }) => {
   const { link, handleChange } = useLinkMain(setLinks);
   return (
     <input
