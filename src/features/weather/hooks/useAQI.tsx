@@ -3,8 +3,9 @@ import type { objUSAQI, AQILevel } from "../weatherType";
 export const USAQI = {
   good: [0, 50],
   moderate: [51, 100],
+  sensitive: [101, 150],
   unhealthy: [101, 200],
-  very_unhealthy: [201, 300],
+  severe: [201, 300],
   hazardous: [301, 500],
 };
 

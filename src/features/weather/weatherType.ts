@@ -129,8 +129,9 @@ export interface DailyProps {
 export type objUSAQI = {
   good: number[];
   moderate: number[];
+  sensitive: number[];
   unhealthy: number[];
-  very_unhealthy: number[];
+  severe: number[];
   hazardous: number[];
 };
 

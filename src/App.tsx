@@ -49,7 +49,7 @@ const router = createBrowserRouter(
       }}
       id="root"
     >
-      <Route index element={<BentoStructure />} />
+      <Route index element={<BentoStructure />} action={taskManagerAction} />
       <Route
         path="taskmanager"
         element={<TaskManager />}

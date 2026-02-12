@@ -1,7 +1,6 @@
 .tasks-main-wrap {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   padding: 1rem;
   height: clamp(100%, 20cqw, 55vh);
 
@@ -16,4 +15,8 @@
   font-weight: 600;
   text-align: center;
   color: var(--txt-clr);
+}
+
+.tasks-wrap {
+  overflow: auto;
 }

@@ -1,7 +1,4 @@
-// react based import statements
-import { useEffect, useRef } from "react";
 import {
-  Form,
   useActionData,
   type ActionFunctionArgs,
   useOutletContext,
@@ -10,9 +7,12 @@ import { nanoid } from "nanoid";
 
 // component imports
 import TasksMain from "./components/TasksMain";
+import TaskForm from "./components/TaskForm";
+
+import useTaskMain from "./hooks/useTaskMain";
+
 // type imports
 import type { TaskActionData, TasksProps } from "./taskTypes";
-
 import type { DashboardContext } from "../mainTypes";
 
 // css imports
@@ -39,33 +39,14 @@ const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
 
 const TaskManager = () => {
   const { tasks, setTasks } = useOutletContext<DashboardContext>();
-  const actionData = useActionData() as TaskActionData | null;
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (actionData?.taskName) {
-      setTasks((prev) => [...prev, actionData]);
-      if (inputRef && inputRef.current) {
-        inputRef.current.value = "";
-      }
-    }
-  }, [actionData]);
+  const inputRef = useTaskMain(setTasks);
 
   return (
     <section className="overflow-unset">
       <h2 className="task-manager-title">Task Manager</h2>
       <p>Track your tasks here and keep your brain free for another things.</p>
 
-      <Form method="post">
-        <input
-          type="text"
-          name="task"
-          placeholder="Add a New Task"
-          required
-          ref={inputRef}
-        />
-        <button type="submit">Add Task</button>
-      </Form>
+      <TaskForm inputRef={inputRef} />
 
       <div className="tasks-grid-wrap">
         <TasksMainWrapper taskData={tasks} taskSet={setTasks} />

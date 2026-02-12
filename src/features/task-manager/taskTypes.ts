@@ -15,6 +15,10 @@ export interface TasksTypes {
   Completed: boolean;
 }
 
+export type TaskActionDataSet = React.Dispatch<
+  React.SetStateAction<TaskActionData[]>
+>;
+
 interface ReactSet {
   taskSet: React.Dispatch<React.SetStateAction<TaskActionData[]>>;
 }

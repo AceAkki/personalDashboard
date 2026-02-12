@@ -11,17 +11,18 @@
 }
 
 form {
-  display: flex;
+  display: grid;
+  grid-template-rows: auto;
   gap: 0.5rem;
   font-size: 1.2rem;
-  flex-direction: column;
+  margin: 0 0 1rem;
 }
 
 form input {
   all: unset;
   padding: 0.4rem 0.5rem;
   background: #fff;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
   border: 2px solid var(--txt-clr);
   border-radius: 10px;
 }
@@ -29,7 +30,7 @@ form input {
 form button {
   all: unset;
   padding: 0.4rem 0.8rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   background: #333;
   color: #fff;
   text-align: center;
@@ -46,10 +47,5 @@ form button:hover {
 @media screen and (min-width: 1080px) {
   .tasks-grid-wrap {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  form {
-    flex-direction: row;
-    align-items: center;
   }
 }

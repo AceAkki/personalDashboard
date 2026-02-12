@@ -2,6 +2,8 @@ import { useOutletContext } from "react-router-dom";
 
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
+import TaskForm from "../task-manager/components/TaskForm";
+
 // import Weather from "../weather/Weather";
 import Pomodoro from "../pomodoro/Pomodoro";
 import Pomo from "../pomodoro/Pomo";
@@ -11,6 +13,7 @@ import NotesForm from "../quicknotes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
 import LinkStorage from "../linkStorage/LinkStorage";
 
+import useTaskMain from "../task-manager/hooks/useTaskMain";
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
 import type { DashboardContext } from "../mainTypes";
@@ -22,6 +25,7 @@ const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
   const { tasks, setTasks, setNotes, weatherData, aqiData } =
     useOutletContext<DashboardContext>();
+  const inputRef = useTaskMain(setTasks);
   return (
     <>
       <div>
@@ -29,6 +33,7 @@ const BentoStructure = () => {
       </div>
       <div className="bento-grid-layout">
         <div className="grid-item span-row">
+          <TaskForm inputRef={inputRef} />
           <TasksMain taskData={tasks} taskSet={setTasks} Type="Priority" />
         </div>
 
@@ -47,12 +52,16 @@ const BentoStructure = () => {
           <NotesForm setNotes={setNotes} />
         </div>
         <div className="grid-item">
-          <Pomodoro />
+          <TasksMain taskData={tasks} taskSet={setTasks} Type="Current" />
         </div>
+
         <div className="grid-item span-column">
           <NewsFeed />
         </div>
-        <div className="grid-item"></div>
+
+        <div className="grid-item">
+          <Pomodoro />
+        </div>
         <div className="grid-item">
           <Pomo />
         </div>

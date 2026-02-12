@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 
 // components imports

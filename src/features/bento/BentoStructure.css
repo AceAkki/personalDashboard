@@ -9,6 +9,7 @@
 
 .grid-item {
   min-height: auto;
+  height: 100%;
   overflow: unset;
   border-radius: var(--default-radius);
 }
