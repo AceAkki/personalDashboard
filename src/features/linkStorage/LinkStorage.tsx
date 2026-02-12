@@ -11,8 +11,8 @@ const LinkStorage = () => {
       const milliDiff = link.expiryTime - Date.now();
       const totalSeconds = Math.floor(milliDiff / 1000);
 
-      const seconds = totalSeconds % 60;
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      // const seconds = totalSeconds % 60;
+      // const minutes = Math.floor((totalSeconds % 3600) / 60);
       const totalHours = Math.floor(totalSeconds / 3600);
       return totalHours;
     };

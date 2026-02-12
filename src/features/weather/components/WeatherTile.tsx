@@ -34,10 +34,13 @@ type WeatherTileProps = {
   current_units: string;
   icon: string;
 };
+type WeatherKey = keyof typeof weatherIcon;
+
 const WeatherTile = ({ current, current_units, icon }: WeatherTileProps) => {
-  let weatherIconKey = Object.keys(weatherIcon).filter((key) =>
+  const weatherKeys = Object.keys(weatherIcon) as WeatherKey[];
+  let weatherIconKey: WeatherKey = weatherKeys.filter((key) =>
     icon.includes(key),
-  );
+  )[0];
   console.log(icon, weatherIconKey);
   return (
     <div className="weather-tile">

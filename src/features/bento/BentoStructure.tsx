@@ -1,4 +1,4 @@
-import { Link, useOutletContext, useLoaderData } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
@@ -20,16 +20,8 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const {
-    tasks,
-    setTasks,
-    notes,
-    setNotes,
-    links,
-    setLinks,
-    weatherData,
-    aqiData,
-  } = useOutletContext<DashboardContext>();
+  const { tasks, setTasks, setNotes, weatherData, aqiData } =
+    useOutletContext<DashboardContext>();
   return (
     <>
       <div>

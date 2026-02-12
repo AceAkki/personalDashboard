@@ -10,7 +10,7 @@ import partlyShower from "../lottieAnime/Weather-partly-shower.json";
 import snow from "../lottieAnime/Weather-snow.json";
 import storm from "../lottieAnime/Weather-storm.json";
 import thunder from "../lottieAnime/Weather-thunder.json";
-import windy from "../lottieAnime/Weather-windy.json";
+// import windy from "../lottieAnime/Weather-windy.json";
 
 const weatherRef = [
   {
@@ -47,14 +47,14 @@ const weatherRef = [
   },
 ];
 
-const timeofDay = [{ 0: night }, { 1: sunny }];
+// const timeofDay = [{ 0: night }, { 1: sunny }];
 
 type codeProps = {
   code: number;
 };
-type isDayProps = {
-  isDay: number;
-};
+// type isDayProps = {
+//   isDay: number;
+// };
 
 const RenderAnime = ({ code }: codeProps) => {
   let weatherAnime = weatherRef.filter((obj) => obj.ids.includes(code))[0].file;
