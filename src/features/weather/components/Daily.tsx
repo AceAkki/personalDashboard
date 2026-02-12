@@ -3,7 +3,7 @@ import RenderAnime from "../hooks/useLottieAnime";
 import type { DailyProps } from "../weatherType";
 import "./Daily.css";
 const Daily = ({ daily, tempUnit }: DailyProps) => {
-  const filteredArr = daily.time.filter((day, index) => index > 0);
+  const filteredArr = daily.time.filter((__, index) => index > 0);
   let dailyData = filteredArr.map((day, index) => {
     let newIndex = index + 1;
     return (

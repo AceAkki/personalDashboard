@@ -10,8 +10,6 @@ import {
   CloudSun,
 } from "@phosphor-icons/react";
 
-import type { WeatherCardProps } from "../weatherType";
-
 import "./weatherTile.css";
 
 const weatherIcon = {

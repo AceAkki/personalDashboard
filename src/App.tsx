@@ -18,7 +18,7 @@ import { getWeather, getAQI } from "./features/weather/hooks/getWeather";
 import NewsFeed from "./features/news-feed/NewsFeed";
 import useFetchNews from "./features/news-feed/hooks/useFetchNews";
 
-import Notes from "./features/notes/Notes";
+import Notes from "./features/quicknotes/Notes";
 
 import "./global/customProto";
 import "./App.css";

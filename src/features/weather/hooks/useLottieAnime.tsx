@@ -1,7 +1,7 @@
 import { useLottie } from "lottie-react";
 
 import sunny from "../lottieAnime/Weather-sunny.json";
-import night from "../lottieAnime/Weather-night.json";
+// import night from "../lottieAnime/Weather-night.json";
 
 import foggy from "../lottieAnime/Foggy.json";
 import mist from "../lottieAnime/Weather-mist.json";
