@@ -7,9 +7,9 @@ const NewsFeed = () => {
   const successDataArr = newsData.filter((news) => news.status === "ok");
   const newsArr = successDataArr.map((news) => news.items).flat();
   const RenderNews = () => {
-    return newsArr.map((news) => {
+    return newsArr.map((news, index) => {
       return (
-        <div className="news-details-wrap" key={news.link}>
+        <div className="news-details-wrap" key={`${news.link}-${index}`}>
           <div className="news-content">
             <h5 className="news-title">{news.title}</h5>
             <p className="news-para">{news.description}</p>
