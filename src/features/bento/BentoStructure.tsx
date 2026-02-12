@@ -8,12 +8,13 @@ import TaskForm from "../task-manager/components/TaskForm";
 import Pomodoro from "../pomodoro/Pomodoro";
 import Pomo from "../pomodoro/Pomo";
 import Inspire from "../inspire/Inspire";
-import NewsFeed from "../news-feed/NewsFeed";
 import NotesForm from "../quicknotes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
 import LinkStorage from "../linkStorage/LinkStorage";
 
 import useTaskMain from "../task-manager/hooks/useTaskMain";
+import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
+import RenderNews from "../news-feed/components/RenderNews";
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
 import type { DashboardContext } from "../mainTypes";
@@ -26,6 +27,7 @@ const BentoStructure = () => {
   const { tasks, setTasks, setNotes, weatherData, aqiData } =
     useOutletContext<DashboardContext>();
   const inputRef = useTaskMain(setTasks);
+  const newsArr = useRouteNewsData();
   return (
     <>
       <div>
@@ -56,7 +58,7 @@ const BentoStructure = () => {
         </div>
 
         <div className="grid-item span-column">
-          <NewsFeed />
+          <RenderNews newsArr={newsArr} />
         </div>
 
         <div className="grid-item">
