@@ -7,7 +7,7 @@ import Pomodoro from "../pomodoro/Pomodoro";
 import Pomo from "../pomodoro/Pomo";
 import Inspire from "../inspire/Inspire";
 import NewsFeed from "../news-feed/NewsFeed";
-import NotesForm from "../notes/components/NotesForm";
+import NotesForm from "../quicknotes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
 import LinkStorage from "../linkStorage/LinkStorage";
 
