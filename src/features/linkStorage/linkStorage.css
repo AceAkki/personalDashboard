@@ -13,12 +13,14 @@
   border: 1px solid var(--soft-clr);
   border-radius: 5px;
 }
+
 .linkpen-list-wrap {
   overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
+
 .link-pen-item {
   display: flex;
   align-items: center;
