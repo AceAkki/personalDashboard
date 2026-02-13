@@ -11,8 +11,8 @@
 }
 
 form {
-  display: grid;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   font-size: 1.2rem;
   margin: 0 0 1rem;
@@ -47,5 +47,9 @@ form button:hover {
 @media screen and (min-width: 1080px) {
   .tasks-grid-wrap {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tasks-grid-wrap form {
+    flex-direction: row;
   }
 }

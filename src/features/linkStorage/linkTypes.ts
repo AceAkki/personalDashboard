@@ -4,3 +4,8 @@ export type linkObject = {
 };
 
 export type linkObjectSet = React.Dispatch<React.SetStateAction<linkObject[]>>;
+
+export type RenderLinksProps = {
+  links: linkObject[];
+  setLinks: linkObjectSet;
+};

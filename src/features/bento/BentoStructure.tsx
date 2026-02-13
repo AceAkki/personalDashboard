@@ -15,6 +15,8 @@ import LinkStorage from "../linkStorage/LinkStorage";
 import useTaskMain from "../task-manager/hooks/useTaskMain";
 import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
 import RenderNews from "../news-feed/components/RenderNews";
+import FavLinks from "../favLinks/FavLinks";
+
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
 import type { DashboardContext } from "../mainTypes";
@@ -56,19 +58,22 @@ const BentoStructure = () => {
         <div className="grid-item">
           <TasksMain taskData={tasks} taskSet={setTasks} Type="Current" />
         </div>
-
         <div className="grid-item span-column">
-          <RenderNews newsArr={newsArr} />
+          <FavLinks />
         </div>
 
-        <div className="grid-item">
+        {/* <div className="grid-item">
           <Pomodoro />
-        </div>
+        </div> */}
         <div className="grid-item">
           <Pomo />
         </div>
         <div className="grid-item">
           <LinkStorage />
+        </div>
+
+        <div className="grid-item span-column">
+          <RenderNews newsArr={newsArr} />
         </div>
       </div>
     </>
