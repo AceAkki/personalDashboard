@@ -5,7 +5,7 @@ import TasksMain from "../task-manager/components/TasksMain";
 import TaskForm from "../task-manager/components/TaskForm";
 
 // import Weather from "../weather/Weather";
-import Pomodoro from "../pomodoro/Pomodoro";
+// import Pomodoro from "../pomodoro/Pomodoro";
 import Pomo from "../pomodoro/Pomo";
 import Inspire from "../inspire/Inspire";
 import NotesForm from "../quicknotes/components/NotesForm";
@@ -49,17 +49,19 @@ const BentoStructure = () => {
             aqiCurrent_units={aqiData.current_units}
           />
         </div>
-        <div className="grid-item">
-          <Inspire />
+        <div className="grid-item span-column">
+          <FavLinks />
         </div>
-        <div className="grid-item">
-          <NotesForm setNotes={setNotes} />
-        </div>
+
         <div className="grid-item">
           <TasksMain taskData={tasks} taskSet={setTasks} Type="Current" />
         </div>
-        <div className="grid-item span-column">
-          <FavLinks />
+
+        <div className="grid-item">
+          <LinkStorage />
+        </div>
+        <div className="grid-item">
+          <NotesForm setNotes={setNotes} />
         </div>
 
         {/* <div className="grid-item">
@@ -69,7 +71,7 @@ const BentoStructure = () => {
           <Pomo />
         </div>
         <div className="grid-item">
-          <LinkStorage />
+          <Inspire />
         </div>
 
         <div className="grid-item span-column">
