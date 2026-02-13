@@ -6,18 +6,14 @@ const TaskForm = ({
 }) => {
   return (
     <Form method="post">
-      <div>
-        <input
-          type="text"
-          name="task"
-          placeholder="Add a New Task"
-          required
-          ref={inputRef}
-        />
-      </div>
-      <div>
-        <button type="submit">Add Task</button>
-      </div>
+      <input
+        type="text"
+        name="task"
+        placeholder="Add a New Task"
+        required
+        ref={inputRef}
+      />
+      <button type="submit">+</button>
     </Form>
   );
 };

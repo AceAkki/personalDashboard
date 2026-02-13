@@ -1,6 +1,6 @@
 .weather-tile-wrap {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -19,4 +19,10 @@
 .weather-tile svg {
   width: 3rem;
   height: 3rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .weather-tile-wrap {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

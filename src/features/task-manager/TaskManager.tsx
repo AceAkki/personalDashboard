@@ -41,8 +41,9 @@ const TaskManager = () => {
     <section className="overflow-unset">
       <h2 className="task-manager-title">Task Manager</h2>
       <p>Track your tasks here and keep your brain free for another things.</p>
-
-      <TaskForm inputRef={inputRef} />
+      <div className="tasks-grid-wrap">
+        <TaskForm inputRef={inputRef} />
+      </div>
 
       <div className="tasks-grid-wrap">
         <TasksMainWrapper taskData={tasks} taskSet={setTasks} />

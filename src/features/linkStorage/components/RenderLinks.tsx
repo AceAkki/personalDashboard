@@ -26,7 +26,7 @@ const RenderLinks = ({ links, setLinks }: RenderLinksProps) => {
       >
         <div className="favIcon-wrap">
           <img
-            src={`http://www.google.com/s2/favicons?domain=${link}`}
+            src={`http://www.google.com/s2/favicons?domain=${link.link}&sz=32`}
             alt="favicon"
           />
         </div>

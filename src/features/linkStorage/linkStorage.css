@@ -4,11 +4,13 @@
   padding: 0.5rem;
   height: 100%;
   display: grid;
-  grid-template-rows: 20% 60% auto;
+  grid-template-rows: 30% auto 20%;
+  gap: 0.5rem;
 }
 .link-input {
   width: 100%;
   padding: 0.5rem;
+  margin: 1rem 0;
   outline: none;
   border: 1px solid var(--soft-clr);
   border-radius: 5px;
