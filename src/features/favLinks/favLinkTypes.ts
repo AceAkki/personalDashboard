@@ -7,6 +7,7 @@ export type FavLink = {
 export type SeachParam = {
   searchURL: string;
   searchQuery: string;
+  isParamNeeded: boolean;
 };
 export type FavLinksProps = {
   search: SeachParam;

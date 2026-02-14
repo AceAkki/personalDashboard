@@ -7,6 +7,7 @@ const favLinks = () => {
   const [search, setSearch] = useState<SeachParam>({
     searchURL: "",
     searchQuery: "",
+    isParamNeeded: false,
   });
   return (
     <div className="fav-links">
