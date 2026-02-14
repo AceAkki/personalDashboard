@@ -3,6 +3,16 @@
   padding: 1rem;
 }
 
+.Toastify__toast-theme--light {
+  background: var(--primary-soft);
+  backdrop-filter: blur(20px);
+}
+.Toastify__toast--error {
+  background: var(--primary-soft);
+  color: var(--error);
+  font-weight: 500;
+}
+
 @media screen and (min-width: 1080px) {
   .dashboard-section {
     margin: 2rem 1rem;

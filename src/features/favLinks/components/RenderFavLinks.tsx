@@ -97,6 +97,9 @@ const RenderFavLinks = ({ search, setSearch }: FavLinksProps) => {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const [name, type] = e.target.value.split(" | ");
     let paramBoolean = type === "SearchLinks" ? true : false;
+    if (paramBoolean && search.searchQuery === "") {
+      toastErrMsg("Search Query Empty");
+    }
     let searchURL = Object.values(favLinks)
       .flat()
       .find((link) => link.name === name)?.searchURL as string;
