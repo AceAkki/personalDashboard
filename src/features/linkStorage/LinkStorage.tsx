@@ -20,7 +20,9 @@ const LinkStorage = () => {
           <p>Items: {links.length}</p>
         </div>
         <div>
-          <button onClick={() => setLinks([])}>Clear All</button>
+          <button onClick={() => setLinks([])} className="link-clear-btn">
+            Clear All
+          </button>
         </div>
       </div>
     </div>
