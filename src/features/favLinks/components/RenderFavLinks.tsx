@@ -132,7 +132,7 @@ const RenderFavLinks = ({ search, setSearch }: FavLinksProps) => {
       {Object.keys(favLinks).map((key) => {
         return favLinks[key as favLinksKey].map((link) => {
           return (
-            <label className="fav-link-label">
+            <label className="fav-link-label" key={link.name}>
               <input
                 type="radio"
                 name="search-Links"

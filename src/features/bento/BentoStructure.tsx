@@ -70,12 +70,11 @@ const BentoStructure = () => {
         <div className="grid-item">
           <Pomo />
         </div>
-        <div className="grid-item">
-          <Inspire />
-        </div>
-
         <div className="grid-item span-column">
           <RenderNews newsArr={newsArr} />
+        </div>
+        <div className="grid-item">
+          <Inspire />
         </div>
       </div>
     </>
