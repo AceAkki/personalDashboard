@@ -60,7 +60,7 @@ const Pomo = () => {
             <h1>{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
             <button
               onClick={() => {
-                setIsActive(!isActive);
+                setIsActive((pre) => !pre);
               }}
             >
               {!isActive ? "Start" : "Pause"}
