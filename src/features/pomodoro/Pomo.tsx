@@ -23,9 +23,10 @@ const Pomo = () => {
   });
 
   useEffect(() => {
+    console.log(tick);
     if (!isActive) return;
     if (timeObj.endTime === 0) {
-      startPomodoro();
+      startPomodoro(25);
     }
     const timeInterval = setInterval(() => {
       const now = new Date().getTime();
@@ -61,6 +62,9 @@ const Pomo = () => {
             <button
               onClick={() => {
                 setIsActive((pre) => !pre);
+                if (isActive) {
+                  startPomodoro(parseFloat(`${remainingMin}.${remainingSec}`));
+                }
               }}
             >
               {!isActive ? "Start" : "Pause"}

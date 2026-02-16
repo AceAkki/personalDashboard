@@ -1,7 +1,7 @@
 import type { PomoProps } from "./Pomo";
 const usePomo = ({ timeObj, setTimeObj }: PomoProps) => {
-  function startPomodoro() {
-    const endTime = new Date().getTime() + 25 * 60 * 1000;
+  function startPomodoro(endMin: number) {
+    const endTime = new Date().getTime() + endMin * 60 * 1000;
     setTimeObj({
       endTime: endTime,
     });
@@ -25,6 +25,6 @@ const usePomo = ({ timeObj, setTimeObj }: PomoProps) => {
     };
   }
 
-  return [startPomodoro, getRemainingTime];
+  return [startPomodoro, getRemainingTime] as const;
 };
 export default usePomo;
