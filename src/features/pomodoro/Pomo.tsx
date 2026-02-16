@@ -29,12 +29,14 @@ const Pomo = () => {
       startPomodoro(25);
     }
     const timeInterval = setInterval(() => {
-      const now = new Date().getTime();
+      const now = Date.now();
       if (timeObj.endTime && now >= timeObj.endTime) {
         clearInterval(timeInterval);
+        setIsActive(false);
         return;
+      } else {
+        setTick((prevTick) => prevTick + 1);
       }
-      setTick((prevTick) => prevTick + 1);
     }, 1000);
 
     return () => clearInterval(timeInterval);
@@ -61,9 +63,13 @@ const Pomo = () => {
             <h1>{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
             <button
               onClick={() => {
-                setIsActive((pre) => !pre);
                 if (isActive) {
-                  startPomodoro(parseFloat(`${remainingMin}.${remainingSec}`));
+                  startPomodoro(
+                    parseFloat(`${remainingMin + remainingSec / 60}`),
+                  );
+                  setIsActive(false);
+                } else {
+                  setIsActive(true);
                 }
               }}
             >
