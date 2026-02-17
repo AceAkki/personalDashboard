@@ -5,6 +5,10 @@ import {
   Route,
 } from "react-router-dom";
 
+import AuthLayout from "./features/AuthLayout";
+import Login, { action as loginAction } from "./features/Login";
+import { requireAuth } from "./global/globalFunctions";
+
 import Dashboard from "./features/Dashboard";
 import BentoStructure from "./features/bento/BentoStructure";
 import TaskManager, {
@@ -25,41 +29,51 @@ import "./App.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route
-      path="/"
-      element={<Dashboard />}
-      loader={async () => {
-        const [weatherData, aqiData, newsData] = await Promise.all([
-          getWeather(),
-          getAQI(),
-          useFetchNews(),
-        ]).then((value) => value);
+    <>
+      <Route path="/login" element={<Login />} action={loginAction} />
+      <Route element={<AuthLayout />} loader={requireAuth}>
+        <Route
+          path="/"
+          element={<Dashboard />}
+          loader={async () => {
+            const [weatherData, aqiData, newsData] = await Promise.all([
+              getWeather(),
+              getAQI(),
+              useFetchNews(),
+            ]).then((value) => value);
 
-        return {
-          weatherData,
-          aqiData,
-          newsData,
-        };
+            return {
+              weatherData,
+              aqiData,
+              newsData,
+            };
 
-        // return {
-        //   weatherData: await getWeather(),
-        //   aqiData: await getAQI(),
-        //   newsData: await useFetchNews(),
-        // };
-      }}
-      id="root"
-    >
-      <Route index element={<BentoStructure />} action={taskManagerAction} />
-      <Route
-        path="taskmanager"
-        element={<TaskManager />}
-        action={taskManagerAction}
-      />
-      <Route path="weather" element={<Weather />} />
-      <Route path="pomodoro" element={<Pomodoro />} />
-      <Route path="notes" element={<Notes />} />
-      <Route path="newsfeed" element={<NewsFeed />} />
-    </Route>,
+            // return {
+            //   weatherData: await getWeather(),
+            //   aqiData: await getAQI(),
+            //   newsData: await useFetchNews(),
+            // };
+          }}
+          id="root"
+        >
+          <Route
+            index
+            element={<BentoStructure />}
+            action={taskManagerAction}
+          />
+          <Route
+            path="taskmanager"
+            element={<TaskManager />}
+            action={taskManagerAction}
+          />
+          <Route path="weather" element={<Weather />} />
+          <Route path="pomodoro" element={<Pomodoro />} />
+          <Route path="notes" element={<Notes />} />
+          <Route path="newsfeed" element={<NewsFeed />} />
+        </Route>
+        ,
+      </Route>
+    </>,
   ),
 );
 
