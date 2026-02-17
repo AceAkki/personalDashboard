@@ -27,10 +27,16 @@ const usePomodoroMain = ({
     remainingSec = remainingSeconds;
   }
 
+  // resets on complete
+  if (timeObj.endTime !== 0 && timeObj.endTime < Date.now()) {
+    setTimeObj({ endTime: 0 });
+    setIsActive(false);
+  }
+
   useEffect(() => {
     if (!isActive) return;
     if (timeObj.endTime === 0) {
-      startPomodoro(25);
+      startPomodoro(0.2);
     }
     const timeInterval = setInterval(() => {
       const now = Date.now();
