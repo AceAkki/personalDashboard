@@ -6,7 +6,7 @@ import TaskForm from "../task-manager/components/TaskForm";
 
 // import Weather from "../weather/Weather";
 // import Pomodoro from "../pomodoro/Pomodoro";
-import Pomo from "../pomodoro/Pomo";
+import Pomodoro from "../pomodoro/Pomodoro";
 import Inspire from "../inspire/Inspire";
 import NotesForm from "../quicknotes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
@@ -68,7 +68,7 @@ const BentoStructure = () => {
           <Pomodoro />
         </div> */}
         <div className="grid-item">
-          <Pomo />
+          <Pomodoro />
         </div>
         <div className="grid-item span-column">
           <RenderNews newsArr={newsArr} />

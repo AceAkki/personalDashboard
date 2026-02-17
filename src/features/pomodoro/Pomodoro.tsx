@@ -1,40 +1,37 @@
-import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import usePomodoroMain from "./hooks/usePomodoroMain";
+import type { DashboardContext } from "../mainTypes";
+import "./pomodoro.css";
 
 const Pomodoro = () => {
-  const [timer, setTimer] = useState(25 * 60);
-  const [isActive, setIsActive] = useState(false);
+  const { timeObj, setTimeObj, isActive, setIsActive, tick, setTick } =
+    useOutletContext<DashboardContext>();
+  console.log(timeObj, isActive);
 
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | undefined;
-    if (isActive && timer > 0) {
-      interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-    } else if (!isActive && timer !== 0) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [isActive, timer]);
+  const { remainingMin, remainingSec, handleStartPause, handleReset } =
+    usePomodoroMain({
+      timeObj: timeObj,
+      setTimeObj: setTimeObj,
+      isActive: isActive,
+      setIsActive: setIsActive,
+      tick: tick,
+      setTick: setTick,
+    });
 
   return (
-    <>
+    <div className="pomo-main-wrap">
       <div>
-        <p>
-          {Math.floor(timer / 60)}:{`0${timer % 60}`.slice(-2)}
-        </p>
-        <button onClick={() => setIsActive(!isActive)}>
-          {isActive ? "Pause" : "Start"}
-        </button>
-        <button
-          onClick={() => {
-            setTimer(25 * 60);
-            setIsActive(false);
-          }}
-        >
-          Reset
-        </button>
+        <div className="circle">
+          <div className="pomo-txt">
+            <h1>{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
+            <button onClick={() => handleStartPause()}>
+              {!isActive ? "Start" : "Pause"}
+            </button>
+            <button onClick={() => handleReset()}>Reset</button>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

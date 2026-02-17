@@ -11,6 +11,10 @@ const Dashboard = (): ReactElement => {
   const [tasks, setTasks] = useState<TaskActionData[]>([]);
   const [notes, setNotes] = useState<string[]>([]);
   const [links, setLinks] = useState<linkObject[]>([]);
+
+  let [timeObj, setTimeObj] = useState({ endTime: 0 });
+  let [isActive, setIsActive] = useState(false);
+  let [tick, setTick] = useState(0);
   const { weatherData, aqiData } = useLoaderData();
 
   return (
@@ -28,6 +32,12 @@ const Dashboard = (): ReactElement => {
             aqiData,
             links,
             setLinks,
+            timeObj,
+            setTimeObj,
+            isActive,
+            setIsActive,
+            tick,
+            setTick,
           }}
         />
       </section>
