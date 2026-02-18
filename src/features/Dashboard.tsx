@@ -5,9 +5,21 @@ import { Header } from "../components/Header";
 import QuickLinks from "../components/QuickLinks";
 import type { TaskActionData } from "./task-manager/taskTypes";
 import type { linkObject } from "./linkStorage/linkTypes";
+import type { userType } from "../features/mainTypes";
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
+  const [user, setUser] = useState<userType>(() => {
+    let { username, location } = JSON.parse(
+      localStorage.getItem("user") as string,
+    );
+
+    return {
+      username: username,
+      location: location,
+    };
+  });
+  console.log(user);
   const [tasks, setTasks] = useState<TaskActionData[]>([]);
   const [notes, setNotes] = useState<string[]>([]);
   const [links, setLinks] = useState<linkObject[]>([]);
@@ -21,7 +33,7 @@ const Dashboard = (): ReactElement => {
     <>
       <QuickLinks />
       <section className="dashboard-section scroll">
-        <Header title="Dashboard" />
+        <Header title="Dashboard" userData={user} />
         <Outlet
           context={{
             tasks,
@@ -38,6 +50,8 @@ const Dashboard = (): ReactElement => {
             setIsActive,
             tick,
             setTick,
+            user,
+            setUser,
           }}
         />
       </section>

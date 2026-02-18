@@ -23,3 +23,13 @@ export type reactStringSet = React.Dispatch<React.SetStateAction<string[]>>;
 export type stringSet = {
   setNotes: reactStringSet;
 };
+
+export type location = {
+  latitude: number;
+  longitude: number;
+};
+
+export interface userType {
+  username: string;
+  location: { latitude: number; longitude: number };
+}

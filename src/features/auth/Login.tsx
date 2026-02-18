@@ -30,11 +30,6 @@ export async function action({ request }: { request: any }) {
   return redirect("/");
 }
 
-type location = {
-  latitude: number;
-  longitude: number;
-};
-
 async function grabLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
