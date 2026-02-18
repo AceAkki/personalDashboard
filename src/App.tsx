@@ -5,8 +5,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import AuthLayout from "./features/AuthLayout";
-import Login, { action as loginAction } from "./features/Login";
+import AuthLayout from "./features/auth/AuthLayout";
+import Login, { action as loginAction } from "./features/auth/Login";
 import { requireAuth } from "./global/globalFunctions";
 
 import Dashboard from "./features/Dashboard";
