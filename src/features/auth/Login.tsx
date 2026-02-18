@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Form, redirect, useActionData } from "react-router-dom";
-import { BrainIcon } from "@phosphor-icons/react";
+import { BrainIcon, MapPinAreaIcon } from "@phosphor-icons/react";
 import "./login.css";
 
 export async function action({ request }: { request: any }) {
@@ -56,7 +56,13 @@ const Login = () => {
           <h1 className="login-title">Login </h1>
         </div>
         <div>
-          <input type="text" placeholder="Name" name="username" required />
+          <input
+            type="text"
+            placeholder="Name"
+            name="username"
+            className="userInput"
+            required
+          />
         </div>
         <div className="location-main-wrap">
           <div className="location-grp-wrap">
@@ -84,17 +90,21 @@ const Login = () => {
               {actionData?.longitude && <p>{actionData.longitude}</p>}
             </div>
           </div>
-          <button
-            onClick={async () => {
-              let locationObject: any = await grabLocation();
-              let latElem = refLatitude.current as unknown as HTMLInputElement;
-              let lonElem = refLongitude.current as unknown as HTMLInputElement;
-              latElem.value = locationObject.coords.latitude;
-              lonElem.value = locationObject.coords.longitude;
-            }}
-          >
-            Grab my Location
-          </button>
+          <div className="location-btn-wrap">
+            <button
+              onClick={async () => {
+                let locationObject: any = await grabLocation();
+                let latElem =
+                  refLatitude.current as unknown as HTMLInputElement;
+                let lonElem =
+                  refLongitude.current as unknown as HTMLInputElement;
+                latElem.value = locationObject.coords.latitude;
+                lonElem.value = locationObject.coords.longitude;
+              }}
+            >
+              <MapPinAreaIcon size={32} />
+            </button>
+          </div>
         </div>
         <div>
           <button role="submit">Submit</button>
