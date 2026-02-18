@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Form, useActionData } from "react-router-dom";
+import { useRef } from "react";
+import { Form, redirect, useActionData } from "react-router-dom";
 import { BrainIcon } from "@phosphor-icons/react";
 import "./login.css";
+
 export async function action({ request }: { request: any }) {
   const formData = await request.formData();
   let username = formData.get("username");
@@ -9,21 +10,24 @@ export async function action({ request }: { request: any }) {
   let longitude = formData.get("longitude");
   const errors = {} as any;
   const locationRegx = new RegExp(/-?\d+\.\d+/m);
-  console.log(
-    username,
-    latitude,
-    longitude,
-    !locationRegx.test(latitude),
-    !locationRegx.test(longitude),
-  );
   if (!locationRegx.test(latitude)) {
     errors.latitude = "Invalid input";
   }
   if (!locationRegx.test(longitude)) {
     errors.longitude = "Invalid input";
   }
+  if (Object.keys(errors).length > 0) {
+    return errors;
+  }
 
-  return errors;
+  localStorage.setItem(
+    "user",
+    JSON.stringify({
+      username: username,
+      location: { latitude: latitude, longitude: longitude },
+    }),
+  );
+  return redirect("/");
 }
 
 type location = {
@@ -44,10 +48,8 @@ async function grabLocation() {
 
 const Login = () => {
   let actionData = useActionData();
-  let [location, setLocation] = useState<location>({
-    longitude: 0,
-    latitude: 0,
-  });
+  let refLatitude = useRef(null);
+  let refLongitude = useRef(null);
 
   return (
     <section className="login-section">
@@ -69,6 +71,7 @@ const Login = () => {
                 step="any"
                 placeholder="latitude"
                 name="latitude"
+                ref={refLatitude}
                 required
               />
               {actionData?.latitude && <p>{actionData.latitude}</p>}
@@ -80,6 +83,7 @@ const Login = () => {
                 step="any"
                 placeholder="longitude"
                 name="longitude"
+                ref={refLongitude}
                 required
               />
               {actionData?.longitude && <p>{actionData.longitude}</p>}
@@ -88,10 +92,10 @@ const Login = () => {
           <button
             onClick={async () => {
               let locationObject: any = await grabLocation();
-              setLocation({
-                latitude: locationObject.coords.latitude,
-                longitude: locationObject.coords.longitude,
-              });
+              let latElem = refLatitude.current as unknown as HTMLInputElement;
+              let lonElem = refLongitude.current as unknown as HTMLInputElement;
+              latElem.value = locationObject.coords.latitude;
+              lonElem.value = locationObject.coords.longitude;
             }}
           >
             Grab my Location

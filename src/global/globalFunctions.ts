@@ -9,8 +9,7 @@ export async function writeClipboardText(text: string) {
 }
 
 export async function requireAuth({ request }: { request: any }) {
-  console.log(request);
-  let userData;
+  let userData = localStorage.getItem("user");
   const isLoggedIn = userData ? true : false;
 
   if (!isLoggedIn) {
