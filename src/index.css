@@ -15,7 +15,7 @@
   --muted-text: #666666;
   --disabled-text: #999999;
   --default-radius: 1rem;
-
+  --header-height: 0;
   --toastify-icon-color-error: var(--error);
 }
 

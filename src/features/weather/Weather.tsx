@@ -11,7 +11,7 @@ let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
   const { weatherData, aqiData } = useRouteLoaderData("root");
   return (
-    <section className="overflow-auto">
+    <section className="overflow-auto inner-route-section">
       {/* <RenderAnime isDay={parseInt(weatherData.current.is_day)} /> */}
       <Suspense fallback={<h1>Loading </h1>}>
         <Await resolve={{ weatherData, aqiData }}>

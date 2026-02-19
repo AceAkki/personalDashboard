@@ -38,7 +38,7 @@ const TaskManager = () => {
   const inputRef = useTaskMain(setTasks);
 
   return (
-    <section className="overflow-unset">
+    <section className="overflow-unset inner-route-section">
       <h2 className="task-manager-title">Task Manager</h2>
       <p>Track your tasks here and keep your brain free for another things.</p>
       <div className="tasks-grid-wrap">

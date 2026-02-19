@@ -1,14 +1,22 @@
 .main-wrap {
-  display:flex;
-  flex-direction:column-reverse;
-  min-height:100vh;
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 100vh;
 }
 
 .dashboard-section {
   flex: 1;
   padding: 1rem;
-  width:100vw;
-  height:100vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+.dashboard-section .inner-route-section {
+  margin: var(--header-height) 0;
+}
+
+.Toastify {
+  margin: 0;
 }
 
 .Toastify__toast-theme--light {
@@ -31,10 +39,10 @@
 
 @media screen and (min-width: 1080px) {
   .main-wrap {
-    flex-direction:row;
+    flex-direction: row;
   }
 
   .dashboard-section {
-    margin: 0.2rem 1rem;
+    margin: 0 1rem;
   }
 }

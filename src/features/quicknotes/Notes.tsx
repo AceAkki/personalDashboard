@@ -16,7 +16,7 @@ const Notes = () => {
 
   return (
     <>
-      <section>
+      <section className="overflow-auto inner-route-section">
         <h1>Notes</h1>
         <div className="notes-form-wrap">
           <NotesForm setNotes={setNotes} />

@@ -5,7 +5,7 @@ const NewsFeed = () => {
   const newsArr = useRouteNewsData();
 
   return (
-    <section>
+    <section className="overflow-auto  inner-route-section">
       <div className="news-main-wrap">
         <RenderNews newsArr={newsArr} />
       </div>
