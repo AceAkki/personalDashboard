@@ -14,6 +14,15 @@
   border-radius: var(--default-radius);
 }
 
+.welcome-greet-wrap {
+  margin: 2rem 0;
+}
+
+.welcome-greet-wrap h1 {
+  font-size:2.5rem;
+  font-weight:300;
+}
+
 @media screen and (min-width: 1080px) {
   .bento-grid-layout {
     grid-template-columns: repeat(4, 1fr);

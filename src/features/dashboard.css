@@ -1,6 +1,14 @@
+.main-wrap {
+  display:flex;
+  flex-direction:column-reverse;
+  min-height:100vh;
+}
+
 .dashboard-section {
   flex: 1;
   padding: 1rem;
+  width:100vw;
+  height:100vh;
 }
 
 .Toastify__toast-theme--light {
@@ -22,7 +30,11 @@
 }
 
 @media screen and (min-width: 1080px) {
+  .main-wrap {
+    flex-direction:row;
+  }
+
   .dashboard-section {
-    margin: 2rem 1rem;
+    margin: 0.2rem 1rem;
   }
 }

@@ -16,6 +16,7 @@ export interface DashboardContext extends TimeProps, ActiveProps, TickProps {
   aqiData: AQIData;
   links: linkObject[];
   setLinks: linkObjectSet;
+  user: userType;
 }
 
 export type reactStringSet = React.Dispatch<React.SetStateAction<string[]>>;

@@ -26,14 +26,14 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const { tasks, setTasks, setNotes, weatherData, aqiData } =
+  const { tasks, setTasks, setNotes, weatherData, aqiData, user } =
     useOutletContext<DashboardContext>();
   const inputRef = useTaskMain(setTasks);
   const newsArr = useRouteNewsData();
   return (
     <>
-      <div>
-        <h1>Welcome to the Dashboard</h1>
+      <div className="welcome-greet-wrap">
+        <h1>Welcome {user.username}!</h1>
       </div>
       <div className="bento-grid-layout">
         <div className="grid-item span-row">
