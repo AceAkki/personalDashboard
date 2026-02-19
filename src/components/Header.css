@@ -1,50 +1,51 @@
 .header {
-    display: flex;
-    align-items: center;
-    padding: 1rem 2rem 0;
-    position:fixed;
-    top:0;
-    right:0;
-    z-index:99;
+  display: flex;
+  padding: 1rem 2rem 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99;
 }
 .header-logo-wrap {
-    background:var(--primary);
-    padding:0.6rem;
-    border-radius:var(--default-radius);
-    font-size:1.2rem;
-    font-weight:700;
+  background: var(--primary);
+  padding: 0.6rem;
+  border-radius: var(--default-radius) 0 0 var(--default-radius);
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 .header-logo-wrap a {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:0.5rem;
-    text-decoration:none;
-    color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--secondary);
 }
 
 .user-header-wrap {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0 var(--default-radius) var(--default-radius) 0;
+  padding: 0.5rem;
 }
 
 .username-header-wrap,
 .icon-header-wrap {
-    display:flex;
-    align-items:center;
-    justify-content:center
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .username-header-wrap p {
-    font-size:1.5rem;
-    font-weight:600;
-    text-transform:capitalize;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
-@media scree and (min-width:1080px) {
-    .header {
-        position:absolute;
-    }
+@media scree and (min-width: 1080px) {
+  .header {
+    position: absolute;
+  }
 }

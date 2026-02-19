@@ -29,9 +29,9 @@ export function Header({ title, userData }: HeaderProps): ReactElement {
         </Link>
       </div>
       <button className="user-header-wrap">
-        <div className="username-header-wrap">
+        {/* <div className="username-header-wrap">
           <p>{userData.username}</p>
-        </div>
+        </div> */}
         <div className="icon-header-wrap">
           <GearIcon size={32} />
         </div>
