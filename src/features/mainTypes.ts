@@ -33,4 +33,9 @@ export type location = {
 export interface userType {
   username: string;
   location: { latitude: number; longitude: number };
+  tasksList: {
+    current: string[];
+    priority: string[];
+    completed: string[];
+  };
 }

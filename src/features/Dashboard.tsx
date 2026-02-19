@@ -16,6 +16,11 @@ const Dashboard = (): ReactElement => {
     return {
       username: username,
       location: location,
+      tasksList: {
+        current: [],
+        priority: [],
+        completed: [],
+      },
     };
   });
   const [tasks, setTasks] = useState<TaskActionData[]>([]);
