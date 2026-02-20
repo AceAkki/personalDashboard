@@ -1,24 +1,26 @@
 import { useState, useRef } from "react";
-import type { stringSet } from "../../mainTypes";
-const useNoteMain = ({ setNotes }: stringSet) => {
-  const [note, setNote] = useState("");
+import { nanoid } from "nanoid";
+import type { NoteType, NotesSet } from "../notesTypes";
+
+const useNoteMain = (setNotes: NotesSet) => {
+  const [note, setNote] = useState<NoteType>({ note: "", id: "" });
   const timeoutRef = useRef<number | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
-    setNote(value);
+    setNote({ note: value, id: nanoid() });
 
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
     timeoutRef.current = window.setTimeout(() => {
-      updateNote(value);
+      updateNote({ note: value, id: nanoid() });
     }, 4000);
   };
 
-  const updateNote = (value: string) => {
-    setNotes((prevNotes: string[]) => [...prevNotes, value]);
-    setNote("");
+  const updateNote = ({ note, id }: NoteType) => {
+    setNotes((prevNotes: NoteType[]) => [...prevNotes, { note: note, id: id }]);
+    setNote({ note: "", id: "" });
   };
 
   return {

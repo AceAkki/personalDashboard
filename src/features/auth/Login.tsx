@@ -25,6 +25,12 @@ export async function action({ request }: { request: any }) {
     JSON.stringify({
       username: username,
       location: { latitude: latitude, longitude: longitude },
+      tasksList: {
+        current: [],
+        priority: [],
+        completed: [],
+      },
+      notesList: [],
     }),
   );
   return redirect("/");

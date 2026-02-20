@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import usePomoHelper from "../hooks/usePomoHelper";
 import type { PomodoroMainProps } from "../pomodoroTypes";
 
@@ -15,9 +15,12 @@ const usePomodoroMain = ({
     setTimeObj: setTimeObj,
   });
 
+  // initializes remaining time default
   let remainingMin = 25;
   let remainingSec = 0;
-  if (timeObj.endTime !== 0 && timeObj.endTime > Date.now()) {
+
+  // sets remaining time on active
+  if (timeObj.endTime !== 0 && timeObj.endTime > Date.now() && isActive) {
     const { remainingMinutes, remainingSeconds } =
       getRemainingTime() as unknown as {
         remainingMinutes: number;
@@ -27,16 +30,28 @@ const usePomodoroMain = ({
     remainingSec = remainingSeconds;
   }
 
+  // sets remaining time on pause
+  if (
+    (timeObj.endTime !== 0 &&
+      timeObj.endTime > Date.now() &&
+      timeObj.pausedMin > 0) ||
+    (timeObj.pausedSec > 0 && !isActive)
+  ) {
+    remainingMin = timeObj.pausedMin;
+    remainingSec = timeObj.pausedSec;
+  }
+
   // resets on complete
   if (timeObj.endTime !== 0 && timeObj.endTime < Date.now()) {
-    setTimeObj({ endTime: 0 });
+    setTimeObj({ endTime: 0, pausedMin: 0, pausedSec: 0 });
     setIsActive(false);
   }
 
   useEffect(() => {
     if (!isActive) return;
+    // if endTime is 0, start pomodoro
     if (timeObj.endTime === 0) {
-      startPomodoro(0.2);
+      startPomodoro(25, 0, 0);
     }
     const timeInterval = setInterval(() => {
       const now = Date.now();
@@ -53,16 +68,25 @@ const usePomodoroMain = ({
   }, [isActive, timeObj.endTime, tick]);
 
   const handleStartPause = () => {
+    // if active, pause pomodoro and save remaining time as paused time
     if (isActive) {
-      startPomodoro(parseFloat(`${remainingMin + remainingSec / 60}`));
+      startPomodoro(
+        parseFloat(`${remainingMin + remainingSec / 60}`),
+        remainingMin,
+        remainingSec,
+      );
       setIsActive(false);
     } else {
+      // if not active, start pomodoro with paused time if it exists
+      if (timeObj.pausedMin > 0 || timeObj.pausedSec > 0) {
+        startPomodoro(`${timeObj.pausedMin + timeObj.pausedSec / 60}`, 0, 0);
+      }
       setIsActive(true);
     }
   };
 
   const handleReset = () => {
-    setTimeObj({ endTime: 0 });
+    setTimeObj({ endTime: 0, pausedMin: 0, pausedSec: 0 });
     setIsActive(false);
   };
 

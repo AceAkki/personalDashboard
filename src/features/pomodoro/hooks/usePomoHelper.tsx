@@ -1,9 +1,12 @@
 import type { TimeProps } from "../pomodoroTypes";
 const usePomoHelper = ({ timeObj, setTimeObj }: TimeProps) => {
-  function startPomodoro(endMin: number) {
+  function startPomodoro(endMin: number, pausedMin: number, pausedSec: number) {
+    console.log(endMin, pausedMin, pausedSec);
     const endTime = new Date().getTime() + endMin * 60 * 1000;
     setTimeObj({
       endTime: endTime,
+      pausedMin: pausedMin,
+      pausedSec: pausedSec,
     });
   }
 

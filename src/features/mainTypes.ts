@@ -1,4 +1,5 @@
 import type { TaskActionData } from "./task-manager/taskTypes";
+import type { NoteType, NotesSet } from "./quicknotes/notesTypes";
 import type { WeatherData, AQIData } from "./weather/weatherType";
 import type { linkObject, linkObjectSet } from "./linkStorage/linkTypes";
 import type {
@@ -10,8 +11,8 @@ import type {
 export interface DashboardContext extends TimeProps, ActiveProps, TickProps {
   tasks: TaskActionData[];
   setTasks: React.Dispatch<React.SetStateAction<TaskActionData[]>>;
-  notes: string[];
-  setNotes: reactStringSet;
+  notes: NoteType[];
+  setNotes: NotesSet;
   weatherData: WeatherData;
   aqiData: AQIData;
   links: linkObject[];
@@ -38,4 +39,5 @@ export interface userType {
     priority: string[];
     completed: string[];
   };
+  notesList: NoteType[];
 }

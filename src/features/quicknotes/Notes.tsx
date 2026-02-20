@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import { nanoid } from "nanoid";
 import NotesForm from "./components/NotesForm";
 
 import type { DashboardContext } from "../mainTypes";
@@ -6,10 +7,20 @@ import type { DashboardContext } from "../mainTypes";
 const Notes = () => {
   const { notes, setNotes } = useOutletContext<DashboardContext>();
 
+  console.log(notes);
   const RenderNotes = notes.map((note) => {
     return (
-      <div className="note-wrap">
-        <p>{note}</p>
+      <div className="note-wrap" key={nanoid()}>
+        <p>{note.note}</p>
+        <button
+          onClick={() =>
+            setNotes((prevNotes) =>
+              prevNotes.filter((prevNote) => prevNote.id !== note.id),
+            )
+          }
+        >
+          X
+        </button>
       </div>
     );
   });

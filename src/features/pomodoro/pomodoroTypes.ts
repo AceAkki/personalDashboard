@@ -1,5 +1,7 @@
 export interface TimeObj {
   endTime: number;
+  pausedMin: number;
+  pausedSec: number;
 }
 
 export interface TimeProps {
