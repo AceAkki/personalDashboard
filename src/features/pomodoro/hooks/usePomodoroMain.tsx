@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import usePomoHelper from "../hooks/usePomoHelper";
 import type { PomodoroMainProps } from "../pomodoroTypes";
 
@@ -79,7 +79,10 @@ const usePomodoroMain = ({
     } else {
       // if not active, start pomodoro with paused time if it exists
       if (timeObj.pausedMin > 0 || timeObj.pausedSec > 0) {
-        startPomodoro(`${timeObj.pausedMin + timeObj.pausedSec / 60}`, 0, 0);
+        let pausedNum = parseInt(
+          `${timeObj.pausedMin + timeObj.pausedSec / 60}`,
+        );
+        startPomodoro(pausedNum, 0, 0);
       }
       setIsActive(true);
     }

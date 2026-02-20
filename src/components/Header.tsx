@@ -9,7 +9,7 @@ import "./Header.css";
 // Define the props for the Header component
 type HeaderProps = { title?: string; userData: userType };
 // Create the Header component that accepts title as a prop and returns type ReactElement
-export function Header({ title, userData }: HeaderProps): ReactElement {
+export function Header({ title }: HeaderProps): ReactElement {
   //console.log(userData);
   let headerRef = useRef<HTMLHeadingElement>(null);
 
