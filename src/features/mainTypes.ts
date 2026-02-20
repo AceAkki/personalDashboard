@@ -41,3 +41,8 @@ export interface userType {
   };
   notesList: NoteType[];
 }
+
+export interface UserStore extends userType {
+  updateUser: (data: Partial<userType>) => void;
+  clearUser: () => void;
+}
