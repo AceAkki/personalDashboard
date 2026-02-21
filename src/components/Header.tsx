@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
 
 import { useEffect, useRef, type ReactElement } from "react";
-import type { userType } from "../features/mainTypes";
 
 import "./Header.css";
 
