@@ -1,5 +1,7 @@
-import { useRef } from "react";
-import { Form, redirect, useActionData } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { Form, useActionData, useNavigate } from "react-router-dom";
+import { useUserStore } from "./authStore";
+
 import { BrainIcon, MapPinAreaIcon } from "@phosphor-icons/react";
 import "./login.css";
 
@@ -11,29 +13,20 @@ export async function action({ request }: { request: any }) {
   const errors = {} as any;
   const locationRegx = new RegExp(/-?\d+\.\d+/m);
   if (!locationRegx.test(latitude)) {
-    errors.latitude = "Invalid input";
+    errors.latitudeErr = "Invalid input";
   }
   if (!locationRegx.test(longitude)) {
-    errors.longitude = "Invalid input";
+    errors.longitudeErr = "Invalid input";
   }
   if (Object.keys(errors).length > 0) {
     return errors;
+  } else {
+    return {
+      user: username,
+      latitude: latitude,
+      longitude: longitude,
+    };
   }
-
-  localStorage.setItem(
-    "user",
-    JSON.stringify({
-      username: username,
-      location: { latitude: latitude, longitude: longitude },
-      tasksList: {
-        current: [],
-        priority: [],
-        completed: [],
-      },
-      notesList: [],
-    }),
-  );
-  return redirect("/");
 }
 
 async function grabLocation() {
@@ -49,8 +42,21 @@ async function grabLocation() {
 
 const Login = () => {
   let actionData = useActionData();
+  const navigate = useNavigate();
+  const { updateUser } = useUserStore((state) => ({
+    updateUser: state.updateUser,
+  }));
+  console.log(actionData);
   let refLatitude = useRef(null);
   let refLongitude = useRef(null);
+
+  useEffect(() => {
+    if (actionData && actionData.user) {
+      let { user, latitude, longitude } = actionData;
+      updateUser(user, latitude, longitude);
+      navigate("/");
+    }
+  }, [actionData]);
 
   return (
     <section className="login-section">
@@ -81,7 +87,7 @@ const Login = () => {
                 ref={refLatitude}
                 required
               />
-              {actionData?.latitude && <p>{actionData.latitude}</p>}
+              {actionData?.latitudeErr && <p>{actionData.latitudeErr}</p>}
             </div>
 
             <div className="location-input-wrap">
@@ -93,7 +99,7 @@ const Login = () => {
                 ref={refLongitude}
                 required
               />
-              {actionData?.longitude && <p>{actionData.longitude}</p>}
+              {actionData?.longitudeErr && <p>{actionData.longitudeErr}</p>}
             </div>
           </div>
           <div className="location-btn-wrap">

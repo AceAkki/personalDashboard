@@ -34,15 +34,4 @@ export type location = {
 export interface userType {
   username: string;
   location: { latitude: number; longitude: number };
-  tasksList: {
-    current: string[];
-    priority: string[];
-    completed: string[];
-  };
-  notesList: NoteType[];
-}
-
-export interface UserStore extends userType {
-  updateUser: (data: Partial<userType>) => void;
-  clearUser: () => void;
 }
