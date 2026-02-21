@@ -17,6 +17,9 @@ import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
 import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
 
+// State
+import { useUserStore } from "../auth/authStore";
+
 // type imports
 // import type { OutletContextType } from "../task-manager/types";
 import type { DashboardContext } from "../mainTypes";
@@ -26,14 +29,17 @@ import "./BentoStructure.css";
 
 const BentoStructure = () => {
   // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const { tasks, setTasks, setNotes, weatherData, aqiData, user } =
+  const { tasks, setTasks, setNotes, weatherData, aqiData } =
     useOutletContext<DashboardContext>();
   const inputRef = useTaskMain(setTasks);
   const newsArr = useRouteNewsData();
+
+  const username = useUserStore((state) => state.username);
+
   return (
     <>
       <div className="welcome-greet-wrap">
-        <h1>Welcome {user.username}!</h1>
+        <h1>Welcome {username}!</h1>
       </div>
       <div className="bento-grid-layout">
         <div className="grid-item span-row">

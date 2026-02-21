@@ -3,24 +3,12 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import { ToastContainer, Bounce } from "react-toastify";
 import { Header } from "../components/Header";
 import QuickLinks from "../components/QuickLinks";
-import type { userType } from "../features/mainTypes";
 import type { TaskActionData } from "./task-manager/taskTypes";
 import type { NoteType } from "./quicknotes/notesTypes";
 import type { linkObject } from "./linkStorage/linkTypes";
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
-  const [user, setUser] = useState<userType>(() => {
-    let { username, location, tasksList, notesList } = JSON.parse(
-      localStorage.getItem("user") as string,
-    );
-    return {
-      username: username,
-      location: location,
-      tasksList: tasksList,
-      notesList: notesList,
-    };
-  });
   const [tasks, setTasks] = useState<TaskActionData[]>([]);
   const [notes, setNotes] = useState<NoteType[]>([]);
   const [links, setLinks] = useState<linkObject[]>([]);
@@ -36,7 +24,7 @@ const Dashboard = (): ReactElement => {
 
   return (
     <>
-      <Header title="tableroPersonel" userData={user} />
+      <Header title="tableroPersonel" />
       <main className="main-wrap scroll">
         <QuickLinks />
         <section className="dashboard-section scroll">
@@ -56,8 +44,6 @@ const Dashboard = (): ReactElement => {
               setIsActive,
               tick,
               setTick,
-              user,
-              setUser,
             }}
           />
         </section>

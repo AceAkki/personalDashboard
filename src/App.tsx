@@ -36,17 +36,17 @@ const router = createBrowserRouter(
           path="/"
           element={<Dashboard />}
           loader={async () => {
-            let { location } = JSON.parse(
-              localStorage.getItem("user") as string,
+            let { state } = JSON.parse(
+              localStorage.getItem("user-storage") as string,
             );
             const [weatherData, aqiData, newsData] = await Promise.all([
               getWeather({
-                latitude: location.latitude,
-                longitude: location.longitude,
+                latitude: state.location.latitude,
+                longitude: state.location.longitude,
               }),
               getAQI({
-                latitude: location.latitude,
-                longitude: location.longitude,
+                latitude: state.location.latitude,
+                longitude: state.location.longitude,
               }),
               useFetchNews(),
             ]).then((value) => value);

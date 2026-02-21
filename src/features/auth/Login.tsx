@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 import { useUserStore } from "./authStore";
 
 import { BrainIcon, MapPinAreaIcon } from "@phosphor-icons/react";
@@ -43,20 +44,23 @@ async function grabLocation() {
 const Login = () => {
   let actionData = useActionData();
   const navigate = useNavigate();
-  const { updateUser } = useUserStore((state) => ({
-    updateUser: state.updateUser,
-  }));
-  console.log(actionData);
   let refLatitude = useRef(null);
   let refLongitude = useRef(null);
+  const { username, updateUser } = useUserStore(
+    useShallow((state) => ({
+      username: state.username,
+      updateUser: state.updateUser,
+    })),
+  );
 
   useEffect(() => {
-    if (actionData && actionData.user) {
+    if (actionData?.user && username.length > 0) {
       let { user, latitude, longitude } = actionData;
+
       updateUser(user, latitude, longitude);
-      navigate("/");
+      navigate("/taskmanager", { replace: true });
     }
-  }, [actionData]);
+  }, [actionData, navigate]);
 
   return (
     <section className="login-section">
