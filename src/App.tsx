@@ -25,6 +25,7 @@ import useFetchNews from "./features/news-feed/hooks/useFetchNews";
 
 import Notes from "./features/quicknotes/Notes";
 
+import ErrorPage from "./features/Error";
 import "./global/customProto";
 import "./App.css";
 
@@ -32,7 +33,11 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/login" element={<Login />} action={loginAction} />
-      <Route element={<AuthLayout />} loader={requireAuth}>
+      <Route
+        element={<AuthLayout />}
+        loader={requireAuth}
+        errorElement={<ErrorPage />}
+      >
         <Route
           path="/"
           element={<Dashboard />}

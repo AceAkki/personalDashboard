@@ -30,7 +30,7 @@
 }
 
 .Toastify__progress-bar--error {
-  background: var(--error);
+  background: var(--error-secondary);
 }
 
 .Toastify__close-button > svg {

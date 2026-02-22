@@ -17,24 +17,25 @@ import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
 import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
 
+import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
+
 // State
 import { useUserStore } from "../auth/useAuthStore";
 
 // type imports
-// import type { OutletContextType } from "../task-manager/types";
 import type { DashboardContext } from "../mainTypes";
 
 // css imports
 import "./BentoStructure.css";
 
 const BentoStructure = () => {
-  // const [tasks, setTasks] = useOutletContext<OutletContextType>();
-  const { tasks, setTasks, setNotes, weatherData, aqiData } =
+  const { tasks, setTasks, weatherData, aqiData } =
     useOutletContext<DashboardContext>();
   const inputRef = useTaskMain(setTasks);
   const newsArr = useRouteNewsData();
 
   const username = useUserStore((state) => state.username);
+  const updateNotes = useNoteStore((state) => state.updateNotes);
 
   return (
     <>
@@ -67,12 +68,8 @@ const BentoStructure = () => {
           <LinkStorage />
         </div>
         <div className="grid-item">
-          <NotesForm setNotes={setNotes} />
+          <NotesForm setNotes={updateNotes} />
         </div>
-
-        {/* <div className="grid-item">
-          <Pomodoro />
-        </div> */}
         <div className="grid-item">
           <Pomodoro />
         </div>

@@ -1,5 +1,12 @@
 .notes-form-wrap {
-  width: 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notes-form-wrap .notes-textarea {
+  height: 20vh;
 }
 
 .notes-textarea {
@@ -12,6 +19,21 @@
   background-color: var(--bg-rgba);
   backdrop-filter: blur(10px);
 }
+
+.delete-notes-btn {
+  background: var(--primary);
+  color: var(--secondary);
+  outline: none;
+  border: 1px solid var(--bg-rgba);
+  border-radius: var(--default-radius);
+  padding: 1rem;
+  transition: all 0.7s ease-in-out;
+}
+
+.delete-notes-btn:hover {
+  background: var(--error-rgba);
+}
+
 .notes-main-wrap {
   columns: 250px;
   column-gap: 1rem;

@@ -1,15 +1,9 @@
-import { useOutletContext } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { nanoid } from "nanoid";
 import NotesForm from "./components/NotesForm";
 import { useNoteStore } from "./hooks/useNoteStore";
 
-import type { DashboardContext } from "../mainTypes";
-import type { NoteType } from "./notesTypes";
-
 const Notes = () => {
-  // const { notes, setNotes } = useOutletContext<DashboardContext>();
-
   const { notes, deleteNote, updateNotes, clearAllNotes } = useNoteStore(
     useShallow((state) => ({
       notes: state.notes,
@@ -31,9 +25,19 @@ const Notes = () => {
   return (
     <>
       <section className="overflow-auto inner-route-section">
-        <h1>Notes</h1>
+        <h1 className="section-title">Notes</h1>
         <div className="notes-form-wrap">
-          <NotesForm setNotes={updateNotes} />
+          <div>
+            <NotesForm setNotes={updateNotes} />
+          </div>
+          <div>
+            <button
+              className="delete-notes-btn"
+              onClick={() => clearAllNotes()}
+            >
+              Delete All Notes
+            </button>
+          </div>
         </div>
         <div className="notes-main-wrap">{RenderNotes}</div>
       </section>

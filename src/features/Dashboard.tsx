@@ -2,15 +2,19 @@ import { useState, type ReactElement } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { ToastContainer, Bounce } from "react-toastify";
 import { Header } from "../components/Header";
-import QuickLinks from "../components/QuickLinks";
+
+// task
 import type { TaskActionData } from "./task-manager/taskTypes";
-import type { NoteType } from "./quicknotes/notesTypes";
+
+// link
+import QuickLinks from "../components/QuickLinks";
 import type { linkObject } from "./linkStorage/linkTypes";
+
+// css imports
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
   const [tasks, setTasks] = useState<TaskActionData[]>([]);
-  const [notes, setNotes] = useState<NoteType[]>([]);
   const [links, setLinks] = useState<linkObject[]>([]);
 
   const { weatherData, aqiData } = useLoaderData();
@@ -25,8 +29,6 @@ const Dashboard = (): ReactElement => {
             context={{
               tasks,
               setTasks,
-              notes,
-              setNotes,
               weatherData,
               aqiData,
               links,
