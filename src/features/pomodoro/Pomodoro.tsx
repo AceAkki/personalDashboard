@@ -1,16 +1,38 @@
-import { useOutletContext } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 import usePomodoroMain from "./hooks/usePomodoroMain";
-import type { DashboardContext } from "../mainTypes";
+import { usePomoStore } from "./hooks/pomoStore";
 import "./pomodoro.css";
 
 const Pomodoro = () => {
-  const { timeObj, setTimeObj, isActive, setIsActive, tick, setTick } =
-    useOutletContext<DashboardContext>();
-  console.log(timeObj, isActive);
+  // const { timeObj, setTimeObj, isActive, setIsActive, tick, setTick } =
+  //   useOutletContext<DashboardContext>();
+  // console.log(timeObj, isActive);
+
+  const {
+    endTime,
+    pausedMin,
+    pausedSec,
+    setTimeObj,
+    isActive,
+    setIsActive,
+    tick,
+    setTick,
+  } = usePomoStore(
+    useShallow((state) => ({
+      endTime: state.endTime,
+      pausedMin: state.pausedMin,
+      pausedSec: state.pausedSec,
+      setTimeObj: state.updateTimeObj,
+      isActive: state.isActive,
+      setIsActive: state.updateIsActive,
+      tick: state.tick,
+      setTick: state.updateTick,
+    })),
+  );
 
   const { remainingMin, remainingSec, handleStartPause, handleReset } =
     usePomodoroMain({
-      timeObj: timeObj,
+      timeObj: { endTime: endTime, pausedMin: pausedMin, pausedSec: pausedSec },
       setTimeObj: setTimeObj,
       isActive: isActive,
       setIsActive: setIsActive,

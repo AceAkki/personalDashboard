@@ -6,7 +6,7 @@ export interface TimeObj {
 
 export interface TimeProps {
   timeObj: TimeObj;
-  setTimeObj: React.Dispatch<React.SetStateAction<TimeObj>>;
+  setTimeObj: ({ endTime, pausedMin, pausedSec }: TimeObj) => void;
 }
 
 export interface ActiveProps {

@@ -13,13 +13,6 @@ const Dashboard = (): ReactElement => {
   const [notes, setNotes] = useState<NoteType[]>([]);
   const [links, setLinks] = useState<linkObject[]>([]);
 
-  let [timeObj, setTimeObj] = useState({
-    endTime: 0,
-    pausedMin: 0,
-    pausedSec: 0,
-  });
-  let [isActive, setIsActive] = useState(false);
-  let [tick, setTick] = useState(0);
   const { weatherData, aqiData } = useLoaderData();
 
   return (
@@ -38,12 +31,6 @@ const Dashboard = (): ReactElement => {
               aqiData,
               links,
               setLinks,
-              timeObj,
-              setTimeObj,
-              isActive,
-              setIsActive,
-              tick,
-              setTick,
             }}
           />
         </section>
