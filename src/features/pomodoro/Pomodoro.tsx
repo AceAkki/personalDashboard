@@ -1,13 +1,9 @@
 import { useShallow } from "zustand/shallow";
 import usePomodoroMain from "./hooks/usePomodoroMain";
-import { usePomoStore } from "./hooks/pomoStore";
+import { usePomoStore } from "./hooks/usepomoStore";
 import "./pomodoro.css";
 
 const Pomodoro = () => {
-  // const { timeObj, setTimeObj, isActive, setIsActive, tick, setTick } =
-  //   useOutletContext<DashboardContext>();
-  // console.log(timeObj, isActive);
-
   const {
     endTime,
     pausedMin,

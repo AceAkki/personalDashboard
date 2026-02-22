@@ -18,7 +18,7 @@ import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
 
 // State
-import { useUserStore } from "../auth/authStore";
+import { useUserStore } from "../auth/useAuthStore";
 
 // type imports
 // import type { OutletContextType } from "../task-manager/types";

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
-import { useUserStore } from "./authStore";
+import { useUserStore } from "./useAuthStore";
 
 import { BrainIcon, MapPinAreaIcon } from "@phosphor-icons/react";
 import "./login.css";

@@ -19,7 +19,8 @@ const useNoteMain = (setNotes: NotesSet) => {
   };
 
   const updateNote = ({ note, id }: NoteType) => {
-    setNotes((prevNotes: NoteType[]) => [...prevNotes, { note: note, id: id }]);
+    console.log(note, id);
+    setNotes({ note: note, id: id });
     setNote({ note: "", id: "" });
   };
 

@@ -3,7 +3,7 @@ export interface NoteType {
   id: string;
 }
 
-export type NotesSet = React.Dispatch<React.SetStateAction<NoteType[]>>;
+export type NotesSet = (note: NoteType) => void;
 
 export interface NotesPropsContext {
   notes: NoteType[];
