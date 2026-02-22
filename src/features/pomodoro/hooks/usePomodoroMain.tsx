@@ -79,7 +79,7 @@ const usePomodoroMain = ({
     } else {
       // if not active, start pomodoro with paused time if it exists
       if (timeObj.pausedMin > 0 || timeObj.pausedSec > 0) {
-        let pausedNum = parseInt(
+        let pausedNum = parseFloat(
           `${timeObj.pausedMin + timeObj.pausedSec / 60}`,
         );
         startPomodoro(pausedNum, 0, 0);
