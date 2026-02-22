@@ -7,6 +7,7 @@ import {
 
 import AuthLayout from "./features/auth/AuthLayout";
 import Login, { action as loginAction } from "./features/auth/Login";
+import { userKey } from "./features/auth/authStore";
 import { requireAuth } from "./global/globalFunctions";
 
 import Dashboard from "./features/Dashboard";
@@ -36,9 +37,7 @@ const router = createBrowserRouter(
           path="/"
           element={<Dashboard />}
           loader={async () => {
-            let { state } = JSON.parse(
-              localStorage.getItem("user-storage") as string,
-            );
+            let { state } = JSON.parse(localStorage.getItem(userKey) as string);
             const [weatherData, aqiData, newsData] = await Promise.all([
               getWeather({
                 latitude: state.location.latitude,

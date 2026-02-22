@@ -13,6 +13,8 @@ interface UserStore extends userType {
   clearUser: () => void;
 }
 
+export const userKey = "user-storage";
+
 export const useUserStore = create<UserStore>()(
   persist(
     (set) => ({
@@ -27,6 +29,6 @@ export const useUserStore = create<UserStore>()(
         })),
       clearUser: () => set(initialState),
     }),
-    { name: "user-storage" }, // localStorage key)
+    { name: userKey }, // localStorage key)
   ),
 );

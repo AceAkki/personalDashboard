@@ -54,11 +54,11 @@ const Login = () => {
   );
 
   useEffect(() => {
-    if (actionData?.user && username.length > 0) {
+    if (actionData?.user && username.length === 0) {
       let { user, latitude, longitude } = actionData;
 
       updateUser(user, latitude, longitude);
-      navigate("/taskmanager", { replace: true });
+      navigate("/", { replace: true });
     }
   }, [actionData, navigate]);
 
