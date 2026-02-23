@@ -30,7 +30,7 @@ const Notes = () => {
           <div>
             <NotesForm setNotes={updateNotes} />
           </div>
-          <div>
+          <div className="delete-btn-wrap">
             <button
               className="delete-notes-btn"
               onClick={() => clearAllNotes()}

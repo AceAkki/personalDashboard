@@ -1,8 +1,9 @@
 .notes-form-wrap {
   min-width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .notes-form-wrap .notes-textarea {
@@ -20,6 +21,10 @@
   backdrop-filter: blur(10px);
 }
 
+.delete-btn-wrap {
+  align-self: flex-end;
+}
+
 .delete-notes-btn {
   background: var(--primary);
   color: var(--secondary);
@@ -31,7 +36,8 @@
 }
 
 .delete-notes-btn:hover {
-  background: var(--error-rgba);
+  background: var(--error);
+  color: var(--primary);
 }
 
 .notes-main-wrap {
@@ -51,7 +57,4 @@
 }
 
 @media screen and (min-width: 1080px) {
-  .notes-form-wrap {
-    width: 50vh;
-  }
 }
