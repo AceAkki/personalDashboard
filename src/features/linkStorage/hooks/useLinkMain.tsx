@@ -18,7 +18,8 @@ const useLinkMain = (setLinks: linkObjectSet) => {
   };
 
   const updateLink = (value: string) => {
-    let fourtyEightHours = new Date().getTime() + 48 * 60 * 60 * 1000;
+    let fourtyEightHours = new Date().getTime() + 1 * 60 * 1000;
+    console.log(fourtyEightHours, new Date(fourtyEightHours));
     setLinks({ link: value, expiryTime: fourtyEightHours });
     setLink("");
   };

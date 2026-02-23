@@ -17,7 +17,20 @@ const RenderLinks = ({ links, deleteLink }: RenderLinksProps) => {
     return totalHours;
   };
 
-  return links.map((link) => {
+  const activeLinks = links.filter(
+    (linkObj) => linkObj.expiryTime > Date.now(),
+  );
+
+  const expiredLinks = links.filter(
+    (linkObj) => linkObj.expiryTime < Date.now(),
+  );
+
+  console.log(expiredLinks);
+  if (expiredLinks.length > 0) {
+    expiredLinks.forEach((linkObj) => deleteLink(linkObj.link));
+  }
+
+  return activeLinks.map((link) => {
     return (
       <div
         className="link-pen-item"
