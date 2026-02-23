@@ -3,9 +3,9 @@ export type linkObject = {
   expiryTime: number;
 };
 
-export type linkObjectSet = React.Dispatch<React.SetStateAction<linkObject[]>>;
+export type linkObjectSet = (link: linkObject) => void;
 
 export type RenderLinksProps = {
   links: linkObject[];
-  setLinks: linkObjectSet;
+  deleteLink: (link: string) => void;
 };

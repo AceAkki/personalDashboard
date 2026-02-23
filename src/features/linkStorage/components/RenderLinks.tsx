@@ -1,10 +1,10 @@
 import { writeClipboardText } from "../../../global/globalFunctions";
 import type { linkObject, RenderLinksProps } from "../linkTypes";
 
-const RenderLinks = ({ links, setLinks }: RenderLinksProps) => {
+const RenderLinks = ({ links, deleteLink }: RenderLinksProps) => {
   async function processLink(text: string) {
     writeClipboardText(text);
-    setLinks((prevLinks) => prevLinks.filter((link) => link.link !== text));
+    deleteLink(text);
   }
 
   const calculateHours = (link: linkObject) => {

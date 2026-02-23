@@ -1,26 +1,34 @@
-import { useOutletContext } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 import LinkForm from "./components/LinkForm";
 import RenderLinks from "./components/RenderLinks";
-import type { DashboardContext } from "../mainTypes";
+
+import { useLinkStore } from "./hooks/useLinkStore";
 import "./linkStorage.css";
 
 const LinkStorage = () => {
-  const { links, setLinks } = useOutletContext<DashboardContext>();
-
+  // const { links, setLinks } = useOutletContext<DashboardContext>();
+  const { links, deleteLink, updateLinks, clearAllLinks } = useLinkStore(
+    useShallow((state) => ({
+      links: state.links,
+      deleteLink: state.deleteLink,
+      updateLinks: state.updateLinks,
+      clearAllLinks: state.clearAllLinks,
+    })),
+  );
   return (
     <div className="link-pen">
       <div className="linkpen-input">
-        <LinkForm setLinks={setLinks} />
+        <LinkForm setLinks={updateLinks} />
       </div>
       <div className="linkpen-list-wrap">
-        <RenderLinks links={links} setLinks={setLinks} />
+        <RenderLinks links={links} deleteLink={deleteLink} />
       </div>
       <div className="linkpen-footer-wrap">
         <div>
           <p>Items: {links.length}</p>
         </div>
         <div>
-          <button onClick={() => setLinks([])} className="link-clear-btn">
+          <button onClick={() => clearAllLinks()} className="link-clear-btn">
             Clear All
           </button>
         </div>

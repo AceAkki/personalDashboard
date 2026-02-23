@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+import { userKey } from "../features/auth/useAuthStore";
 
 export async function writeClipboardText(text: string) {
   try {
@@ -9,7 +10,7 @@ export async function writeClipboardText(text: string) {
 }
 
 export async function requireAuth({ request }: { request: any }) {
-  let userData = localStorage.getItem("user-storage");
+  let userData = localStorage.getItem(userKey);
   const isLoggedIn = userData ? true : false;
 
   console.log(request, userData, isLoggedIn);

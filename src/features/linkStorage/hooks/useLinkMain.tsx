@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import type { linkObject, linkObjectSet } from "../linkTypes";
+import type { linkObjectSet } from "../linkTypes";
 
 const useLinkMain = (setLinks: linkObjectSet) => {
   const [link, setLink] = useState("");
@@ -19,9 +19,7 @@ const useLinkMain = (setLinks: linkObjectSet) => {
 
   const updateLink = (value: string) => {
     let fourtyEightHours = new Date().getTime() + 48 * 60 * 60 * 1000;
-    setLinks((prevLinks: linkObject[]) => {
-      return [...prevLinks, { link: value, expiryTime: fourtyEightHours }];
-    });
+    setLinks({ link: value, expiryTime: fourtyEightHours });
     setLink("");
   };
 

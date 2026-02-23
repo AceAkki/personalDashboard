@@ -8,14 +8,12 @@ import type { TaskActionData } from "./task-manager/taskTypes";
 
 // link
 import QuickLinks from "../components/QuickLinks";
-import type { linkObject } from "./linkStorage/linkTypes";
 
 // css imports
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
   const [tasks, setTasks] = useState<TaskActionData[]>([]);
-  const [links, setLinks] = useState<linkObject[]>([]);
 
   const { weatherData, aqiData } = useLoaderData();
 
@@ -31,8 +29,6 @@ const Dashboard = (): ReactElement => {
               setTasks,
               weatherData,
               aqiData,
-              links,
-              setLinks,
             }}
           />
         </section>
