@@ -63,22 +63,23 @@ const BentoStructure = () => {
         <div className="grid-item">
           <TasksMain taskData={tasks} taskSet={setTasks} Type="Current" />
         </div>
-
-        <div className="grid-item">
-          <LinkStorage />
-        </div>
         <div className="grid-item">
           <NotesForm setNotes={updateNotes} />
         </div>
+
         <div className="grid-item">
           <Pomodoro />
         </div>
+
         <div className="grid-item span-column">
           <RenderNews newsArr={newsArr} />
         </div>
         <div className="grid-item">
-          <Inspire />
+          <LinkStorage />
         </div>
+        {/* <div className="grid-item">
+          <Inspire />
+        </div> */}
       </div>
     </>
   );
