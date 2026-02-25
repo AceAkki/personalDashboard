@@ -8,7 +8,6 @@ const useDateFormatter = (timeHour: string[]) => {
   let filteredTimeArr = timeHour.filter(
     (hour) => hour > currentTime && hour < nextDateTime,
   );
-
   console.log(filteredTimeArr, currentTime);
   let startIndex =
     timeHour.findIndex((hour) => hour === filteredTimeArr[0]) - 1;

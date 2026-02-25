@@ -7,7 +7,7 @@ import TaskForm from "../task-manager/components/TaskForm";
 // import Weather from "../weather/Weather";
 // import Pomodoro from "../pomodoro/Pomodoro";
 import Pomodoro from "../pomodoro/Pomodoro";
-import Inspire from "../inspire/Inspire";
+// import Inspire from "../inspire/Inspire";
 import NotesForm from "../quicknotes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
 import LinkStorage from "../linkStorage/LinkStorage";
