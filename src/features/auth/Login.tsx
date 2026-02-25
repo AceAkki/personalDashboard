@@ -30,6 +30,7 @@ export async function action({ request }: { request: any }) {
   }
 }
 
+// allows user to grab location via API
 async function grabLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
