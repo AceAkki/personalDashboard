@@ -1,5 +1,5 @@
 import RenderAnime from "../hooks/useLottieAnime";
-import { getAQILevel, USAQI } from "../hooks/useAQI";
+import { getAQILevel, USAQI } from "../utils/getAQI";
 import type { WeatherCardProps } from "../weatherType";
 import "./WeatherCard.css";
 

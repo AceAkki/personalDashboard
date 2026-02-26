@@ -1,5 +1,5 @@
 import RenderAnime from "../hooks/useLottieAnime";
-import useDateFormatter from "../hooks/useDateFormatter";
+import useDateFormatter from "../utils/dateFormatter";
 
 import type { HourlyProps } from "../weatherType";
 

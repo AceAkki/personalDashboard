@@ -18,7 +18,7 @@ import TaskManager, {
 
 import Pomodoro from "./features/pomodoro/Pomodoro";
 import Weather from "./features/weather/Weather";
-import { getWeather, getAQI } from "./features/weather/hooks/getWeather";
+import { getWeather, getAQI } from "./features/weather/utils/getWeather";
 
 import NewsFeed from "./features/news-feed/NewsFeed";
 import useFetchNews from "./features/news-feed/hooks/useFetchNews";

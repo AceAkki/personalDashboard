@@ -47,6 +47,8 @@ const Login = () => {
   const navigate = useNavigate();
   let refLatitude = useRef(null);
   let refLongitude = useRef(null);
+
+  // intializing zustand store for user
   const { username, updateUser } = useUserStore(
     useShallow((state) => ({
       username: state.username,
