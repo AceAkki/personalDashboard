@@ -4,6 +4,7 @@ import NotesForm from "./components/NotesForm";
 import { useNoteStore } from "./hooks/useNoteStore";
 
 const Notes = () => {
+  // utilized note store which stores and syncs data with local storage
   const { notes, deleteNote, updateNotes, clearAllNotes } = useNoteStore(
     useShallow((state) => ({
       notes: state.notes,
