@@ -21,7 +21,7 @@ import Weather from "./features/weather/Weather";
 import { getWeather, getAQI } from "./features/weather/utils/getWeather";
 
 import NewsFeed from "./features/news-feed/NewsFeed";
-import useFetchNews from "./features/news-feed/hooks/useFetchNews";
+import useFetchNews from "./features/news-feed/utils/fetchNews";
 
 import Notes from "./features/quicknotes/Notes";
 

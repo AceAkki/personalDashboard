@@ -1,25 +1,33 @@
 import { useOutletContext } from "react-router-dom";
 
-// components imports
+// task imports
 import TasksMain from "../task-manager/components/TasksMain";
 import TaskForm from "../task-manager/components/TaskForm";
-
-// import Weather from "../weather/Weather";
-// import Pomodoro from "../pomodoro/Pomodoro";
-import Pomodoro from "../pomodoro/Pomodoro";
-// import Inspire from "../inspire/Inspire";
-import NotesForm from "../quicknotes/components/NotesForm";
-import WeatherCard from "../weather/components/WeatherCard";
-import LinkStorage from "../linkStorage/LinkStorage";
-
 import useTaskMain from "../task-manager/hooks/useTaskMain";
-import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
-import RenderNews from "../news-feed/components/RenderNews";
-import FavLinks from "../favLinks/FavLinks";
 
+// pomodoro imports
+import Pomodoro from "../pomodoro/Pomodoro";
+
+// notes imports
+import NotesForm from "../quicknotes/components/NotesForm";
 import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 
-// State
+// weather imports
+import WeatherCard from "../weather/components/WeatherCard";
+
+// link storage imports
+import LinkStorage from "../linkStorage/LinkStorage";
+
+// news imprts
+import RenderNews from "../news-feed/components/RenderNews";
+import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
+
+// fav links imports
+import FavLinks from "../favLinks/FavLinks";
+
+// import Inspire from "../inspire/Inspire";
+
+// auth imports
 import { useUserStore } from "../auth/useAuthStore";
 
 // type imports
