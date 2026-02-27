@@ -2,6 +2,8 @@ import useNoteMain from "../hooks/useNoteMain";
 import type { NotesSet } from "../notesTypes";
 
 import "./../notes.css";
+
+// notes form updating notes with textarea
 const NotesForm = ({ setNotes }: { setNotes: NotesSet }) => {
   const { note, handleChange } = useNoteMain(setNotes);
   return (

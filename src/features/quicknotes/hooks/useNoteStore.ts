@@ -3,6 +3,7 @@ import { persist } from "zustand/middleware";
 
 import type { NoteType } from "../notesTypes";
 
+// notes store type
 interface useNoteStore {
   notes: NoteType[];
   deleteNote: (id: string) => void;
@@ -10,6 +11,7 @@ interface useNoteStore {
   clearAllNotes: () => void;
 }
 
+// notes key for local storage
 const notesKey = "notes-storage";
 
 export const useNoteStore = create<useNoteStore>()(
