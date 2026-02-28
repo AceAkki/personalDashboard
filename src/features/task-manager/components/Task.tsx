@@ -11,10 +11,10 @@ import type { TaskType } from "../taskTypes";
 // css imports
 import "./Task.css";
 
-const Task = ({ taskTxt, taskSet }: TaskType) => {
+const Task = ({ taskTxt }: TaskType) => {
   const optionRef = useRef<HTMLDivElement>(null);
   //const [activeTaskID, setActiveTaskID] = taskIDMain;
-  const { tasks, moveTask, deleteTask, taskID, setTaskID } = useTaskStore(
+  const { moveTask, deleteTask, taskID, setTaskID } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       moveTask: state.moveTask,
