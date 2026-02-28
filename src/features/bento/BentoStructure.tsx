@@ -1,33 +1,26 @@
 import { useOutletContext } from "react-router-dom";
-
-// task imports
+import { useShallow } from "zustand/shallow";
+// components imports
 import TasksMain from "../task-manager/components/TasksMain";
 import TaskForm from "../task-manager/components/TaskForm";
-import useTaskMain from "../task-manager/hooks/useTaskMain";
 
-// pomodoro imports
+// import Weather from "../weather/Weather";
+// import Pomodoro from "../pomodoro/Pomodoro";
 import Pomodoro from "../pomodoro/Pomodoro";
-
-// notes imports
+// import Inspire from "../inspire/Inspire";
 import NotesForm from "../quicknotes/components/NotesForm";
-import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
-
-// weather imports
 import WeatherCard from "../weather/components/WeatherCard";
-
-// link storage imports
 import LinkStorage from "../linkStorage/LinkStorage";
 
-// news imprts
-import RenderNews from "../news-feed/components/RenderNews";
+import useTaskMain from "../task-manager/hooks/useTaskMain";
+import { useTaskStore } from "../task-manager/hooks/useTasksStore";
 import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
-
-// fav links imports
+import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
 
-// import Inspire from "../inspire/Inspire";
+import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 
-// auth imports
+// State
 import { useUserStore } from "../auth/useAuthStore";
 
 // type imports
@@ -37,10 +30,16 @@ import type { DashboardContext } from "../mainTypes";
 import "./BentoStructure.css";
 
 const BentoStructure = () => {
-  const { tasks, setTasks, weatherData, aqiData } =
-    useOutletContext<DashboardContext>();
-  const inputRef = useTaskMain(setTasks);
+  const { weatherData, aqiData } = useOutletContext<DashboardContext>();
   const newsArr = useRouteNewsData();
+
+  const { tasks, updateTasks } = useTaskStore(
+    useShallow((state) => ({
+      tasks: state.tasks,
+      updateTasks: state.updateTasks,
+    })),
+  );
+  const inputRef = useTaskMain(updateTasks);
 
   const username = useUserStore((state) => state.username);
   const updateNotes = useNoteStore((state) => state.updateNotes);
@@ -53,7 +52,7 @@ const BentoStructure = () => {
       <div className="bento-grid-layout">
         <div className="grid-item span-row">
           <TaskForm inputRef={inputRef} />
-          <TasksMain taskData={tasks} taskSet={setTasks} Type="Priority" />
+          <TasksMain taskData={tasks} taskSet={updateTasks} Type="Priority" />
         </div>
 
         <div className="grid-item">
@@ -69,7 +68,7 @@ const BentoStructure = () => {
         </div>
 
         <div className="grid-item">
-          <TasksMain taskData={tasks} taskSet={setTasks} Type="Current" />
+          <TasksMain taskData={tasks} taskSet={updateTasks} Type="Current" />
         </div>
         <div className="grid-item">
           <NotesForm setNotes={updateNotes} />

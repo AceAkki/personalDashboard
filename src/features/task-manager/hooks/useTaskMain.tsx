@@ -6,10 +6,9 @@ import type { TaskActionData, TaskActionDataSet } from "../taskTypes";
 const useTaskMain = (setTasks: TaskActionDataSet) => {
   const actionData = useActionData() as TaskActionData | null;
   const inputRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     if (actionData?.taskName) {
-      setTasks((prev) => [...prev, actionData]);
+      setTasks(actionData);
       if (inputRef && inputRef.current) {
         inputRef.current.value = "";
       }

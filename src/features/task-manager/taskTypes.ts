@@ -15,12 +15,10 @@ export interface TasksTypes {
   Completed: boolean;
 }
 
-export type TaskActionDataSet = React.Dispatch<
-  React.SetStateAction<TaskActionData[]>
->;
+export type TaskActionDataSet = (task: TaskActionData) => void;
 
 interface ReactSet {
-  taskSet: React.Dispatch<React.SetStateAction<TaskActionData[]>>;
+  taskSet: (task: TaskActionData) => void;
 }
 
 export interface TasksProps extends ReactSet {

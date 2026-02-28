@@ -1,4 +1,6 @@
+import { useRef, useState } from "react";
 import { type ActionFunctionArgs, useOutletContext } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 import { nanoid } from "nanoid";
 
 // component imports
@@ -6,10 +8,11 @@ import TasksMain from "./components/TasksMain";
 import TaskForm from "./components/TaskForm";
 
 import useTaskMain from "./hooks/useTaskMain";
+import OptionsPopup from "./components/OptionsPopup";
+import { useTaskStore } from "./hooks/useTasksStore";
 
 // type imports
 import type { TaskActionData, TasksProps } from "./taskTypes";
-import type { DashboardContext } from "../mainTypes";
 
 // css imports
 import "./TaskManager.css";
@@ -34,8 +37,15 @@ const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
 };
 
 const TaskManager = () => {
-  const { tasks, setTasks } = useOutletContext<DashboardContext>();
-  const inputRef = useTaskMain(setTasks);
+  const { tasks, updateTasks, taskID, setTaskID } = useTaskStore(
+    useShallow((state) => ({
+      tasks: state.tasks,
+      updateTasks: state.updateTasks,
+      taskID: state.taskID,
+      setTaskID: state.setTaskID,
+    })),
+  );
+  const inputRef = useTaskMain(updateTasks);
 
   return (
     <section className="overflow-unset inner-route-section">
@@ -46,7 +56,7 @@ const TaskManager = () => {
       </div>
 
       <div className="tasks-grid-wrap">
-        <TasksMainWrapper taskData={tasks} taskSet={setTasks} />
+        <TasksMainWrapper taskData={tasks} taskSet={updateTasks} />
       </div>
     </section>
   );

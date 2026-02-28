@@ -10,7 +10,8 @@ import type { TasksMainProps } from "../taskTypes";
 import "./TasksMain.css";
 
 const TasksMain = ({ taskData, taskSet, Type }: TasksMainProps) => {
-  let [activeTaskID, setActiveTaskID] = useState<string | null>(null);
+  console.log(taskData, "taskData");
+  if (!Array.isArray(taskData)) return;
   let filterTasks = taskData.filter(
     (task) => task.type[Type as keyof typeof task.type],
   );
@@ -19,12 +20,7 @@ const TasksMain = ({ taskData, taskSet, Type }: TasksMainProps) => {
       <h3 className="tasks-main-title">{Type} Tasks</h3>
       <div className="tasks-wrap">
         {filterTasks.map((task) => (
-          <Task
-            key={`${task.id}`}
-            taskTxt={task}
-            taskSet={taskSet}
-            taskIDMain={[activeTaskID, setActiveTaskID]}
-          />
+          <Task key={`${task.id}`} taskTxt={task} taskSet={taskSet} />
         ))}
       </div>
     </div>
