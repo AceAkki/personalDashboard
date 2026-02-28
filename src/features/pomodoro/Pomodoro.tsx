@@ -4,6 +4,7 @@ import { usePomoStore } from "./hooks/usepomoStore";
 import "./pomodoro.css";
 
 const Pomodoro = () => {
+  // using the pomo store - that preserves and syncs state with local storage
   const {
     endTime,
     pausedMin,
