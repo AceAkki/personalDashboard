@@ -6,7 +6,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import { useTaskStore } from "../hooks/useTasksStore";
 import OptionsPopup from "./OptionsPopup";
 // type imports
-import type { TaskType, TaskIDMainType } from "../taskTypes";
+import type { TaskType } from "../taskTypes";
 
 // css imports
 import "./Task.css";
@@ -14,10 +14,11 @@ import "./Task.css";
 const Task = ({ taskTxt, taskSet }: TaskType) => {
   const optionRef = useRef<HTMLDivElement>(null);
   //const [activeTaskID, setActiveTaskID] = taskIDMain;
-  const { tasks, updateTasks, taskID, setTaskID } = useTaskStore(
+  const { tasks, moveTask, deleteTask, taskID, setTaskID } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
-      updateTasks: state.updateTasks,
+      moveTask: state.moveTask,
+      deleteTask: state.deleteTask,
       taskID: state.taskID,
       setTaskID: state.setTaskID,
     })),
@@ -36,8 +37,9 @@ const Task = ({ taskTxt, taskSet }: TaskType) => {
         {taskID === taskTxt.id && (
           <OptionsPopup
             refer={optionRef}
-            taskSet={updateTasks}
-            taskTxt={taskTxt}
+            taskObject={taskTxt}
+            moveTask={moveTask}
+            deleteTask={deleteTask}
           />
         )}
       </div>

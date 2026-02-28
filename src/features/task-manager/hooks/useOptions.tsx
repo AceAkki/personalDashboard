@@ -1,41 +1,29 @@
 import { nanoid } from "nanoid";
 
-import type { MoveBtnsProps, OptionsMain, TasksTypes } from "../taskTypes";
+import type { MoveBtnsProps, TasksTypes } from "../taskTypes";
 export default function useOptions() {
   return {
     MoveBtns,
     getCurrentType,
   };
 }
-function optionToMove({
-  taskSet,
-  taskTxt,
-  currentType,
-  targetType,
-}: OptionsMain) {
-  taskSet((prevTasks) => {
-    return prevTasks.map((task) => {
-      return task.id === taskTxt.id
-        ? {
-            ...task,
-            type: {
-              ...task.type,
-              [targetType]: true,
-              [currentType]: false,
-            },
-          }
-        : task;
-    });
-  });
-}
 
-function MoveBtns({ typesArr, taskSet, taskTxt, currentType }: MoveBtnsProps) {
+function MoveBtns({
+  typesArr,
+  moveTask,
+  taskObject,
+  currentType,
+}: MoveBtnsProps) {
   return typesArr.map((targetType) => {
     return (
       <li key={nanoid()}>
         <button
           onClick={() =>
-            optionToMove({ taskSet, taskTxt, currentType, targetType })
+            moveTask({
+              id: taskObject.id,
+              currentType: currentType,
+              targetType: targetType,
+            })
           }
         >
           {targetType}

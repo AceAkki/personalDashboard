@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { type ActionFunctionArgs, useOutletContext } from "react-router-dom";
+import { type ActionFunctionArgs } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { nanoid } from "nanoid";
 
@@ -8,7 +7,6 @@ import TasksMain from "./components/TasksMain";
 import TaskForm from "./components/TaskForm";
 
 import useTaskMain from "./hooks/useTaskMain";
-import OptionsPopup from "./components/OptionsPopup";
 import { useTaskStore } from "./hooks/useTasksStore";
 
 // type imports
@@ -37,7 +35,7 @@ const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
 };
 
 const TaskManager = () => {
-  const { tasks, updateTasks, taskID, setTaskID } = useTaskStore(
+  const { tasks, updateTasks } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       updateTasks: state.updateTasks,

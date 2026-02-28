@@ -37,8 +37,35 @@ export interface RefUse extends ReactSet, TaskType {
   refer: React.RefObject<HTMLDivElement | null>;
 }
 
-export interface MoveBtnsProps extends OptionsMain {
+export interface optionPopupProps {
+  refer: React.RefObject<HTMLDivElement | null>;
+  taskObject: TaskActionData;
+  moveTask: ({
+    id,
+    targetType,
+    currentType,
+  }: {
+    id: string;
+    targetType: string;
+    currentType: string;
+  }) => void;
+  deleteTask: (id: string) => void;
+}
+
+export interface MoveBtnsProps {
   typesArr: string[];
+  currentType: string;
+  targetType: string;
+  taskObject: TaskActionData;
+  moveTask: ({
+    id,
+    targetType,
+    currentType,
+  }: {
+    id: string;
+    targetType: string;
+    currentType: string;
+  }) => void;
 }
 
 export interface OptionsMain extends TaskType {

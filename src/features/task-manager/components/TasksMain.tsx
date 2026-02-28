@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 // component imports
 import Task from "./Task";
 
@@ -10,7 +8,6 @@ import type { TasksMainProps } from "../taskTypes";
 import "./TasksMain.css";
 
 const TasksMain = ({ taskData, taskSet, Type }: TasksMainProps) => {
-  console.log(taskData, "taskData");
   if (!Array.isArray(taskData)) return;
   let filterTasks = taskData.filter(
     (task) => task.type[Type as keyof typeof task.type],
