@@ -28,6 +28,7 @@ export async function action({ request }: ActionFunctionArgs) {
   return newTask;
 }
 
+// maun wrapper
 const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
   return ["Current", "Priority", "Completed"].map((Type) => (
     <TasksMain key={Type} taskData={taskData} taskSet={taskSet} Type={Type} />
