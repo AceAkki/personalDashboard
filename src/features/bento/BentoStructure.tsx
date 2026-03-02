@@ -34,22 +34,16 @@ const BentoStructure = () => {
   const { weatherData, aqiData } = useOutletContext<DashboardContext>();
   const newsArr = useRouteNewsData();
 
-  const { tasks, updateTasks } = useTaskStore(
+  const { tasks, updateTasks, taskID } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       updateTasks: state.updateTasks,
+      taskID: state.taskID,
     })),
   );
   const inputRef = useTaskMain(updateTasks);
   const optionRef = useRef<HTMLDivElement>(null);
-  const { moveTask, deleteTask, taskID } = useTaskStore(
-    useShallow((state) => ({
-      tasks: state.tasks,
-      moveTask: state.moveTask,
-      deleteTask: state.deleteTask,
-      taskID: state.taskID,
-    })),
-  );
+
   const taskTxt = tasks.find((task) => task?.id === taskID);
 
   const username = useUserStore((state) => state.username);

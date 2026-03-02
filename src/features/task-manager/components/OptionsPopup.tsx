@@ -6,6 +6,7 @@ import type { optionPopupProps } from "../taskTypes";
 
 // css imports
 import "./OptionsPopup.css";
+import { useEffect } from "react";
 
 export default function OptionsPopup({ refer, taskObject }: optionPopupProps) {
   const { MoveBtns, getCurrentType } = useOptions();
@@ -21,6 +22,15 @@ export default function OptionsPopup({ refer, taskObject }: optionPopupProps) {
   let newArr = Array.from(
     new Set(typesArr.filter((type) => type !== currentType)),
   );
+
+  useEffect(() => {
+    if (refer?.current) {
+      let optionWidth = refer.current.getBoundingClientRect().width;
+      const root = document.documentElement;
+      root.style.setProperty("--options-width", `${optionWidth}px`);
+      console.log(optionWidth);
+    }
+  }, []);
   return (
     <div className={`options-wrap`} ref={refer}>
       <ul>

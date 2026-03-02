@@ -25,7 +25,11 @@ const Task = ({ taskTxt }: TaskType) => {
         className="task-btn"
         onClick={(e) => {
           taskID === taskTxt.id ? setTaskID(null) : setTaskID(taskTxt.id);
-          console.log(e.clientX, e.clientY);
+          console.log(
+            e.clientX,
+            e.clientY,
+            document.documentElement.clientWidth,
+          );
           const root = document.documentElement;
           root.style.setProperty("--optionLeft", `${e.clientX}px`);
           root.style.setProperty("--optionTop", `${e.clientY}px`);
