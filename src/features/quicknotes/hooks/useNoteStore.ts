@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import type { NoteType } from "../notesTypes";
+// notes key for local storage
+import { notesKey } from "../../../global/storageKeys";
 
 // notes store type
 interface useNoteStore {
@@ -11,8 +13,7 @@ interface useNoteStore {
   clearAllNotes: () => void;
 }
 
-// notes key for local storage
-const notesKey = "notes-storage";
+
 
 export const useNoteStore = create<useNoteStore>()(
   persist(

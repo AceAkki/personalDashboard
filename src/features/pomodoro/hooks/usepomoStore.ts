@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
+import { pomoKey } from "../../../global/storageKeys";
 import type { TimeObj } from "../pomodoroTypes";
 
 const initialState: PomoInitial = {
@@ -21,8 +21,6 @@ interface usePomoStore extends PomoInitial {
   updateIsActive: () => void;
   updateTick: () => void;
 }
-
-const pomoKey = "pomo-storage";
 
 export const usePomoStore = create<usePomoStore>()(
   persist(

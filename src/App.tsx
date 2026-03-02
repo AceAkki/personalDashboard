@@ -7,7 +7,7 @@ import {
 
 import AuthLayout from "./features/auth/AuthLayout";
 import Login, { action as loginAction } from "./features/auth/Login";
-import { userKey } from "./features/auth/useAuthStore";
+import { userKey } from "./global/storageKeys";
 import { requireAuth } from "./global/globalFunctions";
 
 import Dashboard from "./features/Dashboard";

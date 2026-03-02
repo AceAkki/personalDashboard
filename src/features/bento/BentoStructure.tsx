@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import { useRef } from "react";
 import { useShallow } from "zustand/shallow";
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
@@ -25,7 +26,7 @@ import { useUserStore } from "../auth/useAuthStore";
 
 // type imports
 import type { DashboardContext } from "../mainTypes";
-
+import OptionsPopup from "../task-manager/components/OptionsPopup";
 // css imports
 import "./BentoStructure.css";
 
@@ -40,6 +41,16 @@ const BentoStructure = () => {
     })),
   );
   const inputRef = useTaskMain(updateTasks);
+  const optionRef = useRef<HTMLDivElement>(null);
+  const { moveTask, deleteTask, taskID } = useTaskStore(
+    useShallow((state) => ({
+      tasks: state.tasks,
+      moveTask: state.moveTask,
+      deleteTask: state.deleteTask,
+      taskID: state.taskID,
+    })),
+  );
+  const taskTxt = tasks.find((task) => task?.id === taskID);
 
   const username = useUserStore((state) => state.username);
   const updateNotes = useNoteStore((state) => state.updateNotes);
@@ -88,6 +99,9 @@ const BentoStructure = () => {
           <Inspire />
         </div> */}
       </div>
+      {taskID === taskTxt?.id && (
+        <OptionsPopup refer={optionRef} taskObject={taskTxt} />
+      )}
     </>
   );
 };

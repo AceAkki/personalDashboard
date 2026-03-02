@@ -61,6 +61,7 @@ const Login = () => {
       let { user, latitude, longitude } = actionData;
 
       updateUser(user, latitude, longitude);
+      console.log("user updated");
       navigate("/", { replace: true });
     }
   }, [actionData, navigate]);

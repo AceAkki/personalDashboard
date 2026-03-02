@@ -2,15 +2,13 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import type { linkObject } from "../linkTypes";
-
+import { linksKey } from "../../../global/storageKeys";
 interface useLinkStore {
   links: linkObject[];
   deleteLink: (link: string) => void;
   updateLinks: (link: linkObject) => void;
   clearAllLinks: () => void;
 }
-
-const linksKey = "links-storage";
 
 export const useLinkStore = create<useLinkStore>()(
   persist(

@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import { userKey } from "../features/auth/useAuthStore";
+import { userKey } from "./storageKeys";
 
 export async function writeClipboardText(text: string) {
   try {

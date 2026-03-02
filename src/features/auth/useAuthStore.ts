@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import type { userType } from "../mainTypes";
+import { userKey } from "../../global/storageKeys";
 
 const initialState: userType = {
   username: "",
@@ -10,10 +11,8 @@ const initialState: userType = {
 
 interface UserStore extends userType {
   updateUser: (name: string, latitude: number, longitude: number) => void;
-  clearUser: () => void;
+  logOutUser: () => void;
 }
-
-export const userKey = "user-storage";
 
 export const useUserStore = create<UserStore>()(
   persist(
@@ -27,7 +26,7 @@ export const useUserStore = create<UserStore>()(
             longitude: longitude,
           },
         })),
-      clearUser: () => set(initialState),
+      logOutUser: () => set(initialState),
     }),
     { name: userKey }, // localStorage key)
   ),

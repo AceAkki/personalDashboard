@@ -1,17 +1,21 @@
+import { useShallow } from "zustand/shallow";
 import useOptions from "../hooks/useOptions";
-
+import { useTaskStore } from "../hooks/useTasksStore";
 // type imports
 import type { optionPopupProps } from "../taskTypes";
 
 // css imports
 import "./OptionsPopup.css";
 
-export default function OptionsPopup({
-  refer,
-  taskObject,
-  moveTask,
-}: optionPopupProps) {
+export default function OptionsPopup({ refer, taskObject }: optionPopupProps) {
   const { MoveBtns, getCurrentType } = useOptions();
+  const { moveTask, deleteTask } = useTaskStore(
+    useShallow((state) => ({
+      moveTask: state.moveTask,
+      deleteTask: state.deleteTask,
+    })),
+  );
+
   let typesArr = ["Current", "Priority", "Completed"];
   let currentType = getCurrentType(taskObject.type);
   let newArr = Array.from(
@@ -31,7 +35,7 @@ export default function OptionsPopup({
           <button> Edit Task </button>
         </li>
         <li>
-          <button> Delete Task </button>
+          <button onClick={() => deleteTask(taskObject.id)}>Delete Task</button>
         </li>
       </ul>
     </div>

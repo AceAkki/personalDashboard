@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import type { TaskActionData } from "../taskTypes";
+import { tasksKey } from "../../../global/storageKeys";
 
 interface useTaskStore {
   tasks: TaskActionData[];
@@ -21,8 +22,6 @@ interface useTaskStore {
   setTaskID: (id: string | null) => void;
 }
 
-const tasksKey = "tasks-storage";
-
 export const useTaskStore = create<useTaskStore>()(
   persist(
     (set) => ({
@@ -30,6 +29,7 @@ export const useTaskStore = create<useTaskStore>()(
       deleteTask: (id) =>
         set((state) => ({
           tasks: state.tasks.filter((task) => task.id !== id),
+          taskID: null,
         })),
       moveTask: ({ id, targetType, currentType }) =>
         set((state) => ({
@@ -45,6 +45,7 @@ export const useTaskStore = create<useTaskStore>()(
                 }
               : task,
           ),
+          taskID: null,
         })),
       updateTasks: (task) =>
         set((state) => ({

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
+import MainSettings from "./MainSettings";
 
+import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, type ReactElement } from "react";
 
 import "./Header.css";
@@ -11,7 +12,13 @@ type HeaderProps = { title?: string };
 export function Header({ title }: HeaderProps): ReactElement {
   //console.log(userData);
   let headerRef = useRef<HTMLHeadingElement>(null);
+  let settingsRef = useRef<HTMLDivElement>(null);
 
+  const toggleSettings = () => {
+    const settings = settingsRef.current;
+    if (!settings) return;
+    settings.classList.toggle("hide");
+  };
   useEffect(() => {
     const nav = headerRef.current;
     if (!nav) return;
@@ -19,22 +26,26 @@ export function Header({ title }: HeaderProps): ReactElement {
     let root = document.documentElement.style;
     root.setProperty("--header-height", `${headerHeight}px`);
   }, []);
+
   return (
-    <header className="header" ref={headerRef}>
-      <div className="header-logo-wrap">
-        <Link to=".">
-          <LayoutIcon size={32} weight="fill" />
-          <p>{title}</p>
-        </Link>
-      </div>
-      <button className="user-header-wrap">
-        {/* <div className="username-header-wrap">
+    <>
+      <header className="header" ref={headerRef}>
+        <div className="header-logo-wrap">
+          <Link to=".">
+            <LayoutIcon size={32} weight="fill" />
+            <p>{title}</p>
+          </Link>
+        </div>
+        <button className="user-header-wrap">
+          {/* <div className="username-header-wrap">
           <p>{userData.username}</p>
         </div> */}
-        <div className="icon-header-wrap">
-          <GearIcon size={32} />
-        </div>
-      </button>
-    </header>
+          <div className="icon-header-wrap" onClick={toggleSettings}>
+            <GearIcon size={32} />
+          </div>
+        </button>
+      </header>
+      <MainSettings divRef={settingsRef} />
+    </>
   );
 }

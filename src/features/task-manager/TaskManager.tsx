@@ -1,14 +1,14 @@
 import { type ActionFunctionArgs } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { nanoid } from "nanoid";
-
+import { useRef } from "react";
 // component imports
 import TasksMain from "./components/TasksMain";
 import TaskForm from "./components/TaskForm";
 
 import useTaskMain from "./hooks/useTaskMain";
 import { useTaskStore } from "./hooks/useTasksStore";
-
+import OptionsPopup from "../task-manager/components/OptionsPopup";
 // type imports
 import type { TaskActionData, TasksProps } from "./taskTypes";
 
@@ -36,7 +36,7 @@ const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
 };
 
 const TaskManager = () => {
-  const { tasks, updateTasks } = useTaskStore(
+  const { tasks, updateTasks, taskID } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       updateTasks: state.updateTasks,
@@ -45,19 +45,27 @@ const TaskManager = () => {
     })),
   );
   const inputRef = useTaskMain(updateTasks);
-
+  const optionRef = useRef<HTMLDivElement>(null);
+  const taskTxt = tasks.find((task) => task?.id === taskID);
   return (
-    <section className="overflow-unset inner-route-section">
-      <h2 className="task-manager-title">Task Manager</h2>
-      <p>Track your tasks here and keep your brain free for another things.</p>
-      <div className="tasks-grid-wrap">
-        <TaskForm inputRef={inputRef} />
-      </div>
+    <>
+      <section className="overflow-unset inner-route-section">
+        <h2 className="task-manager-title">Task Manager</h2>
+        <p>
+          Track your tasks here and keep your brain free for another things.
+        </p>
+        <div className="tasks-grid-wrap">
+          <TaskForm inputRef={inputRef} />
+        </div>
 
-      <div className="tasks-grid-wrap">
-        <TasksMainWrapper taskData={tasks} taskSet={updateTasks} />
-      </div>
-    </section>
+        <div className="tasks-grid-wrap">
+          <TasksMainWrapper taskData={tasks} taskSet={updateTasks} />
+        </div>
+      </section>
+      {taskID === taskTxt?.id && (
+        <OptionsPopup refer={optionRef} taskObject={taskTxt} />
+      )}
+    </>
   );
 };
 

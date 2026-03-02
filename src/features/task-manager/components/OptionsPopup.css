@@ -1,6 +1,12 @@
+:root {
+  --optionTop : 0px;
+  --optionLeft : 0px;
+}
+
 .options-wrap {
   position: absolute;
-  right: 1rem;
+  top: var(--optionTop);
+  left: var(--optionLeft);
   z-index: 5;
 }
 
