@@ -1,13 +1,10 @@
 // main react imports
-import { useState, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 
 // common imports
 import { ToastContainer, Bounce } from "react-toastify";
 import { Header } from "../components/Header";
-
-// task
-import type { TaskActionData } from "./task-manager/taskTypes";
 
 // link
 import QuickLinks from "../components/QuickLinks";
@@ -16,8 +13,6 @@ import QuickLinks from "../components/QuickLinks";
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
-  const [tasks, setTasks] = useState<TaskActionData[]>([]);
-
   const { weatherData, aqiData } = useLoaderData();
 
   return (
@@ -28,8 +23,6 @@ const Dashboard = (): ReactElement => {
         <section className="dashboard-section scroll">
           <Outlet
             context={{
-              tasks,
-              setTasks,
               weatherData,
               aqiData,
             }}

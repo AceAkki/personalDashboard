@@ -43,10 +43,12 @@ const Pomodoro = () => {
         <div className="circle">
           <div className="pomo-txt">
             <h1>{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
-            <button onClick={() => handleStartPause()}>
+            <button onClick={() => handleStartPause()} className="pomo-btn">
               {!isActive ? "Start" : "Pause"}
             </button>
-            <button onClick={() => handleReset()}>Reset</button>
+            <button onClick={() => handleReset()} className="pomo-btn">
+              Reset
+            </button>
           </div>
         </div>
       </div>
