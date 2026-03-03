@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import MainSettings from "./MainSettings";
+import { toggleClass } from "../global/globalFunctions";
 
 import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, type ReactElement } from "react";
@@ -14,11 +15,6 @@ export function Header({ title }: HeaderProps): ReactElement {
   let headerRef = useRef<HTMLHeadingElement>(null);
   let settingsRef = useRef<HTMLDivElement>(null);
 
-  const toggleSettings = () => {
-    const settings = settingsRef.current;
-    if (!settings) return;
-    settings.classList.toggle("hide");
-  };
   useEffect(() => {
     const nav = headerRef.current;
     if (!nav) return;
@@ -40,7 +36,15 @@ export function Header({ title }: HeaderProps): ReactElement {
           {/* <div className="username-header-wrap">
           <p>{userData.username}</p>
         </div> */}
-          <div className="icon-header-wrap" onClick={toggleSettings}>
+          <div
+            className="icon-header-wrap"
+            onClick={() =>
+              toggleClass({
+                refElem: settingsRef,
+                classname: "hide",
+              })
+            }
+          >
             <GearIcon size={32} />
           </div>
         </button>

@@ -8,6 +8,7 @@ import {
   pomoKey,
   notesKey,
 } from "../global/storageKeys";
+import { toggleClass } from "../global/globalFunctions";
 import "./MainSettings.css";
 const MainSettings = ({ divRef }: { divRef: any }) => {
   const navigate = useNavigate();
@@ -21,7 +22,18 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
   return (
     <div className="settings-wrap hide" ref={divRef}>
       <div className="settings-content">
-        <h2>{username}</h2>
+        <div
+          className="settings-close-btn"
+          onClick={() =>
+            toggleClass({
+              refElem: divRef,
+              classname: "hide",
+            })
+          }
+        >
+          X
+        </div>
+        <h2>Hey {username}!</h2>
 
         <button
           onClick={() => {

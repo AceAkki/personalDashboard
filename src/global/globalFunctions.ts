@@ -19,3 +19,15 @@ export async function requireAuth({ request }: { request: any }) {
   }
   return null;
 }
+
+export const toggleClass = ({
+  refElem,
+  classname,
+}: {
+  refElem: any;
+  classname: string;
+}) => {
+  const element = refElem.current;
+  if (!element) return;
+  element.classList.toggle(classname);
+};
