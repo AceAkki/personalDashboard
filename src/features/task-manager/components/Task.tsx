@@ -31,7 +31,10 @@ const Task = ({ taskTxt }: TaskType) => {
             document.documentElement.clientWidth,
           );
           const root = document.documentElement;
-          root.style.setProperty("--optionLeft", `${e.clientX}px`);
+          root.style.setProperty(
+            "--optionLeft",
+            `calc(${e.clientX}px - var(--options-width))`,
+          );
           root.style.setProperty("--optionTop", `${e.clientY}px`);
         }}
       >
