@@ -26,9 +26,9 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
         <button
           onClick={() => {
             logoutUser();
+            keysArr.forEach((key) => localStorage.removeItem(key));
             setTimeout(() => {
-              keysArr.forEach((key) => localStorage.removeItem(key));
-              navigate("/");
+              navigate("/login");
             }, 1000);
           }}
         >

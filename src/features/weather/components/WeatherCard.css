@@ -2,6 +2,7 @@
   background: var(--bg-rgba);
   backdrop-filter: blur(10px);
   padding: 1rem;
+  border: 1px solid var(--primary);
   border-radius: 16px;
   color: var(--txt-clr);
 }
@@ -15,7 +16,7 @@
   grid-template-columns: 70% auto;
   align-items: center;
   container-type: inline-size;
-  border-bottom:1px solid var(--primary)
+  border-bottom: 1px solid var(--primary);
 }
 
 .weather-temp .temp {

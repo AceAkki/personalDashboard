@@ -5,6 +5,7 @@
   height: 35vh;
   background: var(--bg-rgba);
   backdrop-filter: blur(10px);
+  border: 1px solid var(--primary);
   border-radius: 16px;
   overflow: auto;
 }
@@ -26,6 +27,10 @@
 
 @media screen and (min-width: 1080px) {
   .tasks-main-wrap {
-    height: clamp(100%, 20cqw, 55vh);
+    height: 55vh;
+  }
+  /* used inside bento grid - dashboard */
+  .grid-item .tasks-main-wrap {
+    height: 100%;
   }
 }

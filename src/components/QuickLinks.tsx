@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   KanbanIcon,
   CloudIcon,
   ClockCountdownIcon,
   NoteIcon,
   NewspaperIcon,
+  type Icon,
 } from "@phosphor-icons/react";
 import type { ReactElement } from "react";
 import "./QuickLinks.css";
@@ -15,29 +16,42 @@ const QuickLinks = (): ReactElement => {
     <div className="quick-wrap">
       <ul className="quick-links">
         <li>
-          <Link to="/taskmanager" aria-label="link to taskmanager">
-            <KanbanIcon size={32} weight="fill" />
-          </Link>
+          <NavLink to="/taskmanager" aria-label="link to taskmanager">
+            {({ isActive }) => (
+              <KanbanIcon size={32} weight={isActive ? "fill" : "regular"} />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Link to="/weather" aria-label="link to weather">
-            <CloudIcon size={32} weight="fill" />
-          </Link>
+          <NavLink to="/weather" aria-label="link to weather">
+            {({ isActive }) => (
+              <CloudIcon size={32} weight={isActive ? "fill" : "regular"} />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Link to="/pomodoro" aria-label="link to pomodoro">
-            <ClockCountdownIcon size={32} weight="fill" />
-          </Link>
+          <NavLink to="/pomodoro" aria-label="link to pomodoro">
+            {({ isActive }) => (
+              <ClockCountdownIcon
+                size={32}
+                weight={isActive ? "fill" : "regular"}
+              />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Link to="/notes" aria-label="link to notes">
-            <NoteIcon size={32} weight="fill" />
-          </Link>
+          <NavLink to="/notes" aria-label="link to notes">
+            {({ isActive }) => (
+              <NoteIcon size={32} weight={isActive ? "fill" : "regular"} />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Link to="/newsfeed" aria-label="link to newsfeed">
-            <NewspaperIcon size={32} weight="fill" />
-          </Link>
+          <NavLink to="/newsfeed" aria-label="link to newsfeed">
+            {({ isActive }) => (
+              <NewspaperIcon size={32} weight={isActive ? "fill" : "regular"} />
+            )}
+          </NavLink>
         </li>
       </ul>
     </div>

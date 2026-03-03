@@ -12,6 +12,7 @@
   justify-content: center;
   padding: 2rem 0;
   backdrop-filter: blur(16px);
+  border: 1px solid var(--primary);
   border-radius: var(--default-radius);
   font-size: 1.2rem;
 }

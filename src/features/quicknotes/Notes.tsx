@@ -17,8 +17,12 @@ const Notes = () => {
   const RenderNotes = notes.map((note) => {
     return (
       <div className="note-wrap" key={nanoid()}>
-        <p>{note.note}</p>
-        <button onClick={() => deleteNote(note.id)}>X</button>
+        <div>
+          <p>{note.note}</p>
+        </div>
+        <div className="note-del-btn">
+          <button onClick={() => deleteNote(note.id)}>X</button>
+        </div>
       </div>
     );
   });

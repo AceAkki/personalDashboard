@@ -54,3 +54,8 @@ section.overflow-unset {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--bg-rgba);
 }
+
+button {
+  border: none;
+  cursor: pointer;
+}
