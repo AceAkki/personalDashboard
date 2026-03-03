@@ -1,11 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   KanbanIcon,
   CloudIcon,
   ClockCountdownIcon,
   NoteIcon,
   NewspaperIcon,
-  type Icon,
 } from "@phosphor-icons/react";
 import type { ReactElement } from "react";
 import "./QuickLinks.css";
