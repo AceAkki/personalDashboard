@@ -21,7 +21,7 @@ import Weather from "./features/weather/Weather";
 import { getWeather, getAQI } from "./features/weather/utils/getWeather";
 
 import NewsFeed from "./features/news-feed/NewsFeed";
-import useFetchNews from "./features/news-feed/utils/fetchNews";
+import fetchNews from "./features/news-feed/utils/fetchNews";
 
 import Notes from "./features/quicknotes/Notes";
 
@@ -52,7 +52,7 @@ const router = createBrowserRouter(
                 latitude: state.location.latitude,
                 longitude: state.location.longitude,
               }),
-              useFetchNews(),
+              fetchNews(),
             ]).then((value) => value);
 
             return {
@@ -84,7 +84,6 @@ const router = createBrowserRouter(
           <Route path="notes" element={<Notes />} />
           <Route path="newsfeed" element={<NewsFeed />} />
         </Route>
-        ,
       </Route>
     </>,
   ),

@@ -5,7 +5,7 @@ import type {
   NewsRSSFeed,
   NewsRSSFeedArray,
 } from "../newsTypes";
-const useFetchNews = async (): Promise<NewsRSSFeedArray> => {
+const fetchNews = async (): Promise<NewsRSSFeedArray> => {
   const newsSources: NewsSource = {
     GlobalNews: {
       BBCNews: "https://feeds.bbci.co.uk/news/world/rss.xml",
@@ -61,4 +61,4 @@ const useFetchNews = async (): Promise<NewsRSSFeedArray> => {
   return currentNews;
 };
 
-export default useFetchNews;
+export default fetchNews;
