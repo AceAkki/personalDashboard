@@ -140,7 +140,7 @@ const RenderFavLinks = ({ search, setSearch }: FavLinksProps) => {
                 onChange={handleChange}
               />
               <div className="fav-link-img" key={link.name}>
-                <img src={link.favicon} alt={link.name} />
+                <img src={link.favicon} alt={link.name} title={link.name} />
               </div>
             </label>
           );
