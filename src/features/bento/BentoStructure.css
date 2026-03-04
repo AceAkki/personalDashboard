@@ -5,6 +5,11 @@
   gap: 1rem;
   height: 80vh;
   margin: 2rem 0;
+  background: var(--primary-soft);
+  backdrop-filter: blur(40px);
+  padding: 1rem;
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
 }
 
 .grid-item {
@@ -19,8 +24,8 @@
 }
 
 .welcome-greet-wrap h1 {
-  font-size:2.5rem;
-  font-weight:300;
+  font-size: 2.5rem;
+  font-weight: 300;
 }
 
 @media screen and (min-width: 1080px) {

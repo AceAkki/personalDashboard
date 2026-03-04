@@ -9,7 +9,6 @@
 .search-link input {
   width: 100%;
   padding: 0.5rem;
-  margin: 1rem 0;
   outline: none;
   border: 1px solid var(--soft-clr);
   border-radius: 5px;
@@ -17,9 +16,9 @@
 
 .fav-links-btns {
   display: flex;
-  gap: 1rem;
-  margin: 0.2rem 0;
-  padding: 1rem;
+  gap: 1.5rem;
+  margin: 0.5rem 0;
+  padding: 2rem 0.5rem;
   overflow: auto;
 }
 
