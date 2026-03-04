@@ -25,7 +25,7 @@ const LinkStorage = () => {
       </div>
       <div className="linkpen-footer-wrap">
         <div>
-          <p>Items: {links.length}</p>
+          <p>Links: {links.length}</p>
         </div>
         <div>
           <button onClick={() => clearAllLinks()} className="link-clear-btn">
