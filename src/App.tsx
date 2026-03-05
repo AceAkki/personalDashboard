@@ -26,6 +26,7 @@ import fetchNews from "./features/news-feed/utils/fetchNews";
 import Notes from "./features/quicknotes/Notes";
 
 import ErrorPage from "./features/Error";
+import FallBackLoader from "./features/fallbackElem";
 import "./global/customProto";
 import "./App.css";
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         element={<AuthLayout />}
         loader={requireAuth}
         errorElement={<ErrorPage />}
+        hydrateFallbackElement={<FallBackLoader />}
       >
         <Route
           path="/"
