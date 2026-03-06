@@ -19,6 +19,7 @@
   --header-height: 0;
   --options-width: 0;
   --toastify-icon-color-error: var(--error);
+  --background-img: url("assets/mountains.jpg");
 }
 
 * {
@@ -29,7 +30,7 @@
 }
 
 body {
-  background: url("assets/mountains.jpg") no-repeat center center / cover fixed;
+  background: var(--background-img) no-repeat center center / cover fixed;
 }
 
 .hide {
