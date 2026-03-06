@@ -1,0 +1,45 @@
+export let bgFiles = {
+  flower: [
+    "https://cdn.pixabay.com/photo/2024/09/19/18/08/rose-9059411_1280.jpg",
+    "https://cdn.pixabay.com/photo/2020/04/08/08/08/spring-5016266_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/02/02/23/41/lotus-7763843_1280.jpg",
+    "https://cdn.pixabay.com/photo/2024/02/01/15/56/tulips-8546236_1280.jpg",
+    "https://cdn.pixabay.com/photo/2020/04/14/21/49/petal-5044428_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/07/07/13/17/flowers-8112546_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/02/13/01/47/flower-7786307_1280.jpg",
+    "https://cdn.pixabay.com/photo/2013/09/05/01/39/anemone-179006_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/04/26/17/09/flower-7952950_1280.jpg",
+    "https://cdn.pixabay.com/photo/2020/06/20/19/15/the-blue-flower-5322087_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/08/23/18/39/dahlia-8209085_1280.jpg",
+    "https://cdn.pixabay.com/photo/2025/04/17/17/10/reed-9540853_1280.jpg",
+    "https://cdn.pixabay.com/photo/2024/02/07/16/15/flower-8559381_1280.jpg",
+    "https://cdn.pixabay.com/photo/2024/05/19/13/40/daisy-8772631_1280.jpg",
+    "https://cdn.pixabay.com/photo/2024/05/19/13/27/daisies-8772617_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/03/30/06/12/flower-7886861_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/04/29/22/34/japanese-camellia-7959403_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/03/19/05/31/flower-7861942_1280.jpg",
+  ],
+  nature: [
+    "https://cdn.pixabay.com/photo/2025/09/19/05/48/mountain-range-9842371_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/04/26/16/01/lighthouse-7952718_1280.jpg",
+    "https://cdn.pixabay.com/photo/2025/09/18/07/06/winding-path-9840681_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/08/12/10/38/mountains-6540497_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/10/22/11/58/grass-3765172_1280.jpg",
+    "https://cdn.pixabay.com/photo/2023/07/02/19/58/chamomile-8102907_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg",
+  ],
+  space: [
+    "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg",
+    "https://cdn.pixabay.com/photo/2020/06/13/17/51/milky-way-5295160_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/03/29/19/33/aurora-3273419_1280.jpg",
+  ],
+  animals: [
+    "https://cdn.pixabay.com/photo/2023/12/03/21/33/butterfly-8428279_1280.jpg",
+    "https://cdn.pixabay.com/photo/2022/08/24/05/44/duck-7406987_1280.jpg",
+  ],
+  texture: [
+    "https://cdn.pixabay.com/photo/2017/11/04/13/43/texture-2917553_1280.jpg",
+  ],
+};
+
+export type bglinkArr = typeof bgFiles;

@@ -16,11 +16,13 @@
 }
 
 .main-outlet-wrap {
-  background: var(--primary-soft);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(90px);
-  padding: 1rem;
-  border: 1px solid var(--primary);
+  -webkit-backdrop-filter: blur(90px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
+  padding: 1rem;
   margin: 2rem 0;
   min-height: max-content;
 }
