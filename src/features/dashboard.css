@@ -15,6 +15,16 @@
   margin: var(--header-height) 0;
 }
 
+.main-outlet-wrap {
+  background: var(--primary-soft);
+  backdrop-filter: blur(90px);
+  padding: 1rem;
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+  margin: 2rem 0;
+  min-height: max-content;
+}
+
 .Toastify {
   margin: 0;
 }

@@ -21,12 +21,14 @@ const Dashboard = (): ReactElement => {
       <main className="main-wrap scroll">
         <QuickLinks />
         <section className="dashboard-section scroll">
-          <Outlet
-            context={{
-              weatherData,
-              aqiData,
-            }}
-          />
+          <div className="main-outlet-wrap">
+            <Outlet
+              context={{
+                weatherData,
+                aqiData,
+              }}
+            />
+          </div>
         </section>
       </main>
       <ToastContainer

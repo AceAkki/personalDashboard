@@ -3,13 +3,6 @@
   grid-template-columns: 100%;
   grid-template-rows: auto;
   gap: 1rem;
-  height: 80vh;
-  margin: 2rem 0;
-  background: var(--primary-soft);
-  backdrop-filter: blur(40px);
-  padding: 1rem;
-  border: 1px solid var(--primary);
-  border-radius: 1rem;
 }
 
 .grid-item {
@@ -32,6 +25,7 @@
   .bento-grid-layout {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, minmax(0, 1fr));
+    height: 80vh;
   }
 
   .grid-item {
