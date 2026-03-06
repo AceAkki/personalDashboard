@@ -52,7 +52,14 @@
     flex-direction: row;
   }
 
+  .main-outlet-wrap {
+    min-height: 100vh;
+  }
+
   .dashboard-section {
     margin: 0 1rem;
+  }
+  .dashboard-section .inner-route-section {
+    padding: 0 1rem;
   }
 }
