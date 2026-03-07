@@ -2,6 +2,7 @@ import RenderAnime from "../hooks/useLottieAnime";
 import useDateFormatter from "../utils/dateFormatter";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
 import type { HourlyProps } from "../weatherType";
 
 import "./Hourly.css";

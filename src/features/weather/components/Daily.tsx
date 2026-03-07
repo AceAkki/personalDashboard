@@ -1,6 +1,7 @@
 import RenderAnime from "../hooks/useLottieAnime";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
 import type { DailyProps } from "../weatherType";
 import "./Daily.css";
 const Daily = ({ daily, tempUnit }: DailyProps) => {
