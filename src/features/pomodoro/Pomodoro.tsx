@@ -30,15 +30,14 @@ const Pomodoro = () => {
     })),
   );
 
-  const { remainingMin, remainingSec, handleStartPause, handleReset } =
-    usePomodoroMain({
-      timeObj: { endTime: endTime, pausedMin: pausedMin, pausedSec: pausedSec },
-      setTimeObj: setTimeObj,
-      isActive: isActive,
-      setIsActive: setIsActive,
-      tick: tick,
-      setTick: setTick,
-    });
+  const { remainingMin, remainingSec, handleStartPause } = usePomodoroMain({
+    timeObj: { endTime: endTime, pausedMin: pausedMin, pausedSec: pausedSec },
+    setTimeObj: setTimeObj,
+    isActive: isActive,
+    setIsActive: setIsActive,
+    tick: tick,
+    setTick: setTick,
+  });
 
   return (
     <div className="pomo-main-wrap">

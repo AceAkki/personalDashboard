@@ -88,18 +88,11 @@ const usePomodoroMain = ({
     }
   };
 
-  const handleReset = () => {
-    setTimeObj({ endTime: 0, pausedMin: 0, pausedSec: 0 });
-    setIsActive(false);
-    setTick(0);
-  };
-
   return {
     startPomodoro,
     remainingMin,
     remainingSec,
     handleStartPause,
-    handleReset,
   } as const;
 };
 
