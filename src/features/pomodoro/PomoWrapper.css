@@ -1,0 +1,21 @@
+.pomo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.background-txt {
+  position: absolute;
+  font-size: 12rem;
+  font-weight: 800;
+  color: var(--primary-soft);
+  word-wrap: anywhere;
+  text-align: center;
+}
+
+@media screen and (min-width: 1080px) {
+  .background-txt {
+    font-size:20rem;
+  }
+}

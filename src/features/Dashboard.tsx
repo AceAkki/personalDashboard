@@ -5,15 +5,26 @@ import { Outlet, useLoaderData } from "react-router-dom";
 // common imports
 import { ToastContainer, Bounce } from "react-toastify";
 import { Header } from "../components/Header";
-
-// link
 import QuickLinks from "../components/QuickLinks";
 
+// state imports
+import { useUserStore } from "./auth/useAuthStore";
 // css imports
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
+  // retrieved data from the loader
   const { weatherData, aqiData } = useLoaderData();
+
+  // getting the current background url from the store
+  const currentBG = useUserStore((state) => state.backgroundURL);
+  console.log(currentBG);
+
+  let root = document.documentElement;
+  // if currentBG exists then it sets the background image
+  if (currentBG) {
+    root.style.setProperty("--background-img", currentBG);
+  }
 
   return (
     <>

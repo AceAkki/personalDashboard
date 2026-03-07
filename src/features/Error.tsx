@@ -7,6 +7,7 @@ const ErrorPage = () => {
   return (
     <section>
       <h1>Error Occured!</h1>
+      <p> Something went wrong, unable to load the page. </p>
     </section>
   );
 };

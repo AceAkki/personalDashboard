@@ -1,11 +1,16 @@
+// main react imports
 import { useRef, useEffect } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
+
+// state imports
 import { useUserStore } from "./useAuthStore";
 
+// icon imports and css
 import { BrainIcon, MapPinAreaIcon } from "@phosphor-icons/react";
 import "./login.css";
 
+// action function for the login form - logins user and sets the location
 export async function action({ request }: { request: any }) {
   const formData = await request.formData();
   let username = formData.get("username");
@@ -30,7 +35,7 @@ export async function action({ request }: { request: any }) {
   }
 }
 
-// allows user to grab location via API
+// allows user to grab current location via geolocation API
 async function grabLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(

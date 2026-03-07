@@ -5,6 +5,7 @@
   border: 1px solid var(--primary);
   border-radius: 16px;
   color: var(--txt-clr);
+  height:100%;
 }
 .weather-date {
   font-size: 1.2rem;

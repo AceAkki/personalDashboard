@@ -16,7 +16,7 @@ import TaskManager, {
   action as taskManagerAction,
 } from "./features/task-manager/TaskManager";
 
-import Pomodoro from "./features/pomodoro/Pomodoro";
+import PomoWrapper from "./features/pomodoro/PomoWrapper";
 import Weather from "./features/weather/Weather";
 import { getWeather, getAQI } from "./features/weather/utils/getWeather";
 
@@ -82,7 +82,7 @@ const router = createBrowserRouter(
             action={taskManagerAction}
           />
           <Route path="weather" element={<Weather />} />
-          <Route path="pomodoro" element={<Pomodoro />} />
+          <Route path="pomodoro" element={<PomoWrapper />} />
           <Route path="notes" element={<Notes />} />
           <Route path="newsfeed" element={<NewsFeed />} />
         </Route>

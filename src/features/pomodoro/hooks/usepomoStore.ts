@@ -20,6 +20,7 @@ interface usePomoStore extends PomoInitial {
   updateTimeObj: ({ endTime, pausedMin, pausedSec }: TimeObj) => void;
   updateIsActive: () => void;
   updateTick: () => void;
+  resetTimeObj: () => void;
 }
 
 export const usePomoStore = create<usePomoStore>()(
@@ -34,6 +35,7 @@ export const usePomoStore = create<usePomoStore>()(
         })),
       updateIsActive: () => set((state) => ({ isActive: !state.isActive })),
       updateTick: () => set((state) => ({ tick: state.tick + 1 })),
+      resetTimeObj: () => set(() => initialState),
     }),
     { name: pomoKey }, // localStorage key)
   ),

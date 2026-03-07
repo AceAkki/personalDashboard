@@ -1,6 +1,7 @@
 import { useShallow } from "zustand/shallow";
 import usePomodoroMain from "./hooks/usePomodoroMain";
 import { usePomoStore } from "./hooks/usepomoStore";
+import { PlayIcon, PauseIcon, ArrowClockwiseIcon } from "@phosphor-icons/react";
 import "./pomodoro.css";
 
 const Pomodoro = () => {
@@ -14,6 +15,7 @@ const Pomodoro = () => {
     setIsActive,
     tick,
     setTick,
+    resetTimeObj,
   } = usePomoStore(
     useShallow((state) => ({
       endTime: state.endTime,
@@ -24,6 +26,7 @@ const Pomodoro = () => {
       setIsActive: state.updateIsActive,
       tick: state.tick,
       setTick: state.updateTick,
+      resetTimeObj: state.resetTimeObj,
     })),
   );
 
@@ -43,11 +46,15 @@ const Pomodoro = () => {
         <div className="circle">
           <div className="pomo-txt">
             <h1>{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
-            <button onClick={() => handleStartPause()} className="pomo-btn">
-              {!isActive ? "Start" : "Pause"}
+            <button
+              onClick={() => handleStartPause()}
+              className="pomo-btn"
+              aria-description={!isActive ? "Start Pomodoro" : "Pause Pomodoro"}
+            >
+              {!isActive ? <PlayIcon size={32} /> : <PauseIcon size={32} />}
             </button>
-            <button onClick={() => handleReset()} className="pomo-btn">
-              Reset
+            <button onClick={() => resetTimeObj()} className="pomo-btn">
+              <ArrowClockwiseIcon size={32} />
             </button>
           </div>
         </div>

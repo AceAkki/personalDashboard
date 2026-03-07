@@ -33,5 +33,6 @@ export type location = {
 
 export interface userType {
   username: string;
+  backgroundURL: string;
   location: { latitude: number; longitude: number };
 }

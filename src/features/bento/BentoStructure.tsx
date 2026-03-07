@@ -47,6 +47,7 @@ const BentoStructure = () => {
   const taskTxt = tasks.find((task) => task?.id === taskID);
 
   const username = useUserStore((state) => state.username);
+
   const updateNotes = useNoteStore((state) => state.updateNotes);
 
   return (
@@ -56,7 +57,9 @@ const BentoStructure = () => {
       </div>
       <div className="bento-grid-layout">
         <div className="grid-item span-row">
-          <TaskForm inputRef={inputRef} />
+          <div>
+            <TaskForm inputRef={inputRef} />
+          </div>
           <TasksMain taskData={tasks} taskSet={updateTasks} Type="Priority" />
         </div>
 

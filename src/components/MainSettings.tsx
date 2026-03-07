@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { useUserStore } from "../features/auth/useAuthStore";
@@ -22,22 +21,14 @@ let randomNum = () => {
 
 const MainSettings = ({ divRef }: { divRef: any }) => {
   const navigate = useNavigate();
-  const { username, logoutUser } = useUserStore(
+  const { username, logoutUser, updateBackground } = useUserStore(
     useShallow((state) => ({
       username: state.username,
       logoutUser: state.logOutUser,
+      updateBackground: state.updateBackground,
     })),
   );
-
-  const [currentBG, setCurrentBG] = useState<string | null>(null);
   const keysArr = [userKey, tasksKey, linksKey, pomoKey, notesKey];
-  let root = document.documentElement;
-  useEffect(() => {
-    console.log(currentBG);
-    if (currentBG) {
-      root.style.setProperty("--background-img", `url(${currentBG})`);
-    }
-  }, [currentBG]);
 
   return (
     <div className="settings-wrap hide" ref={divRef}>
@@ -58,9 +49,7 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
         <button
           onClick={() => {
             let newURL = `url(${bgURLS[randomNum()]})`;
-
-            root.style.setProperty("--background-img", newURL);
-            setCurrentBG(newURL);
+            updateBackground(newURL);
           }}
         >
           Change BG

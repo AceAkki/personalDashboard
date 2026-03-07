@@ -12,7 +12,7 @@
 }
 
 .dashboard-section .inner-route-section {
-  margin: var(--header-height) 0;
+  /* margin: var(--header-height) 0; */
 }
 
 .main-outlet-wrap {
@@ -22,7 +22,7 @@
   -webkit-backdrop-filter: blur(90px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 2rem 0;
   min-height: max-content;
 }
