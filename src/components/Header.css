@@ -12,6 +12,7 @@
   border-radius: var(--default-radius) 0 0 var(--default-radius);
   font-size: 1.2rem;
   font-weight: 700;
+  transition: all 0.5s ease-in-out;
 }
 .header-logo-wrap a {
   display: flex;
@@ -20,6 +21,13 @@
   gap: 0.5rem;
   text-decoration: none;
   color: var(--secondary);
+}
+
+.header-logo-wrap:hover {
+  background: var(--secondary);
+}
+.header-logo-wrap:hover a {
+  color: var(--primary);
 }
 
 .user-header-wrap {
