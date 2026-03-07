@@ -1,4 +1,7 @@
 import type { FavLinksProps } from "../favLinkTypes";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
 const favLinks = {
   SearchLinks: [
     {
@@ -129,23 +132,42 @@ const RenderFavLinks = ({ search, setSearch }: FavLinksProps) => {
   }
   return (
     <div className="fav-links-btns">
-      {Object.keys(favLinks).map((key) => {
-        return favLinks[key as favLinksKey].map((link) => {
-          return (
-            <label className="fav-link-label" key={link.name}>
-              <input
-                type="radio"
-                name="search-Links"
-                value={`${link.name} | ${key}`}
-                onChange={handleChange}
-              />
-              <div className="fav-link-img" key={link.name}>
-                <img src={link.favicon} alt={link.name} title={link.name} />
-              </div>
-            </label>
-          );
-        });
-      })}
+      <Swiper
+        spaceBetween={5}
+        slidesPerView={2}
+        breakpoints={{
+          // when window width is >= 640px
+          240: {
+            slidesPerView: 6,
+            spaceBetween: 2,
+          },
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 8,
+            spaceBetween: 2,
+          },
+        }}
+      >
+        {Object.keys(favLinks).map((key) => {
+          return favLinks[key as favLinksKey].map((link) => {
+            return (
+              <SwiperSlide>
+                <label className="fav-link-label" key={link.name}>
+                  <input
+                    type="radio"
+                    name="search-Links"
+                    value={`${link.name} | ${key}`}
+                    onChange={handleChange}
+                  />
+                  <div className="fav-link-img" key={link.name}>
+                    <img src={link.favicon} alt={link.name} title={link.name} />
+                  </div>
+                </label>
+              </SwiperSlide>
+            );
+          });
+        })}
+      </Swiper>
     </div>
   );
 };
