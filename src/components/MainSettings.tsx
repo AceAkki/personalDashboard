@@ -11,6 +11,7 @@ import {
 import { toggleClass } from "../global/globalFunctions";
 import { bgFiles } from "../assets/bgFiles.js";
 import "./MainSettings.css";
+import { useRef } from "react";
 
 const bgURLS = Object.values(bgFiles)
   .map((arr) => arr)
@@ -28,6 +29,7 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
       updateBackground: state.updateBackground,
     })),
   );
+  const inputRef = useRef<HTMLInputElement>(null);
   const keysArr = [userKey, tasksKey, linksKey, pomoKey, notesKey];
 
   return (
@@ -45,6 +47,28 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
           X
         </div>
         <h2>Hey {username}!</h2>
+
+        <input
+          type="text"
+          name="urlpath"
+          ref={inputRef}
+          // onChange={(event) => {
+          //   const value = event?.target.value;
+          //   setCustomImgURL(value);
+          // }}
+        />
+        <button
+          onClick={() => {
+            const inputElm = inputRef.current;
+            if (inputElm) {
+              let newCustomBG = `url(${inputElm?.value})`;
+              updateBackground(newCustomBG);
+              inputElm.value = "";
+            }
+          }}
+        >
+          Set Custom BG
+        </button>
 
         <button
           onClick={() => {

@@ -49,6 +49,10 @@ const Hourly = ({ hourly, tempUnit }: HourlyProps) => {
             slidesPerView: 2.5,
             spaceBetween: 20,
           },
+          840: {
+            slidesPerView: 4.5,
+            spaceBetween: 20,
+          },
           // when window width is >= 1024px
           1024: {
             slidesPerView: 9.5,
