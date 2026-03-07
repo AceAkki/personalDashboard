@@ -45,7 +45,7 @@ const Pomodoro = () => {
       <div>
         <div className="circle">
           <div className="pomo-txt">
-            <h1>{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
+            <h1 className="pomo-time">{`${remainingMin}:${remainingSec.toString().padStart(2, "0")}`}</h1>
             <button
               onClick={() => handleStartPause()}
               className="pomo-btn"
