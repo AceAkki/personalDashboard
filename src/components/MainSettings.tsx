@@ -65,6 +65,7 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
             const errorElm = errorRef.current;
             if (inputElm && errorElm) {
               let inputValue = inputElm?.value;
+              // checks if its image url then either changes bg or throws error
               let isValidURL = await checkImgURL(inputValue);
               if (isValidURL) {
                 let newCustomBG = `url(${inputValue})`;
@@ -75,6 +76,12 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
               }
               inputElm.value = "";
             }
+
+            // clears error text
+            setTimeout(() => {
+              if (!errorElm) return;
+              errorElm.innerText = "";
+            }, 1000);
           }}
         >
           Set Custom BG

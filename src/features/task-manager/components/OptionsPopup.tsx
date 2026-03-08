@@ -10,10 +10,11 @@ import { useEffect } from "react";
 
 export default function OptionsPopup({ refer, taskObject }: optionPopupProps) {
   const { MoveBtns, getCurrentType } = useOptions();
-  const { moveTask, deleteTask } = useTaskStore(
+  const { moveTask, deleteTask, toggleEditMode } = useTaskStore(
     useShallow((state) => ({
       moveTask: state.moveTask,
       deleteTask: state.deleteTask,
+      toggleEditMode: state.toggleEditMode,
     })),
   );
 
@@ -42,7 +43,7 @@ export default function OptionsPopup({ refer, taskObject }: optionPopupProps) {
           targetType=""
         />
         <li>
-          <button> Edit Task </button>
+          <button onClick={() => toggleEditMode()}> Edit Task </button>
         </li>
         <li>
           <button onClick={() => deleteTask(taskObject.id)}>Delete Task</button>

@@ -29,6 +29,7 @@ const Task = ({ taskTxt }: TaskType) => {
             e.clientX,
             e.clientY,
             document.documentElement.clientWidth,
+            e,
           );
           const root = document.documentElement;
           root.style.setProperty(

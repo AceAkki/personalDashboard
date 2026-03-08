@@ -1,16 +1,15 @@
 import { type ActionFunctionArgs } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { nanoid } from "nanoid";
-import { useRef } from "react";
+
 // component imports
 import TasksMain from "./components/TasksMain";
 import TaskForm from "./components/TaskForm";
 
 import useTaskMain from "./hooks/useTaskMain";
 import { useTaskStore } from "./hooks/useTasksStore";
-import OptionsPopup from "../task-manager/components/OptionsPopup";
 // type imports
-import type { TaskActionData, TasksProps } from "./taskTypes";
+import type { TaskActionData, TasksMainWrapperProps } from "./taskTypes";
 
 // css imports
 import "./TaskManager.css";
@@ -29,24 +28,20 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 // maun wrapper
-const TasksMainWrapper = ({ taskData, taskSet }: TasksProps) => {
+const TasksMainWrapper = ({ taskData }: TasksMainWrapperProps) => {
   return ["Current", "Priority", "Completed"].map((Type) => (
-    <TasksMain key={Type} taskData={taskData} taskSet={taskSet} Type={Type} />
+    <TasksMain key={Type} taskData={taskData} Type={Type} />
   ));
 };
 
 const TaskManager = () => {
-  const { tasks, updateTasks, taskID } = useTaskStore(
+  const { tasks, updateTasks } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       updateTasks: state.updateTasks,
-      taskID: state.taskID,
-      setTaskID: state.setTaskID,
     })),
   );
   const inputRef = useTaskMain(updateTasks);
-  const optionRef = useRef<HTMLDivElement>(null);
-  const taskTxt = tasks.find((task) => task?.id === taskID);
   return (
     <>
       <section className="overflow-unset inner-route-section">
@@ -59,12 +54,9 @@ const TaskManager = () => {
         </div>
 
         <div className="tasks-grid-wrap">
-          <TasksMainWrapper taskData={tasks} taskSet={updateTasks} />
+          <TasksMainWrapper taskData={tasks} />
         </div>
       </section>
-      {taskID === taskTxt?.id && (
-        <OptionsPopup refer={optionRef} taskObject={taskTxt} />
-      )}
     </>
   );
 };

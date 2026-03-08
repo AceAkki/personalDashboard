@@ -1,14 +1,17 @@
 // main react imports
 import { type ReactElement } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
-
+import { useShallow } from "zustand/shallow";
+import { useRef } from "react";
 // common imports
 import { ToastContainer, Bounce } from "react-toastify";
 import { Header } from "../components/Header";
 import QuickLinks from "../components/QuickLinks";
-
+import OptionsPopup from "./task-manager/components/OptionsPopup";
+import EditTaskForm from "./task-manager/components/EditTaskForm";
 // state imports
 import { useUserStore } from "./auth/useAuthStore";
+import { useTaskStore } from "./task-manager/hooks/useTasksStore";
 // css imports
 import "./dashboard.css";
 
@@ -26,6 +29,16 @@ const Dashboard = (): ReactElement => {
     root.style.setProperty("--background-img", currentBG);
   }
 
+  const { tasks, taskID, isEditMode } = useTaskStore(
+    useShallow((state) => ({
+      tasks: state.tasks,
+      taskID: state.taskID,
+      isEditMode: state.isEditMode,
+    })),
+  );
+  const optionRef = useRef<HTMLDivElement>(null);
+  const taskTxt = tasks.find((task) => task?.id === taskID);
+
   return (
     <>
       <Header title="tableroPersonel" />
@@ -41,6 +54,12 @@ const Dashboard = (): ReactElement => {
             />
           </div>
         </section>
+        {taskID === taskTxt?.id && (
+          <OptionsPopup refer={optionRef} taskObject={taskTxt} />
+        )}
+        {taskID === taskTxt?.id && isEditMode && (
+          <EditTaskForm taskObject={taskTxt} />
+        )}
       </main>
       <ToastContainer
         position="top-right"

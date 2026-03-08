@@ -1,25 +1,20 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import type { TaskActionData } from "../taskTypes";
+import type { TaskActionData, MoveTaskProps } from "../taskTypes";
 import { tasksKey } from "../../../global/storageKeys";
 
 interface useTaskStore {
   tasks: TaskActionData[];
   deleteTask: (id: string) => void;
-  moveTask: ({
-    id,
-    targetType,
-    currentType,
-  }: {
-    id: string;
-    targetType: string;
-    currentType: string;
-  }) => void;
+  moveTask: ({ id, targetType, currentType }: MoveTaskProps) => void;
   updateTasks: (task: TaskActionData) => void;
   clearAllTasks: () => void;
   taskID: string | null;
   setTaskID: (id: string | null) => void;
+  isEditMode: boolean;
+  toggleEditMode: () => void;
+  editTask: ({ id, newTask }: { id: string; newTask: string }) => void;
 }
 
 export const useTaskStore = create<useTaskStore>()(
@@ -57,6 +52,25 @@ export const useTaskStore = create<useTaskStore>()(
       },
       taskID: null,
       setTaskID: (id) => set({ taskID: id }),
+      isEditMode: false,
+      toggleEditMode: () =>
+        set((state) => ({
+          isEditMode: state.isEditMode ? false : true,
+          taskID: state.isEditMode ? null : state.taskID,
+        })),
+      editTask: ({ id, newTask }) =>
+        set((state) => ({
+          tasks: state.tasks.map((task) =>
+            task.id === id
+              ? {
+                  ...task,
+                  taskName: newTask,
+                }
+              : task,
+          ),
+          isEditMode: false,
+          taskID: null,
+        })),
     }),
     { name: tasksKey }, // localStorage key)
   ),

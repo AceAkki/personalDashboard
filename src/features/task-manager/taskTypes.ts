@@ -4,11 +4,6 @@ export interface TaskActionData {
   type: TasksTypes;
 }
 
-export type TaskIDMainType = [
-  string | null,
-  React.Dispatch<React.SetStateAction<string | null>>,
-];
-
 export interface TasksTypes {
   Current: boolean;
   Priority: boolean;
@@ -17,24 +12,16 @@ export interface TasksTypes {
 
 export type TaskActionDataSet = (task: TaskActionData) => void;
 
-interface ReactSet {
-  taskSet: (task: TaskActionData) => void;
-}
-
-export interface TasksProps extends ReactSet {
+export interface TasksMainWrapperProps {
   taskData: TaskActionData[];
 }
 
-export interface TasksMainProps extends TasksProps {
+export interface TasksMainProps extends TasksMainWrapperProps {
   Type: string;
 }
 
-export interface TaskType extends ReactSet {
+export interface TaskType {
   taskTxt: TaskActionData;
-}
-
-export interface RefUse extends ReactSet, TaskType {
-  refer: React.RefObject<HTMLDivElement | null>;
 }
 
 export interface optionPopupProps {
@@ -47,16 +34,14 @@ export interface MoveBtnsProps {
   currentType: string;
   targetType: string;
   taskObject: TaskActionData;
-  moveTask: ({
-    id,
-    targetType,
-    currentType,
-  }: {
-    id: string;
-    targetType: string;
-    currentType: string;
-  }) => void;
+  moveTask: ({ id, targetType, currentType }: MoveTaskProps) => void;
 }
+
+export type MoveTaskProps = {
+  id: string;
+  targetType: string;
+  currentType: string;
+};
 
 export interface OptionsMain extends TaskType {
   currentType: string;
