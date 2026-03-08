@@ -16,20 +16,27 @@ const EditTaskForm = ({ taskObject }: { taskObject: TaskActionData }) => {
   return (
     <div className="edit-task-form">
       <div className="edit-task-content">
-        <input
-          type="text"
-          value={newTaskTxt}
-          className="task-edit show"
-          onChange={(e) => {
-            SetNewTaskTxt(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => editTask({ id: taskObject.id, newTask: newTaskTxt })}
-        >
-          Confirm
-        </button>
-        <button onClick={() => toggleEditMode()}>Cancel</button>
+        <div>
+          <input
+            type="text"
+            value={newTaskTxt}
+            className="task-edit show"
+            onChange={(e) => {
+              SetNewTaskTxt(e.target.value);
+            }}
+          />
+        </div>
+        <div className="btn-wrap">
+          <button
+            onClick={() => editTask({ id: taskObject.id, newTask: newTaskTxt })}
+            className="confirm-btn"
+          >
+            Confirm
+          </button>
+          <button onClick={() => toggleEditMode()} className="cancel-btn">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

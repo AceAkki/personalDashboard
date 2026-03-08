@@ -22,9 +22,10 @@ let randomNum = () => {
 
 const MainSettings = ({ divRef }: { divRef: any }) => {
   const navigate = useNavigate();
-  const { username, logoutUser, updateBackground } = useUserStore(
+  const { username, location, logoutUser, updateBackground } = useUserStore(
     useShallow((state) => ({
       username: state.username,
+      location: state.location,
       logoutUser: state.logOutUser,
       updateBackground: state.updateBackground,
     })),
@@ -35,7 +36,7 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
 
   return (
     <div className="settings-wrap hide" ref={divRef}>
-      <div className="settings-content">
+      <div className="settings-content glass">
         <div
           className="settings-close-btn"
           onClick={() =>
@@ -49,54 +50,68 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
         </div>
         <h2>Hey {username}!</h2>
 
-        <input
-          type="text"
-          name="urlpath"
-          ref={inputRef}
-          // onChange={(event) => {
-          //   const value = event?.target.value;
-          //   setCustomImgURL(value);
-          // }}
-        />
-        <p className="error-msg" ref={errorRef}></p>
-        <button
-          onClick={async () => {
-            const inputElm = inputRef.current;
-            const errorElm = errorRef.current;
-            if (inputElm && errorElm) {
-              let inputValue = inputElm?.value;
-              // checks if its image url then either changes bg or throws error
-              let isValidURL = await checkImgURL(inputValue);
-              if (isValidURL) {
-                let newCustomBG = `url(${inputValue})`;
-                updateBackground(newCustomBG);
-                errorElm.innerText = "";
-              } else {
-                errorElm.innerText = "Error Occured, Failed to fetch URL";
-              }
-              inputElm.value = "";
-            }
+        <div>
+          <strong>Current Location :</strong>
+          <p>{location.latitude}</p>
+          <p>{location.longitude}</p>
+        </div>
 
-            // clears error text
-            setTimeout(() => {
-              if (!errorElm) return;
-              errorElm.innerText = "";
-            }, 1000);
-          }}
-        >
-          Set Custom BG
-        </button>
+        <div>
+          <input
+            type="text"
+            name="urlpath"
+            placeholder="URL for the Background Image"
+            ref={inputRef}
+            // onChange={(event) => {
+            //   const value = event?.target.value;
+            //   setCustomImgURL(value);
+            // }}
+          />
+          <p className="error-msg" ref={errorRef}></p>
+          <div className="btn-wrap">
+            <button
+              onClick={async () => {
+                const inputElm = inputRef.current;
+                const errorElm = errorRef.current;
+                if (inputElm && errorElm) {
+                  let inputValue = inputElm?.value;
+                  // checks if its image url then either changes bg or throws error
+                  let isValidURL = await checkImgURL(inputValue);
+                  if (isValidURL) {
+                    let newCustomBG = `url(${inputValue})`;
+                    updateBackground(newCustomBG);
+                    errorElm.innerText = "";
+                  } else if (!isValidURL && inputValue.length <= 0) {
+                    errorElm.innerText = "URL cannot be blank.";
+                  } else {
+                    errorElm.innerText = `Error Occured, Failed to fetch URL`;
+                  }
+                  inputElm.value = "";
+                }
+
+                // clears error text
+                setTimeout(() => {
+                  if (!errorElm) return;
+                  errorElm.innerText = "";
+                }, 1000);
+              }}
+            >
+              Set Custom BG
+            </button>
+
+            <button
+              onClick={() => {
+                let newURL = `url(${bgURLS[randomNum()]})`;
+                updateBackground(newURL);
+              }}
+            >
+              Random BG
+            </button>
+          </div>
+        </div>
 
         <button
-          onClick={() => {
-            let newURL = `url(${bgURLS[randomNum()]})`;
-            updateBackground(newURL);
-          }}
-        >
-          Change BG
-        </button>
-
-        <button
+          className="log-out-user"
           onClick={() => {
             logoutUser();
             keysArr.forEach((key) => localStorage.removeItem(key));
