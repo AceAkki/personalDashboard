@@ -60,7 +60,7 @@ const BentoStructure = () => {
           <div>
             <TaskForm inputRef={inputRef} />
           </div>
-          <TasksMain taskData={tasks} taskSet={updateTasks} Type="Priority" />
+          <TasksMain taskData={tasks} Type="Priority" />
         </div>
 
         <div className="grid-item">
@@ -76,7 +76,7 @@ const BentoStructure = () => {
         </div>
 
         <div className="grid-item">
-          <TasksMain taskData={tasks} taskSet={updateTasks} Type="Current" />
+          <TasksMain taskData={tasks} Type="Current" />
         </div>
         <div className="grid-item">
           <NotesForm setNotes={updateNotes} />
