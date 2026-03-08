@@ -20,7 +20,7 @@
   --header-height: 0;
   --options-width: 0;
   --toastify-icon-color-error: var(--error);
-  --background-img: url("assets/butterfly.jpg");
+  --background-img: url("assets/default.jpg");
 }
 
 * {
