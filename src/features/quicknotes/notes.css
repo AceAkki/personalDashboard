@@ -58,6 +58,10 @@
   flex-direction: column-reverse;
 }
 
+.note-wrap p {
+  word-wrap: break-word;
+}
+
 .note-del-btn {
   align-self: flex-end;
 }

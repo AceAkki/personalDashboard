@@ -31,3 +31,13 @@ export const toggleClass = ({
   if (!element) return;
   element.classList.toggle(classname);
 };
+
+export const checkImgURL = async (inputValue: string) => {
+  const res = await fetch(inputValue);
+  if (!res) return false;
+  const isImageType = res.headers.get("content-type")?.includes("image");
+  const isStatusOk = res.status === 200 && res.ok;
+
+  console.log(isImageType, isStatusOk);
+  return isImageType && isStatusOk;
+};

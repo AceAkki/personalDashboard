@@ -133,17 +133,17 @@ const RenderFavLinks = ({ search, setSearch }: FavLinksProps) => {
   return (
     <div className="fav-links-btns">
       <Swiper
-        spaceBetween={5}
+        spaceBetween={2}
         slidesPerView={2}
         breakpoints={{
           // when window width is >= 640px
           240: {
-            slidesPerView: 6,
+            slidesPerView: 3.5,
             spaceBetween: 2,
           },
           // when window width is >= 1024px
           1024: {
-            slidesPerView: 8,
+            slidesPerView: 8.6,
             spaceBetween: 2,
           },
         }}

@@ -8,7 +8,7 @@ import {
   pomoKey,
   notesKey,
 } from "../global/storageKeys";
-import { toggleClass } from "../global/globalFunctions";
+import { toggleClass, checkImgURL } from "../global/globalFunctions";
 import { bgFiles } from "../assets/bgFiles.js";
 import "./MainSettings.css";
 import { useRef } from "react";
@@ -30,6 +30,7 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
     })),
   );
   const inputRef = useRef<HTMLInputElement>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
   const keysArr = [userKey, tasksKey, linksKey, pomoKey, notesKey];
 
   return (
@@ -57,12 +58,21 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
           //   setCustomImgURL(value);
           // }}
         />
+        <p className="error-msg" ref={errorRef}></p>
         <button
-          onClick={() => {
+          onClick={async () => {
             const inputElm = inputRef.current;
-            if (inputElm) {
-              let newCustomBG = `url(${inputElm?.value})`;
-              updateBackground(newCustomBG);
+            const errorElm = errorRef.current;
+            if (inputElm && errorElm) {
+              let inputValue = inputElm?.value;
+              let isValidURL = await checkImgURL(inputValue);
+              if (isValidURL) {
+                let newCustomBG = `url(${inputValue})`;
+                updateBackground(newCustomBG);
+                errorElm.innerText = "";
+              } else {
+                errorElm.innerText = "Error Occured, Failed to fetch URL";
+              }
               inputElm.value = "";
             }
           }}

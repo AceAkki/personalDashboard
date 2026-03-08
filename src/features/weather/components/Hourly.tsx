@@ -46,15 +46,27 @@ const Hourly = ({ hourly, tempUnit }: HourlyProps) => {
         breakpoints={{
           // when window width is >= 640px
           240: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          390: {
             slidesPerView: 2.5,
             spaceBetween: 20,
           },
-          840: {
+          800: {
             slidesPerView: 4.5,
             spaceBetween: 20,
           },
           // when window width is >= 1024px
           1024: {
+            slidesPerView: 9.5,
+            spaceBetween: 10,
+          },
+          1280: {
+            slidesPerView: 8.5,
+            spaceBetween: 10,
+          },
+          1380: {
             slidesPerView: 9.5,
             spaceBetween: 10,
           },
