@@ -24,7 +24,7 @@ import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 
 // State
 import { useUserStore } from "../auth/useAuthStore";
-
+import { timeOfTheDayGreeting } from "../../global/globalFunctions";
 // type imports
 import type { DashboardContext } from "../mainTypes";
 import OptionsPopup from "../task-manager/components/OptionsPopup";
@@ -72,7 +72,9 @@ const BentoStructure = () => {
   return (
     <>
       <div className="welcome-greet-wrap">
-        <h1>Welcome {username}!</h1>
+        <h1>
+          {timeOfTheDayGreeting()} {username}!
+        </h1>
       </div>
       <motion.div
         variants={containerVariants}

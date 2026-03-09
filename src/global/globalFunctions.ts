@@ -32,6 +32,15 @@ export const toggleClass = ({
   element.classList.toggle(classname);
 };
 
+export const timeOfTheDayGreeting = () => {
+  const currentHour = new Date().getHours();
+  return currentHour > 11
+    ? "¡Buenos Días"
+    : currentHour >= 12 && currentHour < 19
+      ? "Buenas Tardes"
+      : "¡Buenas Noches";
+};
+
 export const checkImgURL = async (inputValue: string) => {
   const res = await fetch(inputValue);
   if (!res) return false;
