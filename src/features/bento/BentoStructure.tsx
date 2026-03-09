@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { useRef } from "react";
 import { useShallow } from "zustand/shallow";
+import { motion } from "motion/react";
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
 import TaskForm from "../task-manager/components/TaskForm";
@@ -30,6 +31,24 @@ import OptionsPopup from "../task-manager/components/OptionsPopup";
 // css imports
 import "./BentoStructure.css";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.5, // Delay all children animations by 0.3s
+      staggerChildren: 0.2, // Stagger each child's animation by 0.15s
+      opacity: { ease: "easeInOut" },
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 10, opacity: 0, scale: 0 },
+  visible: { y: 0, opacity: 1, scale: 1 },
+};
+
 const BentoStructure = () => {
   const { weatherData, aqiData } = useOutletContext<DashboardContext>();
   const newsArr = useRouteNewsData();
@@ -55,47 +74,52 @@ const BentoStructure = () => {
       <div className="welcome-greet-wrap">
         <h1>Welcome {username}!</h1>
       </div>
-      <div className="bento-grid-layout">
-        <div className="grid-item span-row">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="bento-grid-layout"
+      >
+        <motion.div variants={itemVariants} className="grid-item span-row">
           <div>
             <TaskForm inputRef={inputRef} />
           </div>
           <TasksMain taskData={tasks} Type="Priority" />
-        </div>
+        </motion.div>
 
-        <div className="grid-item">
+        <motion.div variants={itemVariants} className="grid-item">
           <WeatherCard
             current={weatherData.current}
             current_units={weatherData.current_units}
             aqiCurrent={aqiData.current}
             aqiCurrent_units={aqiData.current_units}
           />
-        </div>
-        <div className="grid-item span-column">
+        </motion.div>
+        <motion.div variants={itemVariants} className="grid-item span-column">
           <FavLinks />
-        </div>
+        </motion.div>
 
-        <div className="grid-item">
+        <motion.div variants={itemVariants} className="grid-item">
           <TasksMain taskData={tasks} Type="Current" />
-        </div>
-        <div className="grid-item">
+        </motion.div>
+        <motion.div variants={itemVariants} className="grid-item">
           <NotesForm setNotes={updateNotes} />
-        </div>
+        </motion.div>
 
-        <div className="grid-item">
+        <motion.div variants={itemVariants} className="grid-item">
           <Pomodoro />
-        </div>
+        </motion.div>
 
-        <div className="grid-item span-column">
+        <motion.div variants={itemVariants} className="grid-item span-column">
           <RenderNews newsArr={newsArr} />
-        </div>
-        <div className="grid-item">
+        </motion.div>
+        <motion.div variants={itemVariants} className="grid-item">
           <LinkStorage />
-        </div>
+        </motion.div>
         {/* <div className="grid-item">
           <Inspire />
         </div> */}
-      </div>
+      </motion.div>
       {taskID === taskTxt?.id && (
         <OptionsPopup refer={optionRef} taskObject={taskTxt} />
       )}
