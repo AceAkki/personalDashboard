@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import MainSettings from "./MainSettings";
-import { toggleClass } from "../global/globalFunctions";
 import { AnimatePresence } from "motion/react";
 import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, type ReactElement } from "react";
@@ -14,7 +13,6 @@ type HeaderProps = { title?: string };
 export function Header({ title }: HeaderProps): ReactElement {
   //console.log(userData);
   let headerRef = useRef<HTMLHeadingElement>(null);
-  let settingsRef = useRef<HTMLDivElement>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   useEffect(() => {
     const nav = headerRef.current;

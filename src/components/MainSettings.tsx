@@ -10,7 +10,7 @@ import {
   pomoKey,
   notesKey,
 } from "../global/storageKeys";
-import { toggleClass, checkImgURL } from "../global/globalFunctions";
+import { checkImgURL } from "../global/globalFunctions";
 import { bgFiles } from "../assets/bgFiles.js";
 import "./MainSettings.css";
 import { useRef } from "react";
