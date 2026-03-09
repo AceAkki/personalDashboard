@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
+import { motion } from "motion/react";
+
 import { useUserStore } from "../features/auth/useAuthStore";
 import {
   userKey,
@@ -17,10 +19,10 @@ const bgURLS = Object.values(bgFiles)
   .map((arr) => arr)
   .flat();
 let randomNum = () => {
-  return Math.round(Math.random() * bgURLS.length - 1);
+  return Math.floor(Math.random() * bgURLS.length);
 };
 
-const MainSettings = ({ divRef }: { divRef: any }) => {
+const MainSettings = ({ setIsOpen }: { setIsOpen: (val: boolean) => void }) => {
   const navigate = useNavigate();
   const { username, location, logoutUser, updateBackground } = useUserStore(
     useShallow((state) => ({
@@ -35,17 +37,20 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
   const keysArr = [userKey, tasksKey, linksKey, pomoKey, notesKey];
 
   return (
-    <div className="settings-wrap hide" ref={divRef}>
-      <div className="settings-content glass">
-        <div
-          className="settings-close-btn"
-          onClick={() =>
-            toggleClass({
-              refElem: divRef,
-              classname: "hide",
-            })
-          }
-        >
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="settings-wrap"
+    >
+      <motion.div
+        initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+        animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
+        exit={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="settings-content glass"
+      >
+        <div className="settings-close-btn" onClick={() => setIsOpen(false)}>
           X
         </div>
         <h2>Hey {username}!</h2>
@@ -123,8 +128,8 @@ const MainSettings = ({ divRef }: { divRef: any }) => {
           Logout
         </button>
         <p>Logging out will delete all stored data.</p>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import MainSettings from "./MainSettings";
 import { toggleClass } from "../global/globalFunctions";
-
+import { AnimatePresence } from "motion/react";
 import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, type ReactElement } from "react";
 
@@ -14,7 +15,7 @@ export function Header({ title }: HeaderProps): ReactElement {
   //console.log(userData);
   let headerRef = useRef<HTMLHeadingElement>(null);
   let settingsRef = useRef<HTMLDivElement>(null);
-
+  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   useEffect(() => {
     const nav = headerRef.current;
     if (!nav) return;
@@ -38,18 +39,18 @@ export function Header({ title }: HeaderProps): ReactElement {
         </div> */}
           <div
             className="icon-header-wrap"
-            onClick={() =>
-              toggleClass({
-                refElem: settingsRef,
-                classname: "hide",
-              })
-            }
+            onClick={() => {
+              setIsSettingsOpen(true);
+              console.log(isSettingsOpen);
+            }}
           >
             <GearIcon size={32} />
           </div>
         </button>
       </header>
-      <MainSettings divRef={settingsRef} />
+      <AnimatePresence>
+        {isSettingsOpen && <MainSettings setIsOpen={setIsSettingsOpen} />}
+      </AnimatePresence>
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useShallow } from "zustand/shallow";
+import { motion } from "motion/react";
+
 import { useTaskStore } from "../hooks/useTasksStore";
 import type { TaskActionData } from "../taskTypes";
 
@@ -14,8 +16,19 @@ const EditTaskForm = ({ taskObject }: { taskObject: TaskActionData }) => {
   );
   const [newTaskTxt, SetNewTaskTxt] = useState<string>(taskObject.taskName);
   return (
-    <div className="edit-task-form">
-      <div className="edit-task-content">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="edit-task-form"
+    >
+      <motion.div
+        initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+        animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
+        exit={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="edit-task-content"
+      >
         <div>
           <input
             type="text"
@@ -37,8 +50,8 @@ const EditTaskForm = ({ taskObject }: { taskObject: TaskActionData }) => {
             Cancel
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
