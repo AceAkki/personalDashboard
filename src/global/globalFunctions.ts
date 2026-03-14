@@ -34,7 +34,8 @@ export const toggleClass = ({
 
 export const timeOfTheDayGreeting = () => {
   const currentHour = new Date().getHours();
-  return currentHour > 11
+  console.log(currentHour);
+  return currentHour < 12
     ? "¡Buenos Días"
     : currentHour >= 12 && currentHour < 19
       ? "Buenas Tardes"
