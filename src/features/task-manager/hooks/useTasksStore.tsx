@@ -72,6 +72,7 @@ export const useTaskStore = create<useTaskStore>()(
           taskID: null,
         })),
     }),
+    // partialize code deters mentioned from storing to local storage
     { name: tasksKey, partialize: ({ taskID, ...rest }) => rest }, // localStorage key)
   ),
 );
