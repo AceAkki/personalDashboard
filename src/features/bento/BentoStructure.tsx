@@ -122,9 +122,9 @@ const BentoStructure = () => {
           <Inspire />
         </div> */}
       </motion.div>
-      {taskID === taskTxt?.id && (
+      {/* {taskID === taskTxt?.id && (
         <OptionsPopup refer={optionRef} taskObject={taskTxt} />
-      )}
+      )} */}
     </>
   );
 };
