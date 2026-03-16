@@ -72,6 +72,6 @@ export const useTaskStore = create<useTaskStore>()(
           taskID: null,
         })),
     }),
-    { name: tasksKey }, // localStorage key)
+    { name: tasksKey, partialize: ({ taskID, ...rest }) => rest }, // localStorage key)
   ),
 );
