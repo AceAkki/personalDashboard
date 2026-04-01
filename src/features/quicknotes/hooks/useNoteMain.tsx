@@ -15,7 +15,7 @@ const useNoteMain = (setNotes: NotesSet) => {
     }
     timeoutRef.current = window.setTimeout(() => {
       updateNote({ note: value, id: nanoid() });
-    }, 4000);
+    }, 9000);
   };
 
   const updateNote = ({ note, id }: NoteType) => {

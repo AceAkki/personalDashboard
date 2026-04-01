@@ -5,20 +5,25 @@ import { useNoteStore } from "./hooks/useNoteStore";
 
 const Notes = () => {
   // utilized note store which stores and syncs data with local storage
-  const { notes, deleteNote, updateNotes, clearAllNotes } = useNoteStore(
-    useShallow((state) => ({
-      notes: state.notes,
-      deleteNote: state.deleteNote,
-      updateNotes: state.updateNotes,
-      clearAllNotes: state.clearAllNotes,
-    })),
-  );
+  const { notes, editNote, deleteNote, updateNotes, clearAllNotes } =
+    useNoteStore(
+      useShallow((state) => ({
+        notes: state.notes,
+        editNote: state.editNote,
+        deleteNote: state.deleteNote,
+        updateNotes: state.updateNotes,
+        clearAllNotes: state.clearAllNotes,
+      })),
+    );
 
   const RenderNotes = notes.map((note) => {
     return (
       <div className="note-wrap" key={nanoid()}>
         <div>
           <p>{note.note}</p>
+        </div>
+        <div className="note-edit-btn">
+          {/* <button onClick={() => editNote(note.id)}></button> */}
         </div>
         <div className="note-del-btn">
           <button onClick={() => deleteNote(note.id)}>X</button>
