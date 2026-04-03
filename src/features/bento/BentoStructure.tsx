@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import { useRef } from "react";
+// import { useRef } from "react";
 import { useShallow } from "zustand/shallow";
 import { motion } from "motion/react";
 // components imports
@@ -53,11 +53,10 @@ const BentoStructure = () => {
   const { weatherData, aqiData } = useOutletContext<DashboardContext>();
   const newsArr = useRouteNewsData();
 
-  const { tasks, updateTasks, taskID } = useTaskStore(
+  const { tasks, updateTasks } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       updateTasks: state.updateTasks,
-      taskID: state.taskID,
     })),
   );
   const inputRef = useTaskMain(updateTasks);
