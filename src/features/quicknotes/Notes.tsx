@@ -23,7 +23,7 @@ const Notes = () => {
           <p>{note.note}</p>
         </div>
         <div className="note-edit-btn">
-          {/* <button onClick={() => editNote(note.id)}></button> */}
+          <button onClick={() => editNote(note.id)}></button>
         </div>
         <div className="note-del-btn">
           <button onClick={() => deleteNote(note.id)}>X</button>

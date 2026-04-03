@@ -27,7 +27,7 @@ import { useUserStore } from "../auth/useAuthStore";
 import { timeOfTheDayGreeting } from "../../global/globalFunctions";
 // type imports
 import type { DashboardContext } from "../mainTypes";
-import OptionsPopup from "../task-manager/components/OptionsPopup";
+// import OptionsPopup from "../task-manager/components/OptionsPopup";
 // css imports
 import "./BentoStructure.css";
 
@@ -61,9 +61,9 @@ const BentoStructure = () => {
     })),
   );
   const inputRef = useTaskMain(updateTasks);
-  const optionRef = useRef<HTMLDivElement>(null);
+  // const optionRef = useRef<HTMLDivElement>(null);
 
-  const taskTxt = tasks.find((task) => task?.id === taskID);
+  // const taskTxt = tasks.find((task) => task?.id === taskID);
 
   const username = useUserStore((state) => state.username);
 
