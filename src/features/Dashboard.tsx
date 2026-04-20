@@ -29,11 +29,11 @@ const Dashboard = (): ReactElement => {
     root.style.setProperty("--background-img", currentBG);
   }
 
-  const { tasks, taskID, isEditMode } = useTaskStore(
+  const { tasks, taskID, isTaskEditMode } = useTaskStore(
     useShallow((state) => ({
       tasks: state.tasks,
       taskID: state.taskID,
-      isEditMode: state.isEditMode,
+      isTaskEditMode: state.isEditMode,
     })),
   );
   const optionRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ const Dashboard = (): ReactElement => {
         {taskID === taskTxt?.id && (
           <OptionsPopup refer={optionRef} taskObject={taskTxt} />
         )}
-        {taskID === taskTxt?.id && isEditMode && (
+        {taskID === taskTxt?.id && isTaskEditMode && (
           <EditTaskForm taskObject={taskTxt} />
         )}
       </main>

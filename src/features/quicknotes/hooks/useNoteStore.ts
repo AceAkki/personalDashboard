@@ -20,6 +20,8 @@ export const useNoteStore = create<useNoteStore>()(
   persist(
     (set) => ({
       notes: [],
+      noteID: null,
+      setNoteID: (id) => set({ noteID: id }),
       isEditMode: false,
       toggleEditMode: () =>
         set((state) => ({
