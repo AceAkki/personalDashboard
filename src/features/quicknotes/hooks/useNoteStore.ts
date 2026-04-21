@@ -8,8 +8,8 @@ import { notesKey } from "../../../global/storageKeys";
 // notes store type
 interface useNoteStore {
   notes: NoteType[];
-  noteID: number | null;
-  setNoteID: (id: number | null) => void;
+  noteID: string | null;
+  setNoteID: (id: string | null) => void;
   isEditMode: boolean;
   toggleEditMode: () => void;
   editNote: ({ id, newNote }: { id: string; newNote: string }) => void;

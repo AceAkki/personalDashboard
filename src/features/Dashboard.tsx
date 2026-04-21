@@ -9,9 +9,11 @@ import { Header } from "../components/Header";
 import QuickLinks from "../components/QuickLinks";
 import OptionsPopup from "./task-manager/components/OptionsPopup";
 import EditTaskForm from "./task-manager/components/EditTaskForm";
+import EditNoteForm from "./quicknotes/components/EditNoteForm";
 // state imports
 import { useUserStore } from "./auth/useAuthStore";
 import { useTaskStore } from "./task-manager/hooks/useTasksStore";
+import { useNoteStore } from "./quicknotes/hooks/useNoteStore";
 // css imports
 import "./dashboard.css";
 
@@ -36,8 +38,16 @@ const Dashboard = (): ReactElement => {
       isTaskEditMode: state.isEditMode,
     })),
   );
+  const { notes, noteID, isNoteEditMode } = useNoteStore(
+    useShallow((state) => ({
+      notes: state.notes,
+      noteID: state.noteID,
+      isNoteEditMode: state.isEditMode,
+    })),
+  );
   const optionRef = useRef<HTMLDivElement>(null);
   const taskTxt = tasks.find((task) => task?.id === taskID);
+  const noteTxt = notes.find((note) => note?.id === noteID);
 
   return (
     <>
@@ -59,6 +69,9 @@ const Dashboard = (): ReactElement => {
         )}
         {taskID === taskTxt?.id && isTaskEditMode && (
           <EditTaskForm taskObject={taskTxt} />
+        )}
+        {noteID === noteTxt?.id && isNoteEditMode && (
+          <EditNoteForm noteObject={noteTxt} />
         )}
       </main>
       <ToastContainer

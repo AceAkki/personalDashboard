@@ -5,11 +5,11 @@ import { useNoteStore } from "./hooks/useNoteStore";
 
 const Notes = () => {
   // utilized note store which stores and syncs data with local storage
-  const { notes, editNote, deleteNote, updateNotes, clearAllNotes } =
+  const { notes, toggleEditMode, deleteNote, updateNotes, clearAllNotes } =
     useNoteStore(
       useShallow((state) => ({
         notes: state.notes,
-        editNote: state.editNote,
+        toggleEditMode: state.toggleEditMode,
         deleteNote: state.deleteNote,
         updateNotes: state.updateNotes,
         clearAllNotes: state.clearAllNotes,
@@ -23,7 +23,7 @@ const Notes = () => {
           <p>{note.note}</p>
         </div>
         <div className="note-edit-btn">
-          <button onClick={() => editNote(note.id)}></button>
+          <button onClick={() => toggleEditMode()}> Edit</button>
         </div>
         <div className="note-del-btn">
           <button onClick={() => deleteNote(note.id)}>X</button>

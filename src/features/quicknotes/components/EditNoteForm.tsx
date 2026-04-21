@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { useNoteStore } from "../hooks/useNoteStore";
 import type { NoteType } from "../notesTypes";
 
-import "./EditTaskForm.css";
+import "./EditNoteForm.css";
 
 const EditNoteForm = ({ noteObject }: { noteObject: NoteType }) => {
   const { editNote, toggleEditMode } = useNoteStore(
