@@ -5,16 +5,25 @@ import { useNoteStore } from "./hooks/useNoteStore";
 
 const Notes = () => {
   // utilized note store which stores and syncs data with local storage
-  const { notes, toggleEditMode, deleteNote, updateNotes, clearAllNotes } =
-    useNoteStore(
-      useShallow((state) => ({
-        notes: state.notes,
-        toggleEditMode: state.toggleEditMode,
-        deleteNote: state.deleteNote,
-        updateNotes: state.updateNotes,
-        clearAllNotes: state.clearAllNotes,
-      })),
-    );
+  const {
+    notes,
+    noteID,
+    setNoteID,
+    toggleEditMode,
+    deleteNote,
+    updateNotes,
+    clearAllNotes,
+  } = useNoteStore(
+    useShallow((state) => ({
+      notes: state.notes,
+      noteID: state.noteID,
+      setNoteID: state.setNoteID,
+      toggleEditMode: state.toggleEditMode,
+      deleteNote: state.deleteNote,
+      updateNotes: state.updateNotes,
+      clearAllNotes: state.clearAllNotes,
+    })),
+  );
 
   const RenderNotes = notes.map((note) => {
     return (
@@ -23,7 +32,14 @@ const Notes = () => {
           <p>{note.note}</p>
         </div>
         <div className="note-edit-btn">
-          <button onClick={() => toggleEditMode()}> Edit</button>
+          <button
+            onClick={() => {
+              //  noteID === noteTxt.id ? setTaskID(null) : setTaskID(taskTxt.id);
+            }}
+          >
+            {" "}
+            Edit
+          </button>
         </div>
         <div className="note-del-btn">
           <button onClick={() => deleteNote(note.id)}>X</button>
