@@ -2,6 +2,7 @@ import { useShallow } from "zustand/shallow";
 import { nanoid } from "nanoid";
 import NotesForm from "./components/NotesForm";
 import { useNoteStore } from "./hooks/useNoteStore";
+import * as Icon from "@phosphor-icons/react";
 
 const Notes = () => {
   // utilized note store which stores and syncs data with local storage
@@ -28,24 +29,28 @@ const Notes = () => {
   const RenderNotes = notes.map((note) => {
     return (
       <div className="note-wrap" key={nanoid()}>
-        <div>
+        <div className="btn-wrap">
+          <div className="note-edit-btn">
+            <button
+              onClick={() => {
+                if (noteID === note.id) {
+                  setNoteID(null);
+                } else {
+                  (setNoteID(note.id), toggleEditMode());
+                }
+              }}
+            >
+              <Icon.PencilIcon size={22} />
+            </button>
+          </div>
+          <div className="note-del-btn">
+            <button onClick={() => deleteNote(note.id)}>
+              <Icon.XCircleIcon size={22} />
+            </button>
+          </div>
+        </div>
+        <div className="note-content">
           <p>{note.note}</p>
-        </div>
-        <div className="note-edit-btn">
-          <button
-            onClick={() => {
-              if (noteID === note.id) {
-                setNoteID(null);
-              } else {
-                (setNoteID(note.id), toggleEditMode());
-              }
-            }}
-          >
-            Edit
-          </button>
-        </div>
-        <div className="note-del-btn">
-          <button onClick={() => deleteNote(note.id)}>X</button>
         </div>
       </div>
     );
