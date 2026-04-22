@@ -34,10 +34,13 @@ const Notes = () => {
         <div className="note-edit-btn">
           <button
             onClick={() => {
-              //  noteID === noteTxt.id ? setTaskID(null) : setTaskID(taskTxt.id);
+              if (noteID === note.id) {
+                setNoteID(null);
+              } else {
+                (setNoteID(note.id), toggleEditMode());
+              }
             }}
           >
-            {" "}
             Edit
           </button>
         </div>

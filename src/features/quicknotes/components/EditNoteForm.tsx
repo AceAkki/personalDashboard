@@ -8,9 +8,10 @@ import type { NoteType } from "../notesTypes";
 import "./EditNoteForm.css";
 
 const EditNoteForm = ({ noteObject }: { noteObject: NoteType }) => {
-  const { editNote, toggleEditMode } = useNoteStore(
+  const { editNote, setNoteID, toggleEditMode } = useNoteStore(
     useShallow((state) => ({
       editNote: state.editNote,
+      setNoteID: state.setNoteID,
       toggleEditMode: state.toggleEditMode,
     })),
   );
@@ -20,14 +21,14 @@ const EditNoteForm = ({ noteObject }: { noteObject: NoteType }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="edit-task-form"
+      className="edit-note-form"
     >
       <motion.div
         initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
         animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
         exit={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="edit-Note-content"
+        className="edit-note-content"
       >
         <div>
           <input
@@ -46,7 +47,13 @@ const EditNoteForm = ({ noteObject }: { noteObject: NoteType }) => {
           >
             Confirm
           </button>
-          <button onClick={() => toggleEditMode()} className="cancel-btn">
+          <button
+            onClick={() => {
+              setNoteID(null);
+              toggleEditMode();
+            }}
+            className="cancel-btn"
+          >
             Cancel
           </button>
         </div>

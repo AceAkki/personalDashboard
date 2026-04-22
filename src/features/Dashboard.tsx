@@ -48,7 +48,7 @@ const Dashboard = (): ReactElement => {
   const optionRef = useRef<HTMLDivElement>(null);
   const taskTxt = tasks.find((task) => task?.id === taskID);
   const noteTxt = notes.find((note) => note?.id === noteID);
-
+  console.log(noteTxt, noteID === noteTxt?.id, isNoteEditMode);
   return (
     <>
       <Header title="tableroPersonel" />

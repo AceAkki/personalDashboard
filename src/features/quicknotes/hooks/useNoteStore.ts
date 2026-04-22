@@ -52,6 +52,6 @@ export const useNoteStore = create<useNoteStore>()(
         localStorage.removeItem(notesKey);
       },
     }),
-    { name: notesKey }, // localStorage key)
+    { name: notesKey, partialize: ({ noteID, ...rest }) => rest }, // localStorage key)
   ),
 );
