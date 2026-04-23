@@ -31,14 +31,14 @@ const EditNoteForm = ({ noteObject }: { noteObject: NoteType }) => {
         className="edit-note-content"
       >
         <div>
-          <input
+          <textarea
             type="text"
             value={newNoteTxt}
-            className="note-edit show"
+            className="note-edit-area show"
             onChange={(e) => {
               SetNewNoteTxt(e.target.value);
             }}
-          />
+          ></textarea>
         </div>
         <div className="btn-wrap">
           <button
