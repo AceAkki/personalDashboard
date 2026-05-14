@@ -32,7 +32,6 @@ const EditNoteForm = ({ noteObject }: { noteObject: NoteType }) => {
       >
         <div>
           <textarea
-            type="text"
             value={newNoteTxt}
             className="note-edit-area show"
             onChange={(e) => {
