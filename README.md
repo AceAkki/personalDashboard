@@ -15,3 +15,9 @@ A feature-rich personal dashboard built with **React**, powered by **Zustand** f
 - React
 - Zustand
 - React Router
+
+## Todo
+
+- Task with Time Limit or Reminder Time
+- Pomodoro Reminder or update
+- News section clean up - redesign and filter with search option
