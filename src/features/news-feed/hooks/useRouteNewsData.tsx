@@ -3,7 +3,6 @@ import type { NewsFeedProps, NewsObject } from "../newsTypes";
 
 const useRouteNewsData = () => {
   const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
-  console.log(newsData);
   const successData = {};
   for (let [key, value] of Object.entries(newsData)) {
     let valueData = {};
@@ -24,11 +23,11 @@ const useRouteNewsData = () => {
   }
   // const successDataArr = newsData.filter((news) => news.status === "ok");
   // const newsArr = successDataArr.map((news) => news.items).flat();
-  console.log(successData);
+
   const newsArr = Object.values(successData)
     .map((objValue) => Object.values(objValue as NewsObject).flat())
     .flat();
-  console.log(newsArr);
+
   return { successData, newsArr };
 };
 

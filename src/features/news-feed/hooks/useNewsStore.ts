@@ -12,7 +12,7 @@ export const useNewsStore = create<useNewsStore>()(
   persist(
     (set) => ({
       newsArray: [],
-      setNewsArray: (newArr) => set((state) => ({ newsArray: newArr })),
+      setNewsArray: (newArr) => set(() => ({ newsArray: newArr })),
     }),
     { name: newsKey }, // localStorage key)
   ),

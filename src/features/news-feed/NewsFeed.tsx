@@ -35,6 +35,7 @@ const NewsFeed = () => {
         {Object.keys(successData).map((key) => {
           return (
             <button
+              key={key}
               onClick={() => {
                 let categoryNewsArr = Object.values(
                   successData[key as keyof typeof successData],

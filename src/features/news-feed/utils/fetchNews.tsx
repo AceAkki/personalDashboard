@@ -1,11 +1,4 @@
-import type {
-  NewsSource,
-  NewsSourceKey,
-  NewsSourceSubKey,
-  NewsRSSFeed,
-  NewsRSSFeedArray,
-  NewsSourceData,
-} from "../newsTypes";
+import type { NewsSource, NewsSourceData } from "../newsTypes";
 const fetchNews = async (): Promise<NewsSourceData> => {
   const newsSources: NewsSource = {
     GlobalNews: {
