@@ -51,7 +51,7 @@ const itemVariants = {
 
 const BentoStructure = () => {
   const { weatherData, aqiData } = useOutletContext<DashboardContext>();
-  const newsArr = useRouteNewsData();
+  const { newsArr } = useRouteNewsData();
 
   const { tasks, updateTasks } = useTaskStore(
     useShallow((state) => ({
