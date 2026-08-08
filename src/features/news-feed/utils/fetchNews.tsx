@@ -4,8 +4,9 @@ import type {
   NewsSourceSubKey,
   NewsRSSFeed,
   NewsRSSFeedArray,
+  NewsSourceData,
 } from "../newsTypes";
-const fetchNews = async (): Promise<NewsRSSFeedArray> => {
+const fetchNews = async (): Promise<NewsSourceData> => {
   const newsSources: NewsSource = {
     GlobalNews: {
       BBCNews: "https://feeds.bbci.co.uk/news/world/rss.xml",
@@ -37,6 +38,7 @@ const fetchNews = async (): Promise<NewsRSSFeedArray> => {
   const rsstoJSON = "https://api.rss2json.com/v1/api.json?rss_url=";
 
   // all links as array
+  /*
   const currentSources: string[] = [];
   let currentNews: NewsRSSFeedArray = [];
 
@@ -59,6 +61,32 @@ const fetchNews = async (): Promise<NewsRSSFeedArray> => {
     currentNews = promises;
   }
   return currentNews;
+
+  */
+
+  async function fetchData(): Promise<NewsSourceData> {
+    let currentSources = {};
+    for (const [key, value] of Object.entries(newsSources)) {
+      let valueData = {};
+      for (const [subkey, subValue] of Object.entries(value)) {
+        const res = await fetch(`${rsstoJSON}${encodeURIComponent(subValue)}`);
+        const data = await res.json();
+        Object.defineProperty(valueData, subkey, {
+          value: data,
+          enumerable: true,
+          writable: true,
+        });
+      }
+      Object.defineProperty(currentSources, key, {
+        value: valueData,
+        enumerable: true,
+        writable: true,
+      });
+    }
+    return currentSources as NewsSourceData;
+  }
+  let newsData: NewsSourceData = await fetchData();
+  return newsData;
 };
 
 export default fetchNews;

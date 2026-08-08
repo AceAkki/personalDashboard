@@ -26,6 +26,34 @@ export type NewsSource = {
   };
 };
 
+export type NewsSourceData = {
+  GlobalNews: {
+    BBCNews: NewsRSSFeed[];
+    Reuters: NewsRSSFeed[];
+    Guardian: NewsRSSFeed[];
+    NPRNews: NewsRSSFeed[];
+    Hindu: NewsRSSFeed[];
+  };
+  Technology: {
+    TechCrunch: NewsRSSFeed[];
+    Verge: NewsRSSFeed[];
+    Wired: NewsRSSFeed[];
+    HackerNews: NewsRSSFeed[];
+    ArsTechnica: NewsRSSFeed[];
+  };
+  Business: {
+    Economist: NewsRSSFeed[];
+    FinancialTimes: NewsRSSFeed[];
+    WallStreetJournal: NewsRSSFeed[];
+    Fortune: NewsRSSFeed[];
+  };
+  Science: {
+    NASA: NewsRSSFeed[];
+    ScienceDaily: NewsRSSFeed[];
+    Phys: NewsRSSFeed[];
+  };
+};
+
 export type NewsSourceKey = keyof NewsSource;
 export type NewsSourceSubKey = keyof NewsSource[keyof NewsSource];
 
