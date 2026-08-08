@@ -26,6 +26,7 @@ const NewsFeed = () => {
     <>
       <section className="overflow-auto  inner-route-section">
         <button
+          className="btn-nav"
           onClick={() => {
             setNewsArray(newsArr as NewsObject[]);
           }}
@@ -36,6 +37,7 @@ const NewsFeed = () => {
           return (
             <button
               key={key}
+              className="btn-nav"
               onClick={() => {
                 let categoryNewsArr = Object.values(
                   successData[key as keyof typeof successData],

@@ -64,6 +64,13 @@
   border-radius: 10px;
 }
 
+.btn-nav {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: 1px solid;
+}
+
 @media screen and (min-width: 1080px) {
   .news-details-wrap {
     flex-direction: row;
