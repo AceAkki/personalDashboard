@@ -5,7 +5,7 @@ import useRouteNewsData from "./hooks/useRouteNewsData";
 import { useNewsStore } from "./hooks/useNewsStore";
 import RenderNews from "./components/RenderNews";
 
-import { NewsObject } from "./newsTypes";
+import type { NewsObject } from "./newsTypes";
 import "./news.css";
 
 const NewsFeed = () => {

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { NewsObject } from "../newsTypes";
+import type { NewsObject } from "../newsTypes";
 import { newsKey } from "../../../global/storageKeys";
 
 interface useNewsStore {
