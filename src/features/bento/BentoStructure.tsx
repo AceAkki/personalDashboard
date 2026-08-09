@@ -1,15 +1,12 @@
 import { useOutletContext } from "react-router-dom";
-// import { useRef } from "react";
 import { useShallow } from "zustand/shallow";
 import { motion } from "motion/react";
+
 // components imports
 import TasksMain from "../task-manager/components/TasksMain";
 import TaskForm from "../task-manager/components/TaskForm";
 
-// import Weather from "../weather/Weather";
-// import Pomodoro from "../pomodoro/Pomodoro";
 import Pomodoro from "../pomodoro/Pomodoro";
-// import Inspire from "../inspire/Inspire";
 import NotesForm from "../quicknotes/components/NotesForm";
 import WeatherCard from "../weather/components/WeatherCard";
 import LinkStorage from "../linkStorage/LinkStorage";
@@ -25,9 +22,10 @@ import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 // State
 import { useUserStore } from "../auth/useAuthStore";
 import { timeOfTheDayGreeting } from "../../global/globalFunctions";
+
 // type imports
 import type { DashboardContext } from "../mainTypes";
-// import OptionsPopup from "../task-manager/components/OptionsPopup";
+
 // css imports
 import "./BentoStructure.css";
 
@@ -60,9 +58,6 @@ const BentoStructure = () => {
     })),
   );
   const inputRef = useTaskMain(updateTasks);
-  // const optionRef = useRef<HTMLDivElement>(null);
-
-  // const taskTxt = tasks.find((task) => task?.id === taskID);
 
   const username = useUserStore((state) => state.username);
 
@@ -96,6 +91,7 @@ const BentoStructure = () => {
             aqiCurrent_units={aqiData.current_units}
           />
         </motion.div>
+
         <motion.div variants={itemVariants} className="grid-item span-column">
           <FavLinks />
         </motion.div>
@@ -117,13 +113,7 @@ const BentoStructure = () => {
         <motion.div variants={itemVariants} className="grid-item">
           <LinkStorage />
         </motion.div>
-        {/* <div className="grid-item">
-          <Inspire />
-        </div> */}
       </motion.div>
-      {/* {taskID === taskTxt?.id && (
-        <OptionsPopup refer={optionRef} taskObject={taskTxt} />
-      )} */}
     </>
   );
 };

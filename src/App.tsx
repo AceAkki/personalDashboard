@@ -62,12 +62,6 @@ const router = createBrowserRouter(
               aqiData,
               newsData,
             };
-
-            // return {
-            //   weatherData: await getWeather(),
-            //   aqiData: await getAQI(),
-            //   newsData: await useFetchNews(),
-            // };
           }}
           id="root"
         >

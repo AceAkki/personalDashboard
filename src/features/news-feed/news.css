@@ -64,7 +64,13 @@
   border-radius: 10px;
 }
 
-.btn-nav {
+.category-navbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-btn {
   padding: 1rem;
   border-radius: 0.5rem;
   background: transparent;

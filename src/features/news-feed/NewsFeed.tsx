@@ -25,30 +25,33 @@ const NewsFeed = () => {
   return (
     <>
       <section className="overflow-auto  inner-route-section">
-        <button
-          className="btn-nav"
-          onClick={() => {
-            setNewsArray(newsArr as NewsObject[]);
-          }}
-        >
-          All
-        </button>
-        {Object.keys(successData).map((key) => {
-          return (
-            <button
-              key={key}
-              className="btn-nav"
-              onClick={() => {
-                let categoryNewsArr = Object.values(
-                  successData[key as keyof typeof successData],
-                ).flat();
-                setNewsArray(categoryNewsArr as NewsObject[]);
-              }}
-            >
-              {key}
-            </button>
-          );
-        })}
+        <div className="category-navbar">
+          <button
+            className="nav-btn"
+            onClick={() => {
+              setNewsArray(newsArr as NewsObject[]);
+            }}
+          >
+            All
+          </button>
+          {Object.keys(successData).map((key) => {
+            return (
+              <button
+                key={key}
+                className="nav-btn"
+                onClick={() => {
+                  let categoryNewsArr = Object.values(
+                    successData[key as keyof typeof successData],
+                  ).flat();
+                  console.log(categoryNewsArr, successData[key]);
+                  setNewsArray(categoryNewsArr as NewsObject[]);
+                }}
+              >
+                {key}
+              </button>
+            );
+          })}
+        </div>
       </section>
       <section className="overflow-auto  inner-route-section">
         <div className="news-main-wrap">
