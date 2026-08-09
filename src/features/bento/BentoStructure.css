@@ -25,7 +25,7 @@
   .bento-grid-layout {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, minmax(0, 1fr));
-    height: 80vh;
+    height: 70vh;
   }
 
   .grid-item {
