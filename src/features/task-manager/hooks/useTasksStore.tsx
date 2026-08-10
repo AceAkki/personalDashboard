@@ -15,6 +15,7 @@ interface useTaskStore {
   isEditMode: boolean;
   toggleEditMode: () => void;
   editTask: ({ id, newTask }: { id: string; newTask: string }) => void;
+  editRemind: ({ id, newTime }: { id: string; newTime: string }) => void;
 }
 
 export const useTaskStore = create<useTaskStore>()(
@@ -65,6 +66,19 @@ export const useTaskStore = create<useTaskStore>()(
               ? {
                   ...task,
                   taskName: newTask,
+                }
+              : task,
+          ),
+          isEditMode: false,
+          taskID: null,
+        })),
+      editRemind: ({ id, newTime }) =>
+        set((state) => ({
+          tasks: state.tasks.map((task) =>
+            task.id === id
+              ? {
+                  ...task,
+                  remindTime: newTime,
                 }
               : task,
           ),

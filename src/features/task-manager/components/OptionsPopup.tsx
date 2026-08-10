@@ -43,6 +43,9 @@ export default function OptionsPopup({ refer, taskObject }: optionPopupProps) {
           targetType=""
         />
         <li>
+          <button onClick={() => toggleEditMode()}> Remind Me </button>
+        </li>
+        <li>
           <button onClick={() => toggleEditMode()}> Edit Task </button>
         </li>
         <li>

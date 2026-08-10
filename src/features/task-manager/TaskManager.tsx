@@ -22,6 +22,7 @@ export async function action({ request }: ActionFunctionArgs) {
   let newTask = {
     taskName: task,
     id: nanoid(),
+    remindTime: new Date().toISOString(),
     type: { Current: true, Priority: false, Completed: false },
   } as TaskActionData;
   return newTask;

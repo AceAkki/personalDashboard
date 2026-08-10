@@ -2,6 +2,7 @@ export interface TaskActionData {
   taskName: string;
   id: string;
   type: TasksTypes;
+  remindTime: string;
 }
 
 export interface TasksTypes {

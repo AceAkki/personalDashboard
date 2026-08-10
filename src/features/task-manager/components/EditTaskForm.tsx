@@ -8,13 +8,17 @@ import type { TaskActionData } from "../taskTypes";
 import "./EditTaskForm.css";
 
 const EditTaskForm = ({ taskObject }: { taskObject: TaskActionData }) => {
-  const { editTask, toggleEditMode } = useTaskStore(
+  const { editTask, toggleEditMode, editRemind } = useTaskStore(
     useShallow((state) => ({
       editTask: state.editTask,
       toggleEditMode: state.toggleEditMode,
+      editRemind: state.editRemind,
     })),
   );
   const [newTaskTxt, SetNewTaskTxt] = useState<string>(taskObject.taskName);
+  const [newRemindDate, SetNewRemindDate] = useState<string>(
+    taskObject.remindTime,
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -39,9 +43,26 @@ const EditTaskForm = ({ taskObject }: { taskObject: TaskActionData }) => {
             }}
           />
         </div>
+        <div>
+          <input
+            type="datetime-local"
+            value={newRemindDate.slice(0, 16)}
+            className="task-edit show"
+            onChange={(e) => {
+              console.log(newRemindDate, e.target.value);
+              SetNewRemindDate(e.target.value);
+            }}
+          />
+        </div>
         <div className="btn-wrap">
           <button
-            onClick={() => editTask({ id: taskObject.id, newTask: newTaskTxt })}
+            onClick={() => {
+              editTask({ id: taskObject.id, newTask: newTaskTxt });
+              editRemind({
+                id: taskObject.id,
+                newTime: newRemindDate,
+              });
+            }}
             className="confirm-btn"
           >
             Confirm
