@@ -9,10 +9,10 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["src/assets/android/launchericon-512x512.png"],
       manifest: {
-        name: "My React PWA",
-        short_name: "ReactPWA",
+        name: "tableroPersonel",
+        short_name: "tableroPersonel",
         start_url: "/",
-        description: "Next-gen React PWA with automatic memoization",
+        description: "Next-gen React PWA of tableroPersonel",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#000000",
