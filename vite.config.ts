@@ -9,10 +9,10 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["android/launchericon-512x512.png"],
       manifest: {
-        name: "tableroPersonel",
-        short_name: "tableroPersonel",
+        name: "DashDeck",
+        short_name: "DashDeck",
         start_url: "/",
-        description: "Next-gen React PWA of tableroPersonel",
+        description: "Next-gen React PWA of DashDeck",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#000000",
