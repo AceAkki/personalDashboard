@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["src/assets/android/launchericon-512x512.png"],
+      includeAssets: ["android/launchericon-512x512.png"],
       manifest: {
         name: "tableroPersonel",
         short_name: "tableroPersonel",
@@ -18,12 +18,12 @@ export default defineConfig({
         theme_color: "#000000",
         icons: [
           {
-            src: "src/assets/android/launchericon-192x192.png",
+            src: "android/launchericon-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "src/assets/android/launchericon-512x512.png",
+            src: "android/launchericon-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
