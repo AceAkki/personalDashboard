@@ -4,6 +4,7 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import AuthLayout from "./features/auth/AuthLayout";
 import Login, { action as loginAction } from "./features/auth/Login";
@@ -29,6 +30,8 @@ import ErrorPage from "./features/Error";
 import FallBackLoader from "./features/fallbackElem";
 import "./global/customProto";
 import "./App.css";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
