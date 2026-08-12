@@ -51,7 +51,7 @@ const Dashboard = (): ReactElement => {
   console.log(noteTxt, noteID === noteTxt?.id, isNoteEditMode);
   return (
     <>
-      <Header title="tableroPersonel" />
+      <Header title="FocusDeck" />
       <main className="main-wrap scroll">
         <QuickLinks />
         <section className="dashboard-section scroll">

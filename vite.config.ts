@@ -9,10 +9,10 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["android/launchericon-512x512.png"],
       manifest: {
-        name: "DashDeck",
-        short_name: "DashDeck",
+        name: "FocusDeck",
+        short_name: "FocusDeck",
         start_url: "/",
-        description: "Next-gen React PWA of DashDeck",
+        description: "Next-gen React PWA of FocusDeck",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#000000",
