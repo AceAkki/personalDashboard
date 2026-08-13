@@ -47,7 +47,8 @@ const useFetchData = () => {
 
   // either from local or fetch data
   function getFinalData() {
-    if (!hasLocalData) return data;
+    if (!hasLocalWeatherData && !hasLocalAQIData)
+      return { weatherAPIData: results[0], aqiAPIData: results[1] };
   }
 
   const finalData = getFinalData();
@@ -60,7 +61,6 @@ const useFetchData = () => {
 
   return {
     finalData,
-    isLoading,
   };
 };
 
