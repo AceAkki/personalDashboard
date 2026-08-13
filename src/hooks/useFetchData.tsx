@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useShallow } from "zustand/shallow";
-import { useQueries } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { useAPIStore } from "../store/useAPIStore.ts";
 import { dashboardQueries } from "../services/queries";
@@ -8,7 +8,7 @@ import { userKey } from "../global/storageKeys";
 
 // to get products data
 const useFetchData = () => {
-  let { state } = JSON.parse(localStorage.getItem(userKey) as string);
+    let { state } = JSON.parse(localStorage.getItem(userKey) as string);
   let { weatherData, updateWeatherData, aqiData, updateAQIData } = useAPIStore(
     useShallow((state) => ({
       weatherData: state.weatherData,
@@ -20,21 +20,15 @@ const useFetchData = () => {
   const hasLocalWeatherData = weatherData !== null;
   const hasLocalAQIData = aqiData !== null;
 
-  //const queryConfig = hasLocalWeatherData ?
+  let queryConfig = hasLocalWeatherData ?  dashboardQueries.getWeatherData({latitude:state.location.latitude, longitude:state.location.longitude})
 
   // using tanstack query for fetching data over loaderData
-  const queryResults = useQueries({
-    queries: [
-      {
-        dashboardQueries.getWeatherData({
-          latitude: state.location.latitude,
-          longitude: state.location.longitude,
-        }),
-        enabled: !hasLocalWeatherData,
-      },
-    ],
+  const { data, isLoading } = useQuery({
+    ...queryConfig,
+    enabled: !hasLocalWeatherData,
   });
 
+  
   // either from local or fetch data
   function getFinalData() {
     if (!hasLocalData) return data;
@@ -42,11 +36,11 @@ const useFetchData = () => {
 
   const finalData = getFinalData();
 
-  useEffect(() => {
-    if (data && !hasLocalData && category === undefined && id === undefined) {
-      updateProductsData(data);
-    }
-  }, [data, hasLocalData]);
+//   useEffect(() => {
+//     if (data && !hasLocalData && category === undefined && id === undefined) {
+//       updateProductsData(data);
+//     }
+//   }, [data, hasLocalData]);
 
   return {
     finalData,
@@ -54,4 +48,4 @@ const useFetchData = () => {
   };
 };
 
-export default useProductsData;
+export default useFetchData;
