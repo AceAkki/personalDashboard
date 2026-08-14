@@ -5,16 +5,16 @@ import type { location } from "../features/mainTypes";
 export const dashboardQueries = {
   getWeatherData: ({ latitude, longitude }: location) =>
     queryOptions({
-      queryKey: ["weather"] as string[],
+      queryKey: ["weather", { latitude, longitude }] as const,
       queryFn: () => getWeather({ latitude: latitude, longitude: longitude }),
-      staleTime: Infinity,
-      gcTime: 10,
+      staleTime: 30 * 60 * 1000,
+      gcTime: 24 * 60 * 60 * 1000,
     }),
   getAQIData: ({ latitude, longitude }: location) =>
     queryOptions({
-      queryKey: ["AQI"] as string[],
+      queryKey: ["AQI", { latitude, longitude }] as const,
       queryFn: () => getAQI({ latitude: latitude, longitude: longitude }),
-      staleTime: Infinity,
-      gcTime: 10,
+      staleTime: 30 * 60 * 1000,
+      gcTime: 24 * 60 * 60 * 1000,
     }),
 };

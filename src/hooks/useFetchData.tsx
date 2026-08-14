@@ -5,6 +5,7 @@ import { useQueries } from "@tanstack/react-query";
 import { useAPIStore } from "../store/useAPIStore.ts";
 import { dashboardQueries } from "../services/queries";
 import { userKey } from "../global/storageKeys";
+import type { WeatherData, AQIData } from "../features/weather/weatherType";
 
 // to get products data
 const useFetchData = () => {
@@ -48,16 +49,25 @@ const useFetchData = () => {
   // either from local or fetch data
   function getFinalData() {
     if (!hasLocalWeatherData && !hasLocalAQIData)
-      return { weatherAPIData: results[0], aqiAPIData: results[1] };
+      return { weatherAPIData: results[0].data, aqiAPIData: results[1].data };
+    return { weatherAPIData: weatherData, aqiAPIData: aqiData };
   }
 
   const finalData = getFinalData();
 
-  //   useEffect(() => {
-  //     if (data && !hasLocalData && category === undefined && id === undefined) {
-  //       updateProductsData(data);
-  //     }
-  //   }, [data, hasLocalData]);
+  useEffect(() => {
+    if (results && !hasLocalWeatherData && !hasLocalAQIData) {
+      updateWeatherData(results[0].data as WeatherData);
+      updateAQIData(results[1].data as AQIData);
+    }
+  }, [
+    results[0].status,
+    results[0].data,
+    results[1].status,
+    results[1].data,
+    hasLocalWeatherData,
+    hasLocalAQIData,
+  ]);
 
   return {
     finalData,

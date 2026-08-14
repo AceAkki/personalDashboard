@@ -10,6 +10,9 @@ import QuickLinks from "../components/QuickLinks";
 import OptionsPopup from "./task-manager/components/OptionsPopup";
 import EditTaskForm from "./task-manager/components/EditTaskForm";
 import EditNoteForm from "./quicknotes/components/EditNoteForm";
+
+import useFetchData from "../hooks/useFetchData";
+
 // state imports
 import { useUserStore } from "./auth/useAuthStore";
 import { useTaskStore } from "./task-manager/hooks/useTasksStore";
@@ -18,6 +21,8 @@ import { useNoteStore } from "./quicknotes/hooks/useNoteStore";
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
+  const { finalData } = useFetchData();
+  console.log(finalData);
   // retrieved data from the loader
   const { weatherData, aqiData } = useLoaderData();
 
