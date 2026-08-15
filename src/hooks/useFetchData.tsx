@@ -9,28 +9,29 @@ import type { WeatherData, AQIData } from "../features/weather/weatherType";
 
 // to get products data
 const useFetchData = (): {
-  weatherData: WeatherData;
-  aqiData: AQIData;
+  weatherData: WeatherData | null;
+  aqiData: AQIData | null;
 } => {
   const storedItem = localStorage.getItem(userKey);
   const state = storedItem ? JSON.parse(storedItem).state : null;
   const location = state?.location;
-  let finalData: { weatheData: WeatherData | null; aqiData: AQIData | null } = {
-    weatheData: null,
-    aqiData: null,
-  };
+  let finalData: { weatherData: WeatherData | null; aqiData: AQIData | null } =
+    {
+      weatherData: null,
+      aqiData: null,
+    };
 
-  let { weatherAPIData, updateWeatherData, aqiAPIData, updateAQIData } =
+  let { weatherStoreData, updateWeatherData, aqiStoreData, updateAQIData } =
     useAPIStore(
       useShallow((state) => ({
-        weatherAPIData: state.weatherAPIData,
+        weatherStoreData: state.weatherStoreData,
         updateWeatherData: state.updateWeatherData,
-        aqiAPIData: state.aqiAPIData,
+        aqiStoreData: state.aqiStoreData,
         updateAQIData: state.updateAQIData,
       })),
     );
-  const hasLocalWeatherData = weatherAPIData !== null;
-  const hasLocalAQIData = aqiAPIData !== null;
+  const hasLocalWeatherData = weatherStoreData !== null;
+  const hasLocalAQIData = aqiStoreData !== null;
 
   // either from local or fetch data
   const weatherQuery = useQuery({
@@ -49,9 +50,12 @@ const useFetchData = (): {
     enabled: !hasLocalAQIData && !!location,
   });
 
-  if (!hasLocalWeatherData)
-    finalData.weatheData = weatherQuery.data as WeatherData;
-  if (!hasLocalAQIData) finalData.aqiData = aqiQuery.data as AQIData;
+  !hasLocalWeatherData
+    ? (finalData.weatherData = weatherQuery.data as WeatherData)
+    : (finalData.weatherData = weatherStoreData);
+  !hasLocalAQIData
+    ? (finalData.aqiData = aqiQuery.data as AQIData)
+    : (finalData.aqiData = aqiStoreData);
 
   useEffect(() => {
     if (weatherQuery.data && !hasLocalWeatherData) {

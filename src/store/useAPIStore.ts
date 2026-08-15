@@ -3,24 +3,24 @@ import { persist } from "zustand/middleware";
 import type { WeatherData, AQIData } from "../features/weather/weatherType";
 
 interface APIStore {
-  weatherAPIData: WeatherData | null;
+  weatherStoreData: WeatherData | null;
   updateWeatherData: (data: WeatherData) => void;
-  aqiAPIData: AQIData | null;
+  aqiStoreData: AQIData | null;
   updateAQIData: (data: AQIData) => void;
 }
 
 export const useAPIStore = create<APIStore>()(
   persist(
     (set) => ({
-      weatherAPIData: null,
+      weatherStoreData: null,
       updateWeatherData: (data) =>
         set(() => ({
-          weatherAPIData: data,
+          weatherStoreData: data,
         })),
-      aqiAPIData: null,
+      aqiStoreData: null,
       updateAQIData: (data) =>
         set(() => ({
-          aqiAPIData: data,
+          aqiStoreData: data,
         })),
     }),
     {
