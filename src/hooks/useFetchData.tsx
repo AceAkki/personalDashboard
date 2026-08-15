@@ -9,7 +9,10 @@ import type { WeatherData, AQIData } from "../features/weather/weatherType";
 
 // to get products data
 const useFetchData = () => {
-  let { state } = JSON.parse(localStorage.getItem(userKey) as string);
+  const storedItem = localStorage.getItem(userKey);
+  const state = storedItem ? JSON.parse(storedItem).state : null;
+  const location = state?.location;
+
   let { weatherData, updateWeatherData, aqiData, updateAQIData } = useAPIStore(
     useShallow((state) => ({
       weatherData: state.weatherData,
@@ -22,34 +25,32 @@ const useFetchData = () => {
   const hasLocalAQIData = aqiData !== null;
 
   // either from local or fetch data
-  function getFinalData() {
-    if (!hasLocalWeatherData && !hasLocalAQIData) {
-      if (!hasLocalWeatherData) {
-        const { data, isLoading } = useQuery({
-          ...dashboardQueries.getWeatherData({
-            latitude: state.location.latitude,
-            longitude: state.location.longitude,
-          }),
-          enabled: !hasLocalWeatherData,
-        });
-        updateWeatherData(data as WeatherData);
-      }
-      if (!hasLocalAQIData) {
-        const { data, isLoading } = useQuery({
-          ...dashboardQueries.getAQIData({
-            latitude: state.location.latitude,
-            longitude: state.location.longitude,
-          }),
-          enabled: !hasLocalAQIData,
-        });
-        updateAQIData(data as AQIData);
-      }
-    }
-  }
+  const weatherQuery = useQuery({
+    ...dashboardQueries.getWeatherData({
+      latitude: location?.latitude,
+      longitude: location?.longitude,
+    }),
+    enabled: !hasLocalWeatherData && !!location,
+  });
+
+  const aqiQuery = useQuery({
+    ...dashboardQueries.getAQIData({
+      latitude: location?.latitude,
+      longitude: location?.longitude,
+    }),
+    enabled: !hasLocalAQIData && !!location,
+  });
 
   useEffect(() => {
-    getFinalData();
-  }, [hasLocalWeatherData, hasLocalAQIData]);
-};
+    if (weatherQuery.data && !hasLocalWeatherData) {
+      updateWeatherData(weatherQuery.data as WeatherData);
+    }
+  }, [weatherQuery.data, hasLocalWeatherData, updateWeatherData]);
 
+  useEffect(() => {
+    if (aqiQuery.data && !hasLocalAQIData) {
+      updateAQIData(aqiQuery.data as AQIData);
+    }
+  }, [aqiQuery.data, hasLocalAQIData, updateAQIData]);
+};
 export default useFetchData;

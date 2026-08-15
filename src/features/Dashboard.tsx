@@ -22,6 +22,7 @@ import { useAPIStore } from "../store/useAPIStore.ts";
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
+  useFetchData();
   let { weatherData, updateWeatherData, aqiData, updateAQIData } = useAPIStore(
     useShallow((state) => ({
       weatherData: state.weatherData,
