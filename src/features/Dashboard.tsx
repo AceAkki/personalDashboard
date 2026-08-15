@@ -17,14 +17,22 @@ import useFetchData from "../hooks/useFetchData";
 import { useUserStore } from "./auth/useAuthStore";
 import { useTaskStore } from "./task-manager/hooks/useTasksStore";
 import { useNoteStore } from "./quicknotes/hooks/useNoteStore";
+import { useAPIStore } from "../store/useAPIStore.ts";
 // css imports
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
-  const { finalData } = useFetchData();
-  console.log(finalData);
+  let { weatherData, updateWeatherData, aqiData, updateAQIData } = useAPIStore(
+    useShallow((state) => ({
+      weatherData: state.weatherData,
+      updateWeatherData: state.updateWeatherData,
+      aqiData: state.aqiData,
+      updateAQIData: state.updateAQIData,
+    })),
+  );
+  console.log(weatherData, aqiData);
   // retrieved data from the loader
-  const { weatherData, aqiData } = useLoaderData();
+  //const { weatherData, aqiData } = useLoaderData();
 
   // getting the current background url from the store
   const currentBG = useUserStore((state) => state.backgroundURL);
