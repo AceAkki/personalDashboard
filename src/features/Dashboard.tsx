@@ -22,16 +22,14 @@ import { useAPIStore } from "../store/useAPIStore.ts";
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
-  useFetchData();
-  let { weatherData, updateWeatherData, aqiData, updateAQIData } = useAPIStore(
-    useShallow((state) => ({
-      weatherData: state.weatherData,
-      updateWeatherData: state.updateWeatherData,
-      aqiData: state.aqiData,
-      updateAQIData: state.updateAQIData,
-    })),
-  );
-  console.log(weatherData, aqiData);
+  let { weatherData, aqiData } = useFetchData();
+  // let { weatherData, aqiData } = useAPIStore(
+  //   useShallow((state) => ({
+  //     weatherData: state.weatherData,
+  //     aqiData: state.aqiData,
+  //   })),
+  // );
+  // console.log(weatherData, aqiData);
   // retrieved data from the loader
   //const { weatherData, aqiData } = useLoaderData();
 
@@ -62,7 +60,7 @@ const Dashboard = (): ReactElement => {
   const optionRef = useRef<HTMLDivElement>(null);
   const taskTxt = tasks.find((task) => task?.id === taskID);
   const noteTxt = notes.find((note) => note?.id === noteID);
-  console.log(noteTxt, noteID === noteTxt?.id, isNoteEditMode);
+
   return (
     <>
       <Header title="FocusDeck" />

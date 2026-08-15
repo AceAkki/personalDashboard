@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useShallow } from "zustand/shallow";
-import { useQuery, useQueries } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { useAPIStore } from "../store/useAPIStore.ts";
 import { dashboardQueries } from "../services/queries";
@@ -8,21 +8,29 @@ import { userKey } from "../global/storageKeys";
 import type { WeatherData, AQIData } from "../features/weather/weatherType";
 
 // to get products data
-const useFetchData = () => {
+const useFetchData = (): {
+  weatherData: WeatherData;
+  aqiData: AQIData;
+} => {
   const storedItem = localStorage.getItem(userKey);
   const state = storedItem ? JSON.parse(storedItem).state : null;
   const location = state?.location;
+  let finalData: { weatheData: WeatherData | null; aqiData: AQIData | null } = {
+    weatheData: null,
+    aqiData: null,
+  };
 
-  let { weatherData, updateWeatherData, aqiData, updateAQIData } = useAPIStore(
-    useShallow((state) => ({
-      weatherData: state.weatherData,
-      updateWeatherData: state.updateWeatherData,
-      aqiData: state.aqiData,
-      updateAQIData: state.updateAQIData,
-    })),
-  );
-  const hasLocalWeatherData = weatherData !== null;
-  const hasLocalAQIData = aqiData !== null;
+  let { weatherAPIData, updateWeatherData, aqiAPIData, updateAQIData } =
+    useAPIStore(
+      useShallow((state) => ({
+        weatherAPIData: state.weatherAPIData,
+        updateWeatherData: state.updateWeatherData,
+        aqiAPIData: state.aqiAPIData,
+        updateAQIData: state.updateAQIData,
+      })),
+    );
+  const hasLocalWeatherData = weatherAPIData !== null;
+  const hasLocalAQIData = aqiAPIData !== null;
 
   // either from local or fetch data
   const weatherQuery = useQuery({
@@ -41,16 +49,19 @@ const useFetchData = () => {
     enabled: !hasLocalAQIData && !!location,
   });
 
+  if (!hasLocalWeatherData)
+    finalData.weatheData = weatherQuery.data as WeatherData;
+  if (!hasLocalAQIData) finalData.aqiData = aqiQuery.data as AQIData;
+
   useEffect(() => {
     if (weatherQuery.data && !hasLocalWeatherData) {
       updateWeatherData(weatherQuery.data as WeatherData);
     }
-  }, [weatherQuery.data, hasLocalWeatherData, updateWeatherData]);
-
-  useEffect(() => {
     if (aqiQuery.data && !hasLocalAQIData) {
       updateAQIData(aqiQuery.data as AQIData);
     }
-  }, [aqiQuery.data, hasLocalAQIData, updateAQIData]);
+  }, [hasLocalWeatherData, hasLocalAQIData]);
+
+  return finalData;
 };
 export default useFetchData;
