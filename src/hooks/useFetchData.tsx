@@ -14,18 +14,19 @@ const useFetchData = (): {
   weatherData: WeatherData | null;
   aqiData: AQIData | null;
 } => {
-  let [location, setLocation] = useState<location>({
-    longitude: 1,
-    latitude: 1,
-  });
+  let [location, setLocation] = useState<location | null>(null);
   const [hasSyncedWeather, setHasSyncedWeather] = useState(false);
   const [hasSyncedAQI, setHasSyncedAQI] = useState(false);
 
   useEffect(() => {
+    console.log("🔑 userKey:", userKey);
     const storedItem = localStorage.getItem(userKey);
+    console.log("📦 Raw localStorage item:", storedItem);
     const state = storedItem ? JSON.parse(storedItem).state : null;
     setLocation(state?.location);
   }, []);
+
+  console.log(location);
 
   let { weatherStoreData, updateWeatherData, aqiStoreData, updateAQIData } =
     useAPIStore(
@@ -38,6 +39,8 @@ const useFetchData = (): {
     );
   const hasLocalWeatherData = weatherStoreData !== null;
   const hasLocalAQIData = aqiStoreData !== null;
+
+  console.log("🏪 Store data:", { hasLocalWeatherData, hasLocalAQIData });
 
   // either from local or fetch data
   const weatherQuery = useQuery({
@@ -56,6 +59,22 @@ const useFetchData = (): {
     enabled: !hasLocalAQIData && !!location,
   });
 
+  console.log("🌤️ Weather Query:", {
+    status: weatherQuery.status,
+    enabled: !hasLocalWeatherData && !!location,
+    hasData: !!weatherQuery.data,
+    error: weatherQuery.error,
+    data: weatherQuery.data, // Log actual data structure
+  });
+
+  console.log("💨 AQI Query:", {
+    status: aqiQuery.status,
+    enabled: !hasLocalAQIData && !!location,
+    hasData: !!aqiQuery.data,
+    error: aqiQuery.error,
+    data: aqiQuery.data, // Log actual data structure
+  });
+
   useEffect(() => {
     if (weatherQuery.data && !hasSyncedWeather) {
       updateWeatherData(weatherQuery.data as WeatherData);
@@ -69,7 +88,6 @@ const useFetchData = (): {
       setHasSyncedAQI(true);
     }
   }, [aqiQuery.data, hasSyncedAQI, updateAQIData]);
-
   let finalData = useMemo(
     () => ({
       weatherData: hasLocalWeatherData
@@ -86,6 +104,11 @@ const useFetchData = (): {
       aqiQuery.data,
     ],
   );
+
+  console.log("Weather Query:", weatherQuery.status, weatherQuery.data);
+  console.log("AQI Query:", aqiQuery.status, aqiQuery.data);
+  console.log("Final Data:", finalData);
+
   console.log(weatherQuery, finalData);
   return finalData;
 };
