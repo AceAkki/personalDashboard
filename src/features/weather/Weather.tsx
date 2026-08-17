@@ -55,7 +55,7 @@ const Weather = () => {
                           icon={key}
                           current={
                             weatherData.current[
-                              key as unknown as keyof WeatherData
+                              key as keyof WeatherData["current"]
                             ]
                           }
                           current_units={weatherData.current_units[key]}
