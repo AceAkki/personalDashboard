@@ -9,7 +9,12 @@ import { dashboardQueries } from "../services/queries";
 import type { WeatherData, AQIData } from "../features/weather/weatherType";
 
 // to get products data
-const useFetchData = () => {
+const useFetchData = (): {
+  weatherData: WeatherData;
+  aqiData: AQIData;
+  weatherQueryLoading: boolean;
+  apiQueryLoading: boolean;
+} => {
   let { latitude, longitude } = useUserStore((state) => state.location);
 
   let { weatherStoreData, updateWeatherData, aqiStoreData, updateAQIData } =
