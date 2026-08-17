@@ -8,6 +8,8 @@ import WeatherTile from "./components/WeatherTile";
 import FallBackLoader from "../../components/ui/FallbackLoader";
 import useFetchData from "../../hooks/useFetchData";
 
+import type { WeatherData } from "./weatherType";
+
 import "./weather.css";
 let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
@@ -51,7 +53,11 @@ const Weather = () => {
                         <WeatherTile
                           key={key}
                           icon={key}
-                          current={weatherData.current[key]}
+                          current={
+                            weatherData.current[
+                              key as unknown as keyof WeatherData
+                            ]
+                          }
                           current_units={weatherData.current_units[key]}
                         />
                       );

@@ -25,6 +25,7 @@ import useFetchData from "../../hooks/useFetchData";
 
 // css imports
 import "./BentoStructure.css";
+import type { AQIData, WeatherData } from "../weather/weatherType";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -93,10 +94,14 @@ const BentoStructure = () => {
 
         <motion.div variants={itemVariants} className="grid-item">
           <WeatherCard
-            current={weatherData.current}
-            current_units={weatherData.current_units}
-            aqiCurrent={aqiData.current}
-            aqiCurrent_units={aqiData.current_units}
+            current={weatherData?.current as WeatherData["current"]}
+            current_units={
+              weatherData?.current_units as WeatherData["current_units"]
+            }
+            aqiCurrent={aqiData?.current as AQIData["current"]}
+            aqiCurrent_units={
+              aqiData?.current_units as AQIData["current_units"]
+            }
           />
         </motion.div>
 
