@@ -1,15 +1,32 @@
 import { Suspense } from "react";
-import { Await, useRouteLoaderData } from "react-router-dom";
+import { Await } from "react-router-dom";
 
 import WeatherCard from "./components/WeatherCard";
 import Hourly from "./components/Hourly";
 import Daily from "./components/Daily";
 import WeatherTile from "./components/WeatherTile";
+import FallBackLoader from "../../components/ui/FallbackLoader";
+import useFetchData from "../../hooks/useFetchData";
 
 import "./weather.css";
 let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
-  const { weatherData, aqiData } = useRouteLoaderData("root");
+  let { weatherData, aqiData, weatherQueryLoading, apiQueryLoading } =
+    useFetchData();
+  // let { weatherData, aqiData } = useAPIStore(
+  //   useShallow((state) => ({
+  //     weatherData: state.weatherStoreData,
+  //     aqiData: state.aqiStoreData,
+  //   })),
+  // );
+  // const { weatherData, aqiData } = useRouteLoaderData("root");
+
+  if (weatherQueryLoading || apiQueryLoading || !weatherData || !aqiData)
+    return (
+      <section className="loader-section">
+        <FallBackLoader />
+      </section>
+    );
   return (
     <section className="overflow-auto inner-route-section">
       {/* <RenderAnime isDay={parseInt(weatherData.current.is_day)} /> */}

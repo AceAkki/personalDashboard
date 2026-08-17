@@ -1,6 +1,6 @@
 // main react imports
 import { type ReactElement } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { useRef } from "react";
 // common imports
@@ -11,32 +11,20 @@ import OptionsPopup from "./task-manager/components/OptionsPopup";
 import EditTaskForm from "./task-manager/components/EditTaskForm";
 import EditNoteForm from "./quicknotes/components/EditNoteForm";
 
-import useFetchData from "../hooks/useFetchData";
-
 // state imports
 import { useUserStore } from "./auth/useAuthStore";
 import { useTaskStore } from "./task-manager/hooks/useTasksStore";
 import { useNoteStore } from "./quicknotes/hooks/useNoteStore";
-import { useAPIStore } from "../store/useAPIStore.ts";
+
 // css imports
 import "./dashboard.css";
 
 const Dashboard = (): ReactElement => {
-  let { weatherData, aqiData } = useFetchData();
-  console.log(weatherData, aqiData);
-  // let { weatherData, aqiData } = useAPIStore(
-  //   useShallow((state) => ({
-  //     weatherData: state.weatherData,
-  //     aqiData: state.aqiData,
-  //   })),
-  // );
-  // console.log(weatherData, aqiData);
   // retrieved data from the loader
   //const { weatherData, aqiData } = useLoaderData();
 
   // getting the current background url from the store
   const currentBG = useUserStore((state) => state.backgroundURL);
-  console.log(currentBG);
 
   let root = document.documentElement;
   // if currentBG exists then it sets the background image
@@ -69,12 +57,16 @@ const Dashboard = (): ReactElement => {
         <QuickLinks />
         <section className="dashboard-section scroll">
           <div className="main-outlet-wrap">
+            <Outlet />
+
+            {/* this is using Outlet Context and passing data taken from loader
             <Outlet
               context={{
                 weatherData,
                 aqiData,
               }}
             />
+              */}
           </div>
         </section>
         {taskID === taskTxt?.id && (

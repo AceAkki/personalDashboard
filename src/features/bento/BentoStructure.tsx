@@ -1,4 +1,3 @@
-import { useOutletContext } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { motion } from "motion/react";
 
@@ -16,15 +15,13 @@ import { useTaskStore } from "../task-manager/hooks/useTasksStore";
 import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
 import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
-
+import FallBackLoader from "../../components/ui/FallbackLoader";
 import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 
 // State
 import { useUserStore } from "../auth/useAuthStore";
 import { timeOfTheDayGreeting } from "../../global/globalFunctions";
-
-// type imports
-import type { DashboardContext } from "../mainTypes";
+import useFetchData from "../../hooks/useFetchData";
 
 // css imports
 import "./BentoStructure.css";
@@ -48,7 +45,10 @@ const itemVariants = {
 };
 
 const BentoStructure = () => {
-  const { weatherData, aqiData } = useOutletContext<DashboardContext>();
+  let { weatherData, aqiData, weatherQueryLoading, apiQueryLoading } =
+    useFetchData();
+
+  //const { weatherData, aqiData } = useOutletContext<DashboardContext>();
   const { newsArr } = useRouteNewsData();
 
   const { tasks, updateTasks } = useTaskStore(
@@ -62,6 +62,14 @@ const BentoStructure = () => {
   const username = useUserStore((state) => state.username);
 
   const updateNotes = useNoteStore((state) => state.updateNotes);
+
+  // fallback loader is data is not ready or isLoading
+  if ((weatherQueryLoading && apiQueryLoading) || (!weatherData && !aqiData))
+    return (
+      <section className="loader-section">
+        <FallBackLoader />
+      </section>
+    );
 
   return (
     <>

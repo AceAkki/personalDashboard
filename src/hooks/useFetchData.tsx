@@ -1,32 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { useShallow } from "zustand/shallow";
 import { useQuery } from "@tanstack/react-query";
 
+import { useUserStore } from "../features/auth/useAuthStore.ts";
 import { useAPIStore } from "../store/useAPIStore.ts";
 import { dashboardQueries } from "../services/queries";
-import { userKey } from "../global/storageKeys";
 
 import type { WeatherData, AQIData } from "../features/weather/weatherType";
-import type { location } from "../features/mainTypes.ts";
 
 // to get products data
-const useFetchData = (): {
-  weatherData: WeatherData | null;
-  aqiData: AQIData | null;
-} => {
-  let [location, setLocation] = useState<location | null>(null);
-  const [hasSyncedWeather, setHasSyncedWeather] = useState(false);
-  const [hasSyncedAQI, setHasSyncedAQI] = useState(false);
-
-  useEffect(() => {
-    console.log("🔑 userKey:", userKey);
-    const storedItem = localStorage.getItem(userKey);
-    console.log("📦 Raw localStorage item:", storedItem);
-    const state = storedItem ? JSON.parse(storedItem).state : null;
-    setLocation(state?.location);
-  }, []);
-
-  console.log(location);
+const useFetchData = () => {
+  let { latitude, longitude } = useUserStore((state) => state.location);
 
   let { weatherStoreData, updateWeatherData, aqiStoreData, updateAQIData } =
     useAPIStore(
@@ -45,71 +29,47 @@ const useFetchData = (): {
   // either from local or fetch data
   const weatherQuery = useQuery({
     ...dashboardQueries.getWeatherData({
-      latitude: location?.latitude,
-      longitude: location?.longitude,
+      latitude: latitude,
+      longitude: longitude,
     }),
-    enabled: !hasLocalWeatherData && !!location,
+    enabled: !hasLocalWeatherData,
   });
 
   const aqiQuery = useQuery({
     ...dashboardQueries.getAQIData({
-      latitude: location?.latitude,
-      longitude: location?.longitude,
+      latitude: latitude,
+      longitude: longitude,
     }),
-    enabled: !hasLocalAQIData && !!location,
-  });
-
-  console.log("🌤️ Weather Query:", {
-    status: weatherQuery.status,
-    enabled: !hasLocalWeatherData && !!location,
-    hasData: !!weatherQuery.data,
-    error: weatherQuery.error,
-    data: weatherQuery.data, // Log actual data structure
-  });
-
-  console.log("💨 AQI Query:", {
-    status: aqiQuery.status,
-    enabled: !hasLocalAQIData && !!location,
-    hasData: !!aqiQuery.data,
-    error: aqiQuery.error,
-    data: aqiQuery.data, // Log actual data structure
+    enabled: !hasLocalAQIData,
   });
 
   useEffect(() => {
-    if (weatherQuery.data && !hasSyncedWeather) {
+    if (weatherQuery.data) {
       updateWeatherData(weatherQuery.data as WeatherData);
-      setHasSyncedWeather(true);
     }
-  }, [weatherQuery.data, hasSyncedWeather, updateWeatherData]);
+  }, [weatherQuery.data, updateWeatherData]);
 
   useEffect(() => {
-    if (aqiQuery.data && !hasSyncedAQI) {
+    if (aqiQuery.data) {
       updateAQIData(aqiQuery.data as AQIData);
-      setHasSyncedAQI(true);
     }
-  }, [aqiQuery.data, hasSyncedAQI, updateAQIData]);
-  let finalData = useMemo(
-    () => ({
-      weatherData: hasLocalWeatherData
-        ? weatherStoreData
-        : (weatherQuery.data ?? null),
-      aqiData: hasLocalAQIData ? aqiStoreData : (aqiQuery.data ?? null),
-    }),
-    [
-      hasLocalWeatherData,
-      weatherStoreData,
-      weatherQuery.data,
-      hasLocalAQIData,
-      aqiStoreData,
-      aqiQuery.data,
-    ],
-  );
+  }, [aqiQuery.data, updateAQIData]);
 
-  console.log("Weather Query:", weatherQuery.status, weatherQuery.data);
-  console.log("AQI Query:", aqiQuery.status, aqiQuery.data);
-  console.log("Final Data:", finalData);
+  const dataConfig =
+    !hasLocalWeatherData && !hasLocalAQIData
+      ? {
+          weatherData: weatherQuery.data,
+          aqiData: aqiQuery.data,
+        }
+      : {
+          weatherData: weatherStoreData,
+          aqiData: aqiStoreData,
+        };
 
-  console.log(weatherQuery, finalData);
-  return finalData;
+  return {
+    ...dataConfig,
+    weatherQueryLoading: weatherQuery.isLoading,
+    apiQueryLoading: aqiQuery.isLoading,
+  };
 };
 export default useFetchData;
