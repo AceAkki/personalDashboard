@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useShallow } from "zustand/shallow";
 
-import useRouteNewsData from "./hooks/useRouteNewsData";
+import useFetchNewsData from "./hooks/useFetchNewsData";
 import { useNewsStore } from "./hooks/useNewsStore";
 import RenderNews from "./components/RenderNews";
 import FallBackLoader from "../../components/ui/FallbackLoader";
@@ -9,7 +9,7 @@ import type { NewsObject } from "./newsTypes";
 import "./news.css";
 
 const NewsFeed = () => {
-  const { loadingStatus, successData, newsArr } = useRouteNewsData();
+  const { loadingStatus, successData, newsArr } = useFetchNewsData();
 
   const { currentArrayName, updateCurrentArrayName, newsArray, setNewsArray } =
     useNewsStore(

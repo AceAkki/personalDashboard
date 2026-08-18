@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { WeatherData, AQIData } from "../features/weather/weatherType";
+import type { WeatherData, AQIData } from "../weatherType";
 
-interface APIStore {
+interface WeatherStore {
   weatherStoreData: WeatherData | null;
   updateWeatherData: (data: WeatherData) => void;
   aqiStoreData: AQIData | null;
   updateAQIData: (data: AQIData) => void;
 }
 
-export const useAPIStore = create<APIStore>()(
+export const useWeatherStore = create<WeatherStore>()(
   persist(
     (set) => ({
       weatherStoreData: null,

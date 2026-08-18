@@ -6,7 +6,7 @@ import { useNewsStore } from "./useNewsStore";
 
 import fetchNews from "../utils/fetchNews";
 import type { NewsObject, NewsRSSFeed, NewsSourceData } from "../newsTypes";
-const useRouteNewsData = () => {
+const useFetchNewsData = () => {
   let { newsStoreData, updateNewsStoreData } = useNewsStore(
     useShallow((state) => ({
       newsStoreData: state.newsStoreData,
@@ -76,4 +76,4 @@ const useRouteNewsData = () => {
   }
 };
 
-export default useRouteNewsData;
+export default useFetchNewsData;

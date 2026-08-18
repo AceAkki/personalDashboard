@@ -12,7 +12,7 @@ import LinkStorage from "../linkStorage/LinkStorage";
 
 import useTaskMain from "../task-manager/hooks/useTaskMain";
 import { useTaskStore } from "../task-manager/hooks/useTasksStore";
-import useRouteNewsData from "../news-feed/hooks/useRouteNewsData";
+import useFetchNewsData from "../news-feed/hooks/useFetchNewsData";
 import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
 import FallBackLoader from "../../components/ui/FallbackLoader";
@@ -21,7 +21,7 @@ import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 // State
 import { useUserStore } from "../auth/useAuthStore";
 import { timeOfTheDayGreeting } from "../../global/globalFunctions";
-import useFetchData from "../../hooks/useFetchData";
+import useFetchWeatherData from "../weather/hooks/useFetchWeatherData";
 
 // css imports
 import "./BentoStructure.css";
@@ -47,10 +47,10 @@ const itemVariants = {
 
 const BentoStructure = () => {
   let { weatherData, aqiData, weatherQueryLoading, apiQueryLoading } =
-    useFetchData();
+    useFetchWeatherData();
 
   //const { weatherData, aqiData } = useOutletContext<DashboardContext>();
-  const { loadingStatus, successData, newsArr } = useRouteNewsData();
+  const { loadingStatus, successData, newsArr } = useFetchNewsData();
 
   const { tasks, updateTasks } = useTaskStore(
     useShallow((state) => ({

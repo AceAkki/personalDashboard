@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
-import { getWeather, getAQI } from "../features/weather/utils/getWeather";
-import type { location } from "../features/mainTypes";
+import { getWeather, getAQI } from "../utils/getWeather";
+import type { location } from "../../mainTypes";
 
 export const dashboardQueries = {
   getWeatherData: ({ latitude, longitude }: location) =>

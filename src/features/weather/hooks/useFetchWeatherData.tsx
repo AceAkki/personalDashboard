@@ -2,18 +2,18 @@ import { useEffect } from "react";
 import { useShallow } from "zustand/shallow";
 import { useQuery } from "@tanstack/react-query";
 
-import { useUserStore } from "../features/auth/useAuthStore.ts";
-import { useAPIStore } from "../store/useAPIStore.ts";
-import { dashboardQueries } from "../services/queries";
+import { useUserStore } from "../../auth/useAuthStore.ts";
+import { useWeatherStore } from "./useWeatherStore.ts";
+import { dashboardQueries } from "../services/queries.ts";
 
-import type { WeatherData, AQIData } from "../features/weather/weatherType";
+import type { WeatherData, AQIData } from "../weatherType";
 
 // to get products data
-const useFetchData = () => {
+const useFetchWeatherData = () => {
   let { latitude, longitude } = useUserStore((state) => state.location);
 
   let { weatherStoreData, updateWeatherData, aqiStoreData, updateAQIData } =
-    useAPIStore(
+    useWeatherStore(
       useShallow((state) => ({
         weatherStoreData: state.weatherStoreData,
         updateWeatherData: state.updateWeatherData,
@@ -72,4 +72,4 @@ const useFetchData = () => {
     apiQueryLoading: aqiQuery.isLoading,
   };
 };
-export default useFetchData;
+export default useFetchWeatherData;
