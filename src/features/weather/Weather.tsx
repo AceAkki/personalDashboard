@@ -6,7 +6,7 @@ import Hourly from "./components/Hourly";
 import Daily from "./components/Daily";
 import WeatherTile from "./components/WeatherTile";
 import FallBackLoader from "../../components/ui/FallbackLoader";
-import useFetchData from "../../hooks/useFetchData";
+import useFetchWeatherData from "./hooks/useFetchWeatherData";
 
 import type { WeatherData } from "./weatherType";
 
@@ -14,7 +14,7 @@ import "./weather.css";
 let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
   let { weatherData, aqiData, weatherQueryLoading, apiQueryLoading } =
-    useFetchData();
+    useFetchWeatherData();
   // let { weatherData, aqiData } = useAPIStore(
   //   useShallow((state) => ({
   //     weatherData: state.weatherStoreData,
@@ -56,9 +56,13 @@ const Weather = () => {
                           current={
                             weatherData.current[
                               key as keyof WeatherData["current"]
+                            ] as number
+                          }
+                          current_units={
+                            weatherData.current_units[
+                              key as keyof WeatherData["current_units"]
                             ]
                           }
-                          current_units={weatherData.current_units[key as keyof WeatherData["current_units"]]}
                         />
                       );
                     })}
