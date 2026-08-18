@@ -28,11 +28,7 @@ const NewsFeed = () => {
   }, [newsArr, newsArray]);
 
   if (loadingStatus || !successData || !newsArr) {
-    return (
-      <section className="loader-section">
-        <FallBackLoader />
-      </section>
-    );
+    return <FallBackLoader />;
   }
 
   return (
