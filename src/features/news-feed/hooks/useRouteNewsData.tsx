@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNewsStore } from "./useNewsStore";
 
 import fetchNews from "../utils/fetchNews";
-import type { NewsObject, NewsSourceData } from "../newsTypes";
+import type { NewsObject, NewsRSSFeed, NewsSourceData } from "../newsTypes";
 const useRouteNewsData = () => {
   let { newsStoreData, updateNewsStoreData } = useNewsStore(
     useShallow((state) => ({
@@ -55,7 +55,7 @@ const useRouteNewsData = () => {
       Object.entries(newsData).map(([key, value]) => [
         key,
         Object.fromEntries(
-          Object.entries(value)
+          Object.entries(value as unknown as keyof NewsSourceData)
             .filter(([_, subValue]) => subValue.status === "ok")
             .map(([subKey, subValue]) => [subKey, subValue.items]),
         ),
