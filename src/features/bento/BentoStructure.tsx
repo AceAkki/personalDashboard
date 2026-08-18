@@ -50,7 +50,7 @@ const BentoStructure = () => {
     useFetchData();
 
   //const { weatherData, aqiData } = useOutletContext<DashboardContext>();
-  const { newsArr } = useRouteNewsData();
+  const { loadingStatus, successData, newsArr } = useRouteNewsData();
 
   const { tasks, updateTasks } = useTaskStore(
     useShallow((state) => ({
@@ -65,7 +65,12 @@ const BentoStructure = () => {
   const updateNotes = useNoteStore((state) => state.updateNotes);
 
   // fallback loader is data is not ready or isLoading
-  if ((weatherQueryLoading && apiQueryLoading) || (!weatherData && !aqiData))
+  if (
+    (weatherQueryLoading && apiQueryLoading) ||
+    loadingStatus ||
+    (!weatherData && !aqiData) ||
+    !successData
+  )
     return (
       <section className="loader-section">
         <FallBackLoader />
