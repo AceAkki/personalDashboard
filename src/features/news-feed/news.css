@@ -75,6 +75,12 @@
   border-radius: 0.5rem;
   background: transparent;
   border: 1px solid;
+  transition: all 500ms ease-in-out;
+}
+
+.nav-btn.active {
+  background: var(--primary);
+  color: var(--secondary);
 }
 
 @media screen and (min-width: 1080px) {

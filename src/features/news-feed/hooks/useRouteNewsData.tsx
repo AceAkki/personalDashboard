@@ -1,19 +1,36 @@
-import { useRouteLoaderData } from "react-router-dom";
-import type { NewsFeedProps, NewsObject } from "../newsTypes";
+import { useEffect } from "react";
+import { useShallow } from "zustand/shallow";
+import { useQuery } from "@tanstack/react-query";
 
+import { useNewsStore } from "./useNewsStore";
+
+import fetchNews from "../utils/fetchNews";
+import type { NewsObject, NewsSourceData } from "../newsTypes";
 const useRouteNewsData = () => {
-  const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
-
-  const successData = Object.fromEntries(
-    Object.entries(newsData).map(([key, value]) => [
-      key,
-      Object.fromEntries(
-        Object.entries(value)
-          .filter(([_, subValue]) => subValue.status === "ok")
-          .map(([subKey, subValue]) => [subKey, subValue.items]),
-      ),
-    ]),
+  let { newsStoreData, updateNewsStoreData } = useNewsStore(
+    useShallow((state) => ({
+      newsStoreData: state.newsStoreData,
+      updateNewsStoreData: state.updateNewsStoreData,
+    })),
   );
+  const hasLocalNewsData = newsStoreData !== null;
+
+  const newsQuery = useQuery({
+    queryKey: ["news"],
+    queryFn: () => fetchNews(),
+    staleTime: 5 * 60 * 1000,
+    gcTime: 1 * 60 * 60 * 1000,
+    enabled: !hasLocalNewsData,
+  });
+
+  useEffect(() => {
+    if (newsQuery.data) {
+      updateNewsStoreData(newsQuery.data as NewsSourceData);
+    }
+  }, [newsQuery.data, updateNewsStoreData]);
+
+  const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
+  // const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
   // const successData = {};
   // for (let [key, value] of Object.entries(newsData)) {
   //   let valueData = {};
@@ -33,11 +50,30 @@ const useRouteNewsData = () => {
   //   });
   // }
 
-  const newsArr = Object.values(successData).flatMap((objValue) =>
-    Object.values(objValue as NewsObject).flat(),
-  );
+  if (newsData !== undefined) {
+    const successData = Object.fromEntries(
+      Object.entries(newsData).map(([key, value]) => [
+        key,
+        Object.fromEntries(
+          Object.entries(value)
+            .filter(([_, subValue]) => subValue.status === "ok")
+            .map(([subKey, subValue]) => [subKey, subValue.items]),
+        ),
+      ]),
+    );
 
-  return { successData, newsArr };
+    const newsArr = Object.values(successData).flatMap((objValue) =>
+      Object.values(objValue as NewsObject).flat(),
+    );
+
+    return {
+      successData: successData,
+      newsArr: newsArr,
+      loadingStatus: newsQuery.isLoading,
+    };
+  } else {
+    return { loadingStatus: newsQuery.isLoading };
+  }
 };
 
 export default useRouteNewsData;

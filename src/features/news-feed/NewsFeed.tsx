@@ -4,32 +4,48 @@ import { useShallow } from "zustand/shallow";
 import useRouteNewsData from "./hooks/useRouteNewsData";
 import { useNewsStore } from "./hooks/useNewsStore";
 import RenderNews from "./components/RenderNews";
-
+import FallBackLoader from "../../components/ui/FallbackLoader";
 import type { NewsObject } from "./newsTypes";
 import "./news.css";
 
 const NewsFeed = () => {
-  const { successData, newsArr } = useRouteNewsData();
+  const { loadingStatus, successData, newsArr } = useRouteNewsData();
 
-  const { newsArray, setNewsArray } = useNewsStore(
-    useShallow((state) => ({
-      newsArray: state.newsArray,
-      setNewsArray: state.setNewsArray,
-    })),
-  );
+  const { currentArrayName, updateCurrentArrayName, newsArray, setNewsArray } =
+    useNewsStore(
+      useShallow((state) => ({
+        currentArrayName: state.currentArrayName,
+        updateCurrentArrayName: state.updateCurrentArrayName,
+        newsArray: state.newsArray,
+        setNewsArray: state.setNewsArray,
+      })),
+    );
+
   useEffect(() => {
-    if (newsArray.length === 0) {
+    if (newsArr && newsArray.length === 0) {
       setNewsArray(newsArr as NewsObject[]);
     }
-  }, [newsArray]);
+  }, [newsArr, newsArray]);
+
+  if (loadingStatus || !successData || !newsArr) {
+    return (
+      <section className="loader-section">
+        <FallBackLoader />
+      </section>
+    );
+  }
+
   return (
     <>
       <section className="overflow-auto  inner-route-section">
         <div className="category-navbar">
           <button
-            className="nav-btn"
+            className={
+              currentArrayName === "All" ? "nav-btn active" : "nav-btn"
+            }
             onClick={() => {
               setNewsArray(newsArr as NewsObject[]);
+              updateCurrentArrayName("All");
             }}
           >
             All
@@ -38,13 +54,15 @@ const NewsFeed = () => {
             return (
               <button
                 key={key}
-                className="nav-btn"
+                className={
+                  currentArrayName === key ? "nav-btn active" : "nav-btn"
+                }
                 onClick={() => {
                   let categoryNewsArr = Object.values(
                     successData[key as keyof typeof successData],
                   ).flat();
-                  console.log(categoryNewsArr, successData[key]);
                   setNewsArray(categoryNewsArr as NewsObject[]);
+                  updateCurrentArrayName(key);
                 }}
               >
                 {key}

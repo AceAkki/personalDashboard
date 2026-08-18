@@ -58,7 +58,7 @@ const Weather = () => {
                               key as keyof WeatherData["current"]
                             ]
                           }
-                          current_units={weatherData.current_units[key key as keyof WeatherData["current_units"]]}
+                          current_units={weatherData.current_units[key as keyof WeatherData["current_units"]]}
                         />
                       );
                     })}
