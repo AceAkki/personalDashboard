@@ -25,7 +25,6 @@ const RenderLinks = ({ links, deleteLink }: RenderLinksProps) => {
     (linkObj) => linkObj.expiryTime < Date.now(),
   );
 
-  console.log(expiredLinks);
   if (expiredLinks.length > 0) {
     expiredLinks.forEach((linkObj) => deleteLink(linkObj.link));
   }

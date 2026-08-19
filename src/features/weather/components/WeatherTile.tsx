@@ -39,7 +39,7 @@ const WeatherTile = ({ current, current_units, icon }: WeatherTileProps) => {
   let weatherIconKey: WeatherKey = weatherKeys.filter((key) =>
     icon.includes(key),
   )[0];
-  console.log(icon, weatherIconKey);
+  // console.log(icon, weatherIconKey);
   return (
     <div className="weather-tile">
       {icon !== "is_day" ? weatherIcon[weatherIconKey] : dayType[1]}

@@ -24,8 +24,6 @@ const useFetchWeatherData = () => {
   const hasLocalWeatherData = weatherStoreData !== null;
   const hasLocalAQIData = aqiStoreData !== null;
 
-  console.log("🏪 Store data:", { hasLocalWeatherData, hasLocalAQIData });
-
   // either from local or fetch data
   const weatherQuery = useQuery({
     ...dashboardQueries.getWeatherData({

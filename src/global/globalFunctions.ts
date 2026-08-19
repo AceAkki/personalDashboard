@@ -13,7 +13,7 @@ export async function requireAuth({ request }: { request: any }) {
   let userData = localStorage.getItem(userKey);
   const isLoggedIn = userData ? true : false;
 
-  console.log(request, userData, isLoggedIn);
+  console.log(request, isLoggedIn);
   if (!isLoggedIn) {
     return redirect(`../login`);
   }
@@ -34,7 +34,7 @@ export const toggleClass = ({
 
 export const timeOfTheDayGreeting = () => {
   const currentHour = new Date().getHours();
-  console.log(currentHour);
+  // console.log(currentHour);
   return currentHour < 12
     ? "¡Buenos Días"
     : currentHour >= 12 && currentHour < 19

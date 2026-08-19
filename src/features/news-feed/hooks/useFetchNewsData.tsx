@@ -6,6 +6,7 @@ import { useNewsStore } from "./useNewsStore";
 
 import fetchNews from "../utils/fetchNews";
 import type { NewsObject, NewsSourceData } from "../newsTypes";
+
 const useFetchNewsData = () => {
   let { newsStoreData, updateNewsStoreData } = useNewsStore(
     useShallow((state) => ({
@@ -13,8 +14,10 @@ const useFetchNewsData = () => {
       updateNewsStoreData: state.updateNewsStoreData,
     })),
   );
+  // checks if local data exists or not
   const hasLocalNewsData = newsStoreData !== null;
 
+  // runs query depending on if it exists or not
   const newsQuery = useQuery({
     queryKey: ["news"],
     queryFn: () => fetchNews(),
@@ -30,6 +33,7 @@ const useFetchNewsData = () => {
   }, [newsQuery.data, updateNewsStoreData]);
 
   const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
+
   // const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
   // const successData = {};
   // for (let [key, value] of Object.entries(newsData)) {
@@ -54,7 +58,6 @@ const useFetchNewsData = () => {
     const successData = Object.fromEntries(
       Object.entries(newsData).map(([key, value]) => [
         key as keyof NewsSourceData,
-        ,
         Object.fromEntries(
           Object.entries(value)
             .filter(([_, subValue]) => subValue.status === "ok")
@@ -62,9 +65,8 @@ const useFetchNewsData = () => {
         ),
       ]),
     );
-
-    const newsArr = Object.values(successData).flatMap((objValue) =>
-      Object.values(objValue as NewsObject).flat(),
+    const newsArr: NewsObject[] = Object.values(successData).flatMap(
+      (objValue) => Object.values(objValue).flat(),
     );
 
     return {

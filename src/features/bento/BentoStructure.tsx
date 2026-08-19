@@ -25,7 +25,9 @@ import useFetchWeatherData from "../weather/hooks/useFetchWeatherData";
 
 // css imports
 import "./BentoStructure.css";
+
 import type { AQIData, WeatherData } from "../weather/weatherType";
+import type { NewsObject } from "../news-feed/newsTypes";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -66,10 +68,12 @@ const BentoStructure = () => {
 
   // fallback loader is data is not ready or isLoading
   if (
-    (weatherQueryLoading && apiQueryLoading) ||
-    loadingStatus ||
-    (!weatherData && !aqiData) ||
-    !successData ||
+    weatherQueryLoading &&
+    apiQueryLoading &&
+    !weatherData &&
+    !aqiData &&
+    loadingStatus &&
+    !successData &&
     !newsArr
   )
     return (
@@ -127,7 +131,7 @@ const BentoStructure = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="grid-item span-column">
-          <RenderNews newsArr={newsArr} />
+          <RenderNews newsArr={newsArr as NewsObject[]} />
         </motion.div>
         <motion.div variants={itemVariants} className="grid-item">
           <LinkStorage />
