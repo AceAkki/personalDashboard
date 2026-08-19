@@ -1,5 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
+import { weatherKey } from "../../../global/storageKeys";
 import type { WeatherData, AQIData } from "../weatherType";
 
 interface WeatherStore {
@@ -24,7 +26,7 @@ export const useWeatherStore = create<WeatherStore>()(
         })),
     }),
     {
-      name: "api-key",
+      name: weatherKey,
     },
   ),
 );
