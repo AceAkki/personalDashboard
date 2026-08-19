@@ -69,7 +69,8 @@ const BentoStructure = () => {
     (weatherQueryLoading && apiQueryLoading) ||
     loadingStatus ||
     (!weatherData && !aqiData) ||
-    !successData
+    !successData ||
+    !newsArr
   )
     return (
       <section className="loader-section">
