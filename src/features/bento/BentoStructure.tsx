@@ -67,14 +67,15 @@ const BentoStructure = () => {
   const updateNotes = useNoteStore((state) => state.updateNotes);
 
   // fallback loader is data is not ready or isLoading
+  console.log(newsArr === undefined);
   if (
-    weatherQueryLoading &&
-    apiQueryLoading &&
-    !weatherData &&
-    !aqiData &&
-    loadingStatus &&
-    !successData &&
-    !newsArr
+    weatherQueryLoading ||
+    apiQueryLoading ||
+    !weatherData ||
+    !aqiData ||
+    loadingStatus ||
+    successData === undefined ||
+    newsArr === undefined
   )
     return (
       <section className="loader-section">
