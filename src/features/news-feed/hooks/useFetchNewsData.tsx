@@ -53,9 +53,10 @@ const useFetchNewsData = () => {
   if (newsData !== undefined) {
     const successData = Object.fromEntries(
       Object.entries(newsData).map(([key, value]) => [
-        key,
+        key as keyof NewsSourceData,
+        ,
         Object.fromEntries(
-          Object.entries(value as unknown as keyof NewsSourceData)
+          Object.entries(value)
             .filter(([_, subValue]) => subValue.status === "ok")
             .map(([subKey, subValue]) => [subKey, subValue.items]),
         ),
