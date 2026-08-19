@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNewsStore } from "./useNewsStore";
 
 import fetchNews from "../utils/fetchNews";
-import type { NewsObject, NewsRSSFeed, NewsSourceData } from "../newsTypes";
+import type { NewsObject, NewsSourceData } from "../newsTypes";
 const useFetchNewsData = () => {
   let { newsStoreData, updateNewsStoreData } = useNewsStore(
     useShallow((state) => ({
