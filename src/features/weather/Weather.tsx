@@ -36,6 +36,10 @@ const Weather = () => {
         <Await resolve={{ weatherData, aqiData }}>
           {({ weatherData, aqiData }) => (
             <div className="weather-main-wrap">
+              <h2 className="section-title">Weather</h2>
+              <p>
+                Check out the current weather and forecast for your location
+              </p>
               <div className="top-row weather-grid-item">
                 <div className="weather-left-wrap weather-grid-item">
                   <WeatherCard

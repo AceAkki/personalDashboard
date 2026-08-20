@@ -13,7 +13,7 @@
   float: left;
   width: auto;
   height: auto;
-  padding: clamp(5rem, 20cqw, 8rem);
+  padding: clamp(4.5rem, 20cqw, 8rem);
   border: 3px solid var(--primary);
   border-radius: 50%;
   -moz-border-radius: 50%;

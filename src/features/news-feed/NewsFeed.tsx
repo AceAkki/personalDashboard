@@ -34,6 +34,8 @@ const NewsFeed = () => {
   return (
     <>
       <section className="overflow-auto  inner-route-section">
+        <h2 className="section-title">News & Updates</h2>
+        <p>Pick a category to discover the news that matters to you.</p>
         <div className="category-navbar">
           <button
             className={
