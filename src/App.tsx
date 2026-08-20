@@ -24,7 +24,7 @@ import NewsFeed from "./features/news-feed/NewsFeed";
 import Notes from "./features/quicknotes/Notes";
 
 import ErrorPage from "./features/Error";
-import FallBackLoader from "./features/fallbackElem";
+import FallBackLoader from "./components/ui/FallbackLoader";
 import "./global/customProto";
 import "./App.css";
 

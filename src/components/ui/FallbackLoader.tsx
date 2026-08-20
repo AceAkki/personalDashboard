@@ -8,7 +8,7 @@ export default function FallBackLoader() {
         visible={true}
         height="100"
         width="100"
-        color="#2563eb"
+        color="var(--primary)"
         ariaLabel="three-circles-loading"
         wrapperStyle={{}}
         wrapperClass=""
