@@ -67,18 +67,18 @@ const Weather = () => {
                       );
                     })}
                 </div>
+                <div className="weather-grid-item">
+                  <Hourly
+                    hourly={weatherData.hourly}
+                    tempUnit={weatherData.hourly_units.temperature_2m}
+                  />
+                </div>
               </div>
 
               <div className="weather-grid-item">
                 <Daily
                   daily={weatherData.daily}
                   tempUnit={weatherData.daily_units.temperature_2m_max}
-                />
-              </div>
-              <div className="weather-grid-item span-column">
-                <Hourly
-                  hourly={weatherData.hourly}
-                  tempUnit={weatherData.hourly_units.temperature_2m}
                 />
               </div>
             </div>

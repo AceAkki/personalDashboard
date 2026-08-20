@@ -54,7 +54,7 @@
 
 @media screen and (min-width: 1080px) {
   .weather-temp {
-    grid-template-columns: 70% auto;
+    grid-template-columns: 75% auto;
   }
 
   .weather-info {
