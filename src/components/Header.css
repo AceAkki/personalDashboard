@@ -1,15 +1,14 @@
 .header {
   display: flex;
-  padding: 1rem 2rem 0;
+  padding: 1rem 1.5rem 0;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 99;
 }
 .header-logo-wrap {
   background: var(--primary);
-  padding: 0.6rem;
-  border-radius: var(--default-radius) 0 0 var(--default-radius);
+  border-radius: 100%;
   font-size: 1.2rem;
   font-weight: 700;
   transition: all 0.5s ease-in-out;
@@ -21,6 +20,10 @@
   gap: 0.5rem;
   text-decoration: none;
   color: var(--secondary);
+}
+
+.logo-img {
+  border-radius: 100%;
 }
 
 .header-logo-wrap:hover {
@@ -37,8 +40,22 @@
   gap: 0.5rem;
   border-radius: 0 var(--default-radius) var(--default-radius) 0;
   padding: 0.5rem;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5rem -1.1rem;
+  z-index: -1;
 }
 
+.user-header-wrap svg {
+  color: var(--primary);
+}
+.icon-header-wrap {
+  padding: 0.5rem;
+  background: var(--secondary);
+  border-radius: 100%;
+}
 .username-header-wrap,
 .icon-header-wrap {
   display: flex;

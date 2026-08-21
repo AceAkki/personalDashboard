@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import MainSettings from "./MainSettings";
 import { AnimatePresence } from "motion/react";
-import { GearIcon, LayoutIcon } from "@phosphor-icons/react";
+import { FadersIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, type ReactElement } from "react";
 
 import "./Header.css";
@@ -14,6 +14,7 @@ export function Header({ title }: HeaderProps): ReactElement {
   //console.log(userData);
   let headerRef = useRef<HTMLHeadingElement>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
+
   useEffect(() => {
     const nav = headerRef.current;
     if (!nav) return;
@@ -27,8 +28,10 @@ export function Header({ title }: HeaderProps): ReactElement {
       <header className="header" ref={headerRef}>
         <div className="header-logo-wrap">
           <Link to=".">
+            {/*
             <LayoutIcon size={32} weight="fill" />
-            <p>{title}</p>
+            <p>{title}</p> */}
+            <img src="/android/launchericon-72x72.png" className="logo-img" />
           </Link>
         </div>
         <button className="user-header-wrap">
@@ -42,7 +45,7 @@ export function Header({ title }: HeaderProps): ReactElement {
               console.log(isSettingsOpen);
             }}
           >
-            <GearIcon size={32} />
+            <FadersIcon size={25} />
           </div>
         </button>
       </header>

@@ -80,7 +80,7 @@ const Daily = ({ daily, tempUnit }: DailyProps) => {
           },
           // when window width is >= 1024px
           1024: {
-            slidesPerView: 2.5,
+            slidesPerView: 3.5,
             spaceBetween: 30,
           },
         }}
