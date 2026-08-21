@@ -14,7 +14,7 @@ export function Header({ title }: HeaderProps): ReactElement {
   //console.log(userData);
   let headerRef = useRef<HTMLHeadingElement>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
-
+  console.log(title);
   useEffect(() => {
     const nav = headerRef.current;
     if (!nav) return;
