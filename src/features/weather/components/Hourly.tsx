@@ -59,15 +59,15 @@ const Hourly = ({ hourly, tempUnit }: HourlyProps) => {
           },
           // when window width is >= 1024px
           1024: {
-            slidesPerView: 9.5,
+            slidesPerView: 2.5,
             spaceBetween: 10,
           },
           1280: {
-            slidesPerView: 8.5,
+            slidesPerView: 2.5,
             spaceBetween: 10,
           },
           1380: {
-            slidesPerView: 9.5,
+            slidesPerView: 2.5,
             spaceBetween: 10,
           },
         }}
