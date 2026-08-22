@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { QueryClient } from "@tanstack/react-query";
 
+// added so data doesn't need to be stored in zustand
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 
