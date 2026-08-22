@@ -14,6 +14,7 @@ import AuthLayout from "./features/auth/AuthLayout";
 import Login, { action as loginAction } from "./features/auth/Login";
 import { requireAuth } from "./global/globalFunctions";
 
+// routes
 import Dashboard from "./features/Dashboard";
 import BentoStructure from "./features/bento/BentoStructure";
 import TaskManager, {
@@ -27,6 +28,7 @@ import NewsFeed from "./features/news-feed/NewsFeed";
 
 import Notes from "./features/quicknotes/Notes";
 
+// global use
 import ErrorPage from "./features/Error";
 import FallBackLoader from "./components/ui/FallbackLoader";
 import "./global/customProto";
