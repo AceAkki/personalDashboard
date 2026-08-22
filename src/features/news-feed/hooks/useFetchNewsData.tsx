@@ -1,21 +1,22 @@
-import { useEffect } from "react";
-import { useShallow } from "zustand/shallow";
+// import { useEffect } from "react";
+// import { useShallow } from "zustand/shallow";
 import { useQuery } from "@tanstack/react-query";
 
-import { useNewsStore } from "./useNewsStore";
+// import { useNewsStore } from "./useNewsStore";
 
 import fetchNews from "../utils/fetchNews";
 import type { NewsObject, NewsSourceData } from "../newsTypes";
 
 const useFetchNewsData = () => {
-  let { newsStoreData, updateNewsStoreData } = useNewsStore(
-    useShallow((state) => ({
-      newsStoreData: state.newsStoreData,
-      updateNewsStoreData: state.updateNewsStoreData,
-    })),
-  );
+  // let { newsStoreData, updateNewsStoreData } = useNewsStore(
+  //   useShallow((state) => ({
+  //     newsStoreData: state.newsStoreData,
+  //     updateNewsStoreData: state.updateNewsStoreData,
+  //   })),
+  // );
+
   // checks if local data exists or not
-  const hasLocalNewsData = newsStoreData !== null;
+  // const hasLocalNewsData = newsStoreData !== null;
 
   // runs query depending on if it exists or not
   const newsQuery = useQuery({
@@ -23,16 +24,16 @@ const useFetchNewsData = () => {
     queryFn: () => fetchNews(),
     staleTime: 5 * 60 * 1000,
     gcTime: 1 * 60 * 60 * 1000,
-    enabled: !hasLocalNewsData,
+    // enabled: !hasLocalNewsData,
   });
 
-  useEffect(() => {
-    if (newsQuery.data) {
-      updateNewsStoreData(newsQuery.data as NewsSourceData);
-    }
-  }, [newsQuery.data, updateNewsStoreData]);
+  // useEffect(() => {
+  //   if (newsQuery.data) {
+  //     updateNewsStoreData(newsQuery.data as NewsSourceData);
+  //   }
+  // }, [newsQuery.data, updateNewsStoreData]);
 
-  const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
+  // const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
 
   // const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
   // const successData = {};
@@ -54,9 +55,9 @@ const useFetchNewsData = () => {
   //   });
   // }
 
-  if (newsData !== undefined) {
+  if (newsQuery.data !== undefined) {
     const successData = Object.fromEntries(
-      Object.entries(newsData).map(([key, value]) => [
+      Object.entries(newsQuery.data).map(([key, value]) => [
         key as keyof NewsSourceData,
         Object.fromEntries(
           Object.entries(value)

@@ -4,7 +4,10 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
+
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 
 import AuthLayout from "./features/auth/AuthLayout";
 import Login, { action as loginAction } from "./features/auth/Login";
@@ -28,7 +31,17 @@ import FallBackLoader from "./components/ui/FallbackLoader";
 import "./global/customProto";
 import "./App.css";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      gcTime: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  },
+});
+
+const persister = createAsyncStoragePersister({
+  storage: window.localStorage,
+});
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -88,9 +101,12 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <PersistQueryClientProvider
+      client={queryClient}
+      persistOptions={{ persister }}
+    >
       <RouterProvider router={router} />
-    </QueryClientProvider>
+    </PersistQueryClientProvider>
   );
 }
 
