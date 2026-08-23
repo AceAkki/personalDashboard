@@ -1,7 +1,3 @@
-.task-manager-title {
-  font-size: 2.9rem;
-}
-
 .tasks-grid-wrap {
   display: grid;
   grid-template-columns: repeat(1, 1fr);

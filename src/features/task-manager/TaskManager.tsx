@@ -46,7 +46,7 @@ const TaskManager = () => {
   return (
     <>
       <section className="overflow-unset inner-route-section">
-        <h2 className="task-manager-title">Task Manager</h2>
+        <h2 className="section-title">Task Manager</h2>
         <p>
           Track your tasks here and keep your brain free for another things.
         </p>
