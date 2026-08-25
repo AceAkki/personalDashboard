@@ -4,22 +4,26 @@
   overflow: auto;
 }
 .hour-wrap {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  /* display: grid;
+  grid-template-rows: repeat(2, 1fr); */
+  display: flex;
+  flex-direction: column;
   background: var(--bg-rgba);
   backdrop-filter: blur(10px);
-  align-items: baseline;
+  /* align-items: baseline; */
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  /* gap: 1rem; */
   flex-grow: 1;
   flex-basis: 0;
   min-width: 0;
-  padding: 1rem 3.5rem;
+  /* padding: 1rem 3.5rem; */
+  padding: 1rem;
   border: 1px solid var(--primary);
   border-radius: 16px;
-  height: 10rem;
+  /* height: 10rem;
   min-width: 3rem;
-  max-width: 3rem;
+  max-width: 3rem; */
   cursor: pointer;
 }
 
@@ -35,9 +39,14 @@
   border-bottom: 1px solid #000;
 }
 .hour-temp {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
 }
+
+.hour-anime {
+  width: 3rem;
+}
+
 /* 
 .hour-wrap svg {
   width: 60px;
