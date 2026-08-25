@@ -63,7 +63,7 @@ const Hourly = ({ hourly, tempUnit }: HourlyProps) => {
             spaceBetween: 10,
           },
           1280: {
-            slidesPerView: 2.5,
+            slidesPerView: 3.5,
             spaceBetween: 10,
           },
           1380: {
