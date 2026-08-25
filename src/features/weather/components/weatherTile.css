@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* padding: 2rem 0; */
+  padding: 1rem 0;
   backdrop-filter: blur(16px);
   border: 1px solid var(--primary);
   border-radius: var(--default-radius);
@@ -25,5 +25,9 @@
 @media screen and (min-width: 1080px) {
   .weather-tile-wrap {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .weather-tile {
+    padding: 0;
   }
 }

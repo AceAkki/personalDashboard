@@ -37,7 +37,7 @@
 }
 .Toastify__toast--error {
   background: var(--primary-soft);
-  color: var(--soft-clr);
+  color: var(--primary);
   font-weight: 500;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .Toastify__close-button > svg {
-  color: var(--soft-clr);
+  color: var(--primary);
 }
 
 @media screen and (min-width: 1080px) {

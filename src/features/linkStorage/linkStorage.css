@@ -14,7 +14,7 @@
   padding: 0.5rem;
   margin: 0.5rem 0;
   outline: none;
-  border: 1px solid var(--soft-clr);
+  border: 1px solid var(--primary);
   border-radius: 5px;
 }
 
@@ -59,7 +59,7 @@
   background: var(--primary);
   width: fit-content;
   padding: 0.5rem 0.8rem;
-  color: var(--soft-clr);
+  color: var(--primary);
   border-radius: 16px;
   text-decoration: none;
 }

@@ -17,7 +17,7 @@
 
 .news-details-wrap {
   background: var(--bg-rgba);
-  color: var(--primary);
+  color: var(--txt-clr);
   padding: 1rem;
   border: 1px solid var(--primary);
   border-radius: 16px;
