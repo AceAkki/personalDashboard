@@ -69,6 +69,24 @@
   text-transform: capitalize;
 }
 
+.network-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0.1rem 0.5rem;
+  z-index: -1;
+  background: transparent;
+  width: 20px;
+  border-radius: 100%;
+  transition: all 800ms ease-in-out;
+}
+.network-indicator.online {
+  background: var(--success);
+}
+.network-indicator.offline {
+  background: var(--error);
+}
+
 @media scree and (min-width: 1080px) {
   .header {
     position: absolute;

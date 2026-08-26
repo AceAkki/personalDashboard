@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import MainSettings from "./MainSettings";
-import { AnimatePresence } from "motion/react";
-import { FadersIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, type ReactElement } from "react";
+import { Link } from "react-router-dom";
+import { AnimatePresence } from "motion/react";
 
+import MainSettings from "./MainSettings";
+import { useOnlineStatus } from "../global/globalFunctions";
+
+import { FadersIcon } from "@phosphor-icons/react";
 import "./Header.css";
 
 // Define the props for the Header component
@@ -48,6 +50,15 @@ export function Header({ title }: HeaderProps): ReactElement {
             <FadersIcon size={25} />
           </div>
         </button>
+        <div
+          className={
+            useOnlineStatus()
+              ? `network-indicator online`
+              : `network-indicator offline`
+          }
+        >
+          &nbsp;
+        </div>
       </header>
       <AnimatePresence>
         {isSettingsOpen && <MainSettings setIsOpen={setIsSettingsOpen} />}
