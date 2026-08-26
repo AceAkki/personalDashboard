@@ -90,15 +90,11 @@ section.overflow-unset {
   border: 1px solid;
   transition: all 800ms ease-in-out;
 }
-.section-title:hover,
+/* .section-title:hover,
 .section-sub-title:hover {
   background: var(--primary);
-  color: var(--secondary);
-}
-
-.section-para {
-  margin: 0.5rem 0;
-}
+  color: var(--accent-color);
+} */
 
 .scroll {
   scrollbar-width: thin;
