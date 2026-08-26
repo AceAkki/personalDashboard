@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from "react";
 import { redirect } from "react-router-dom";
 import { userKey } from "./storageKeys";
 
@@ -51,3 +52,21 @@ export const checkImgURL = async (inputValue: string) => {
   console.log(isImageType, isStatusOk);
   return isImageType && isStatusOk;
 };
+
+export const getNewTime = (future?: number | null): number => {
+  return future ? new Date().getTime() + future : new Date().getTime();
+};
+
+export function useOnlineStatus() {
+  return useSyncExternalStore(
+    (cb) => {
+      window.addEventListener("online", cb);
+      window.addEventListener("offline", cb);
+      return () => {
+        window.removeEventListener("online", cb);
+        window.removeEventListener("offline", cb);
+      };
+    },
+    () => navigator.onLine,
+  );
+}
