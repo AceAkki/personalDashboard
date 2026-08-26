@@ -1,40 +1,51 @@
-// import { useEffect } from "react";
-// import { useShallow } from "zustand/shallow";
+import { useEffect } from "react";
+import { useShallow } from "zustand/shallow";
 import { useQuery } from "@tanstack/react-query";
 
-// import { useNewsStore } from "./useNewsStore";
+import { useNewsStore } from "./useNewsStore";
 
 import fetchNews from "../utils/fetchNews";
 import type { NewsObject, NewsSourceData } from "../newsTypes";
+import { getNewTime } from "../../../global/globalFunctions";
 
 const useFetchNewsData = () => {
-  // let { newsStoreData, updateNewsStoreData } = useNewsStore(
-  //   useShallow((state) => ({
-  //     newsStoreData: state.newsStoreData,
-  //     updateNewsStoreData: state.updateNewsStoreData,
-  //   })),
-  // );
+  let garbageCollectionTime = 1 * 60 * 60 * 1000;
+  let { newsStoreData, updateNewsStoreData, storageTime, updateStorageTime } =
+    useNewsStore(
+      useShallow((state) => ({
+        newsStoreData: state.newsStoreData,
+        updateNewsStoreData: state.updateNewsStoreData,
+        storageTime: state.storageTime,
+        updateStorageTime: state.updateStorageTime,
+      })),
+    );
 
   // checks if local data exists or not
-  // const hasLocalNewsData = newsStoreData !== null;
+  const hasLocalNewsData =
+    newsStoreData !== null &&
+    storageTime !== null &&
+    storageTime > getNewTime();
 
   // runs query depending on if it exists or not
   const newsQuery = useQuery({
     queryKey: ["news"],
     queryFn: () => fetchNews(),
     staleTime: 5 * 60 * 1000,
-    gcTime: 1 * 60 * 60 * 1000,
-    // enabled: !hasLocalNewsData,
+    gcTime: garbageCollectionTime,
+    enabled: !hasLocalNewsData,
   });
 
-  // useEffect(() => {
-  //   if (newsQuery.data) {
-  //     updateNewsStoreData(newsQuery.data as NewsSourceData);
-  //   }
-  // }, [newsQuery.data, updateNewsStoreData]);
+  console.log(hasLocalNewsData, new Date(storageTime), new Date(getNewTime()));
+  useEffect(() => {
+    if (newsQuery.data) {
+      updateNewsStoreData(newsQuery.data as NewsSourceData);
+      updateStorageTime(getNewTime(garbageCollectionTime));
+    }
+  }, [newsQuery.data, updateNewsStoreData, updateStorageTime]);
 
-  // const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
+  const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
 
+  /* Kept Older Code
   // const { newsData } = useRouteLoaderData("root") as NewsFeedProps;
   // const successData = {};
   // for (let [key, value] of Object.entries(newsData)) {
@@ -55,9 +66,11 @@ const useFetchNewsData = () => {
   //   });
   // }
 
-  if (newsQuery.data !== undefined) {
+  */
+
+  if (newsData !== undefined) {
     const successData = Object.fromEntries(
-      Object.entries(newsQuery.data).map(([key, value]) => [
+      Object.entries(newsData).map(([key, value]) => [
         key as keyof NewsSourceData,
         Object.fromEntries(
           Object.entries(value)

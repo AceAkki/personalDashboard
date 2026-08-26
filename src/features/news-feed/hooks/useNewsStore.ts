@@ -6,6 +6,8 @@ import { newsKey } from "../../../global/storageKeys";
 interface useNewsStore {
   newsStoreData: NewsSourceData | null;
   updateNewsStoreData: (data: NewsSourceData) => void;
+  storageTime: number | null;
+  updateStorageTime: (time: number) => void;
   currentArrayName: string;
   updateCurrentArrayName: (name: string) => void;
   newsArray: NewsObject[];
@@ -20,6 +22,8 @@ export const useNewsStore = create<useNewsStore>()(
         set(() => ({
           newsStoreData: data,
         })),
+      storageTime: null,
+      updateStorageTime: (time) => set(() => ({ storageTime: time })),
       currentArrayName: "All",
       updateCurrentArrayName: (name) => set(() => ({ currentArrayName: name })),
       newsArray: [],
