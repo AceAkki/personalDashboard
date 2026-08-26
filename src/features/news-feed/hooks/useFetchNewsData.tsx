@@ -35,7 +35,7 @@ const useFetchNewsData = () => {
     enabled: !hasLocalNewsData,
   });
 
-  console.log(hasLocalNewsData, new Date(storageTime), new Date(getNewTime()));
+  // console.log(hasLocalNewsData, new Date(storageTime), new Date(getNewTime()));
   useEffect(() => {
     if (newsQuery.data) {
       updateNewsStoreData(newsQuery.data as NewsSourceData);
