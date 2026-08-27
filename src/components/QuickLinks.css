@@ -28,11 +28,12 @@
 
 .quick-links a {
   text-decoration: none;
-  color: var(--secondary);
+  color: var(--primary);
+  transition: all 800ms ease-in-out;
 }
 
 .quick-links a:hover {
-  color: var(--secondary-hover);
+  color: var(--secondary);
 }
 
 @media screen and (min-width: 1080px) {

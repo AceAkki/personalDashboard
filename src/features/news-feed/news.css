@@ -2,26 +2,26 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-height: 40vh;
+  max-height: 50vh;
   overflow: auto;
 }
 
 .news-feed-wrap {
-  overflow: auto;
-  /* max-height: 50vh; */
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  overflow: auto;
+  max-height: 100%;
   scroll-snap-type: y mandatory;
 }
 
 .news-details-wrap {
-  background: var(--bg-rgba);
+  background: var(--primary);
   color: var(--txt-clr);
   padding: 1rem;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--secondary);
   border-radius: 16px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(50px);
   display: flex;
   flex-direction: column-reverse;
   gap: 1rem;
