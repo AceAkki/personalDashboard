@@ -35,13 +35,17 @@ const useFetchNewsData = () => {
     enabled: !hasLocalNewsData,
   });
 
-  // console.log(hasLocalNewsData, new Date(storageTime), new Date(getNewTime()));
   useEffect(() => {
-    if (newsQuery.data) {
+    if (newsQuery.data && !hasLocalNewsData) {
       updateNewsStoreData(newsQuery.data as NewsSourceData);
       updateStorageTime(getNewTime(garbageCollectionTime));
     }
-  }, [newsQuery.data, updateNewsStoreData, updateStorageTime]);
+  }, [
+    newsQuery.data,
+    hasLocalNewsData,
+    updateNewsStoreData,
+    updateStorageTime,
+  ]);
 
   const newsData = !hasLocalNewsData ? newsQuery.data : newsStoreData;
 
@@ -87,9 +91,10 @@ const useFetchNewsData = () => {
       successData: successData,
       newsArr: newsArr,
       loadingStatus: newsQuery.isLoading,
+      expTime: storageTime,
     };
   } else {
-    return { loadingStatus: newsQuery.isLoading };
+    return { loadingStatus: newsQuery.isLoading, expTime: storageTime };
   }
 };
 

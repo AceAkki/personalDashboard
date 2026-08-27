@@ -30,12 +30,15 @@
   left: 0;
   top: 0;
   font-size: 100%;
+
   overflow: hidden;
   margin: 25% 0;
 }
 
 .pomo-time {
   font-size: clamp(1rem, 10cqw, 3.5rem);
+  font-weight: 800;
+  font-family: var(--heavy-font);
 }
 
 .pomo-btn {

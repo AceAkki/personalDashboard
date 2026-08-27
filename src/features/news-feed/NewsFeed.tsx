@@ -9,7 +9,7 @@ import type { NewsObject } from "./newsTypes";
 import "./news.css";
 
 const NewsFeed = () => {
-  const { loadingStatus, successData, newsArr } = useFetchNewsData();
+  const { loadingStatus, expTime, successData, newsArr } = useFetchNewsData();
 
   const { currentArrayName, updateCurrentArrayName, newsArray, setNewsArray } =
     useNewsStore(
@@ -67,6 +67,18 @@ const NewsFeed = () => {
               </button>
             );
           })}
+        </div>
+        <div className="expiry-time">
+          Expiry Time : &nbsp;
+          {expTime
+            ? new Date(expTime).toLocaleDateString("default", {
+                day: "2-digit",
+                month: "short",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+              })
+            : null}
         </div>
       </section>
       <section className="overflow-auto  inner-route-section">

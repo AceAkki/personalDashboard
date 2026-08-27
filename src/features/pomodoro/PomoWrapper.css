@@ -8,7 +8,8 @@
 .background-txt {
   position: absolute;
   font-size: 12rem;
-  font-weight: 800;
+  font-weight: 900;
+  font-family: var(--heavy-font);
   color: var(--primary-soft);
   word-wrap: anywhere;
   text-align: center;
