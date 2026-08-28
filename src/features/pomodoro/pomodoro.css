@@ -13,13 +13,13 @@
   float: left;
   width: auto;
   height: auto;
-  padding: clamp(4.5rem, 20cqw, 8rem);
-  border: 3px solid var(--accent-color);
+  padding: clamp(7.5rem, 20cqw, 8rem);
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   -khtml-border-radius: 50%;
-  background: #eee;
+  background: var(--primary);
+  border: 3px solid var(--secondary);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
   position: relative;
@@ -36,22 +36,29 @@
 }
 
 .pomo-time {
-  font-size: clamp(1rem, 10cqw, 3.5rem);
+  font-size: clamp(3rem, 10cqw, 3.5rem);
   font-weight: 800;
   font-family: var(--heavy-font);
+  color: var(--secondary);
 }
 
 .pomo-btn {
   background: var(--accent-color);
   color: var(--primary);
-  border: 1px solid var(--primary);
+  border: 1px solid;
   border-radius: 10px;
   margin: 0.5rem;
   padding: 0.5rem;
   width: unset;
+  transition: var(--transition-800-ease);
 }
 
 .pomo-btn svg {
-  width: clamp(12px, 5cqw, 35px);
-  height: clamp(12px, 5cqw, 35px);
+  width: clamp(25px, 5cqw, 35px);
+  height: clamp(25px, 5cqw, 35px);
+}
+
+.pomo-btn:hover {
+  background: var(--primary);
+  color: var(--accent-color);
 }

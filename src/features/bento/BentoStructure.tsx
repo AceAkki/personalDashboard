@@ -129,7 +129,7 @@ const BentoStructure = () => {
           <NotesForm setNotes={updateNotes} />
         </motion.div>
 
-        <motion.div variants={itemVariants} className="grid-item">
+        <motion.div variants={itemVariants} className="grid-item span-row">
           <Pomodoro />
         </motion.div>
 
