@@ -58,6 +58,7 @@ export function Header({ title }: HeaderProps): ReactElement {
           }
         >
           &nbsp;
+          {/* {useOnlineStatus() ? "Online" : "Offline"} */}
         </div>
       </header>
       <AnimatePresence>
