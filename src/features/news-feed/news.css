@@ -15,6 +15,7 @@
   scroll-snap-type: y mandatory;
 }
 
+/* Navbar Start*/
 .category-navbar {
   display: flex;
   align-items: center;
@@ -32,10 +33,13 @@
   transition: all 500ms ease-in-out;
 }
 
+.nav-btn:hover,
 .nav-btn.active {
   background: var(--secondary);
   color: var(--primary);
 }
+
+/* Navbar End*/
 
 .news-details-wrap {
   background: var(--primary);

@@ -1,5 +1,6 @@
 import RenderAnime from "../hooks/useLottieAnime";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { SunIcon, SunHorizonIcon } from "@phosphor-icons/react";
 import "swiper/css";
 
 import type { DailyProps } from "../weatherType";
@@ -34,8 +35,8 @@ const Daily = ({ daily, tempUnit }: DailyProps) => {
           </div>
           <div className="daily-sun-wrap">
             <div className="daily-sun">
+              <SunIcon size={22} />
               <p>
-                <strong>Sunrise: </strong>
                 {
                   new Date(daily.sunrise[newIndex])
                     .toLocaleDateString(undefined, {
@@ -48,8 +49,9 @@ const Daily = ({ daily, tempUnit }: DailyProps) => {
               </p>
             </div>
             <div className="daily-sun">
+              <SunHorizonIcon size={22} />
               <p>
-                <strong>Sunset: </strong>
+                {/* <strong>Sunset: </strong> */}
                 {
                   new Date(daily.sunset[newIndex])
                     .toLocaleDateString(undefined, {

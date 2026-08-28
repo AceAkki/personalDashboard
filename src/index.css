@@ -69,6 +69,7 @@ section.overflow-unset {
   font-family: var(--heavy-font);
   font-size: 2.9rem;
   font-weight: 800;
+  color: var(--secondary);
   margin: 0.5rem 0;
   /* padding: 0.2rem 1rem; */
   border-radius: 0.8rem;
@@ -79,6 +80,7 @@ section.overflow-unset {
   font-family: var(--secondary-font);
   font-size: 1.3rem;
   font-weight: 500;
+  color: var(--secondary);
   margin: 0.5rem 0;
   /* padding: 0.2rem 1rem; */
   border-radius: 0.5rem;
