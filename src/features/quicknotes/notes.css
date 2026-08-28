@@ -27,18 +27,18 @@
 }
 
 .delete-notes-btn {
-  background: var(--primary);
-  color: var(--secondary);
+  background: var(--error);
+  color: var(--primary);
   outline: none;
-  border: 1px solid var(--bg-rgba);
-  border-radius: var(--default-radius);
+  border: 1px solid;
+  border-radius: 1rem;
   padding: 1rem;
-  transition: all 0.7s ease-in-out;
+  transition: var(--transition-800-ease);
 }
 
 .delete-notes-btn:hover {
-  background: var(--error);
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--error);
 }
 
 .notes-main-wrap {

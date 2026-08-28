@@ -60,7 +60,7 @@
   color: var(--primary);
   width: fit-content;
   padding: 0.5rem 0.8rem;
-  border-radius: 16px;
+  border-radius: 1rem;
   border: 1px solid;
   text-decoration: none;
   transition: var(--transition-800-ease);
