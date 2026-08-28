@@ -14,12 +14,13 @@
   width: auto;
   height: auto;
   padding: clamp(4.5rem, 20cqw, 8rem);
-  border: 3px solid var(--primary);
+  border: 3px solid var(--accent-color);
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   -khtml-border-radius: 50%;
   background: #eee;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
   position: relative;
 }
@@ -42,8 +43,8 @@
 }
 
 .pomo-btn {
-  background: var(--primary);
-  color: var(--secondary);
+  background: var(--accent-color);
+  color: var(--primary);
   border: 1px solid var(--primary);
   border-radius: 10px;
   margin: 0.5rem;
