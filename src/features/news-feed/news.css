@@ -71,8 +71,6 @@
 }
 
 .news-btn {
-  background: var(--primary);
-  color: var(--accent-color);
   width: fit-content;
   padding: 0.5rem 0.8rem;
   border-radius: 16px;
@@ -81,11 +79,13 @@
   font-size: 0.8rem;
   align-self: flex-end;
   transition: all 800ms ease-in-out;
+  background: var(--accent-color);
+  color: var(--primary);
 }
 
 .news-btn:hover {
-  background: var(--accent-color);
-  color: var(--primary);
+  background: transparent;
+  color: var(--accent-color);
 }
 
 .news-image img {
