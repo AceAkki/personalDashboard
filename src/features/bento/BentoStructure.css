@@ -12,6 +12,10 @@
   border-radius: var(--default-radius);
 }
 
+.no-border-radius {
+  border-radius: unset;
+}
+
 .welcome-greet-wrap {
   margin: 2rem 0;
 }

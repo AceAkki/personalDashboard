@@ -30,7 +30,7 @@
   border: 1px solid;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
-  transition: all 500ms ease-in-out;
+  transition: var(--transition-800-ease);
 }
 
 .nav-btn:hover,
@@ -82,7 +82,7 @@
   text-decoration: none;
   font-size: 0.8rem;
   align-self: flex-end;
-  transition: all 800ms ease-in-out;
+  transition: var(--transition-800-ease);
   background: var(--accent-color);
   color: var(--primary);
 }

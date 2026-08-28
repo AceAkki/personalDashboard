@@ -56,12 +56,19 @@
 }
 
 .link-clear-btn {
-  background: var(--primary);
+  background: var(--error);
+  color: var(--primary);
   width: fit-content;
   padding: 0.5rem 0.8rem;
-  color: var(--primary);
   border-radius: 16px;
+  border: 1px solid;
   text-decoration: none;
+  transition: var(--transition-800-ease);
+}
+
+.link-clear-btn:hover {
+  background: var(--primary);
+  color: var(--error);
 }
 
 @media screen and (min-width: 1080px) {

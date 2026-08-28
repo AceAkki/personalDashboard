@@ -30,7 +30,7 @@
   --disabled-text: #999999;
 
   --default-radius: 1rem;
-
+  --transition-800-ease: all 800ms ease-in-out;
   --header-height: 0;
   --options-width: 0;
   --toastify-icon-color-error: var(--error);
