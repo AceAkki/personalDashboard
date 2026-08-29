@@ -5,7 +5,7 @@ import WeatherCard from "./components/WeatherCard";
 import Hourly from "./components/Hourly";
 import Daily from "./components/Daily";
 import WeatherTile from "./components/WeatherTile";
-import FallBackLoader from "../../components/ui/FallbackLoader";
+import FallBackLoader from "../../components/ui/FallBackLoader";
 import useFetchWeatherData from "./hooks/useFetchWeatherData";
 
 import type { WeatherData } from "./weatherType";

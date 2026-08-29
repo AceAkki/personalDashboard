@@ -30,7 +30,7 @@ import Notes from "./features/quicknotes/Notes";
 
 // global use
 import ErrorPage from "./features/Error";
-import FallBackLoader from "./components/ui/FallbackLoader";
+import FallBackLoader from "./components/ui/FallBackLoader";
 import "./global/customProto";
 import "./App.css";
 

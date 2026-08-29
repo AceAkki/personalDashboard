@@ -4,7 +4,7 @@ import { useShallow } from "zustand/shallow";
 import useFetchNewsData from "./hooks/useFetchNewsData";
 import { useNewsStore } from "./hooks/useNewsStore";
 import RenderNews from "./components/RenderNews";
-import FallBackLoader from "../../components/ui/FallbackLoader";
+import FallBackLoader from "../../components/ui/FallBackLoader";
 import type { NewsObject } from "./newsTypes";
 import "./news.css";
 
