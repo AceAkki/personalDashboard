@@ -13,8 +13,13 @@ import type { WeatherData } from "./weatherType";
 import "./weather.css";
 let arr = ["time", "interval", "temperature_2m", "weather_code"];
 const Weather = () => {
-  let { weatherData, aqiData, weatherQueryLoading, apiQueryLoading } =
-    useFetchWeatherData();
+  let {
+    weatherData,
+    aqiData,
+    weatherQueryLoading,
+    apiQueryLoading,
+    storageTime,
+  } = useFetchWeatherData();
   // let { weatherData, aqiData } = useAPIStore(
   //   useShallow((state) => ({
   //     weatherData: state.weatherStoreData,
@@ -81,13 +86,24 @@ const Weather = () => {
                   />
                 </div>
               </div>
-
               <div className="weather-grid-item">
                 <h2 className="section-sub-title">Daily Updates</h2>
                 <Daily
                   daily={weatherData.daily}
                   tempUnit={weatherData.daily_units.temperature_2m_max}
                 />
+              </div>{" "}
+              <div className="expiry-time">
+                Expiry Time : &nbsp;
+                {storageTime
+                  ? new Date(storageTime).toLocaleDateString("default", {
+                      day: "2-digit",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })
+                  : null}
               </div>
             </div>
           )}
