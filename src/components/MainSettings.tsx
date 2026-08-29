@@ -15,26 +15,38 @@ import { bgFiles } from "../assets/bgFiles.js";
 import "./MainSettings.css";
 import { useRef } from "react";
 
-const bgURLS = Object.values(bgFiles)
-  .map((arr) => arr)
-  .flat();
-let randomNum = () => {
-  return Math.floor(Math.random() * bgURLS.length);
-};
-
 const MainSettings = ({ setIsOpen }: { setIsOpen: (val: boolean) => void }) => {
   const navigate = useNavigate();
-  const { username, location, logoutUser, updateBackground } = useUserStore(
+  const {
+    username,
+    location,
+    logoutUser,
+    updateBackground,
+    themeType,
+    updateThemeType,
+  } = useUserStore(
     useShallow((state) => ({
       username: state.username,
       location: state.location,
       logoutUser: state.logOutUser,
       updateBackground: state.updateBackground,
+      themeType: state.themeType,
+      updateThemeType: state.updateThemeType,
     })),
   );
   const inputRef = useRef<HTMLInputElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
   const keysArr = [userKey, tasksKey, linksKey, pomoKey, notesKey];
+
+  // const bgURLS = Object.values(bgFiles).map((arr) => arr).flat();
+  const bgURLS = [
+    ...bgFiles[themeType as keyof typeof bgFiles],
+    ...bgFiles["neutral"],
+  ];
+  console.log(bgURLS);
+  let randomNum = () => {
+    return Math.floor(Math.random() * bgURLS.length);
+  };
 
   return (
     <motion.div
@@ -59,6 +71,16 @@ const MainSettings = ({ setIsOpen }: { setIsOpen: (val: boolean) => void }) => {
           <strong>Current Location :</strong>
           <p>{location.latitude}</p>
           <p>{location.longitude}</p>
+        </div>
+
+        <div>
+          <button
+            onClick={() => {
+              updateThemeType();
+            }}
+          >
+            Turn off {themeType} Mode
+          </button>
         </div>
 
         <div>
@@ -107,6 +129,7 @@ const MainSettings = ({ setIsOpen }: { setIsOpen: (val: boolean) => void }) => {
             <button
               onClick={() => {
                 let newURL = `url(${bgURLS[randomNum()]})`;
+                console.log(bgURLS, bgURLS[randomNum()]);
                 updateBackground(newURL);
               }}
             >

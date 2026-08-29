@@ -24,7 +24,12 @@ const Dashboard = (): ReactElement => {
   //const { weatherData, aqiData } = useLoaderData();
 
   // getting the current background url from the store
-  const currentBG = useUserStore((state) => state.backgroundURL);
+  const { currentBG, themeType } = useUserStore(
+    useShallow((state) => ({
+      currentBG: state.backgroundURL,
+      themeType: state.themeType,
+    })),
+  );
 
   let root = document.documentElement;
   // if currentBG exists then it sets the background image
@@ -53,7 +58,7 @@ const Dashboard = (): ReactElement => {
   return (
     <>
       <Header title="FocusDeck" />
-      <main className="main-wrap scroll">
+      <main className="main-wrap scroll" data-theme={themeType}>
         <QuickLinks />
         <section className="dashboard-section scroll">
           <div className="main-outlet-wrap">

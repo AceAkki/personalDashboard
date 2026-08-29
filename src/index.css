@@ -37,6 +37,15 @@
   --background-img: url("assets/default.jpg");
 }
 
+[data-theme="dark"] {
+  --primary: #1a1a1a;
+  --primary-soft: rgba(30, 30, 30, 0.8);
+
+  --secondary: #e8f0ff;
+  --secondary-soft: rgba(232, 240, 255, 0.8);
+  --accent-color: #64b5f6;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -46,6 +55,7 @@
 
 body {
   background: var(--background-img) no-repeat center center / cover fixed;
+  transition: background 800ms ease-in-out color 800ms ease-in-out;
 }
 
 .hide {

@@ -15,7 +15,7 @@ import { useTaskStore } from "../task-manager/hooks/useTasksStore";
 import useFetchNewsData from "../news-feed/hooks/useFetchNewsData";
 import RenderNews from "../news-feed/components/RenderNews";
 import FavLinks from "../favLinks/FavLinks";
-import FallBackLoader from "../../components/ui/FallBackLoader";
+import FallBackLoader from "../../components/ui/FallbackLoader";
 import { useNoteStore } from "../quicknotes/hooks/useNoteStore";
 
 // State
