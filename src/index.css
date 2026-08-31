@@ -38,8 +38,10 @@
 }
 
 [data-theme="dark"] {
-  --primary: #1a1a1a;
-  --primary-soft: rgba(30, 30, 30, 0.8);
+  --primary: #f5f5f5;
+  --primary-soft: rgba(229, 229, 229, 0.8);
+  /* --primary: #1a1a1a;
+  --primary-soft: rgba(30, 30, 30, 0.8); */
 
   --secondary: #e8f0ff;
   --secondary-soft: rgba(232, 240, 255, 0.8);
