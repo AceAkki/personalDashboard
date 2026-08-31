@@ -9,8 +9,10 @@ interface WeatherStore {
   updateWeatherData: (data: WeatherData) => void;
   aqiStoreData: AQIData | null;
   updateAQIData: (data: AQIData) => void;
-  storageTime: number | null;
-  updateStorageTime: (time: number) => void;
+  weatherStorageTime: number | null;
+  updateWeatherStorageTime: (time: number) => void;
+  aqiStorageTime: number | null;
+  updateAQIStorageTime: (time: number) => void;
 }
 
 export const useWeatherStore = create<WeatherStore>()(
@@ -26,8 +28,11 @@ export const useWeatherStore = create<WeatherStore>()(
         set(() => ({
           aqiStoreData: data,
         })),
-      storageTime: null,
-      updateStorageTime: (time) => set(() => ({ storageTime: time })),
+      weatherStorageTime: null,
+      updateWeatherStorageTime: (time) =>
+        set(() => ({ weatherStorageTime: time })),
+      aqiStorageTime: null,
+      updateAQIStorageTime: (time) => set(() => ({ aqiStorageTime: time })),
     }),
     {
       name: weatherKey,

@@ -5,12 +5,18 @@
   max-width: 100vw;
 }
 
+.loader-section {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
 .loader-wrapper {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .section-full {

@@ -18,24 +18,30 @@ const useFetchWeatherData = () => {
     updateWeatherData,
     aqiStoreData,
     updateAQIData,
-    storageTime,
-    updateStorageTime,
+    weatherStorageTime,
+    updateWeatherStorageTime,
+    aqiStorageTime,
+    updateAQIStorageTime,
   } = useWeatherStore(
     useShallow((state) => ({
       weatherStoreData: state.weatherStoreData,
       updateWeatherData: state.updateWeatherData,
       aqiStoreData: state.aqiStoreData,
       updateAQIData: state.updateAQIData,
-      storageTime: state.storageTime,
-      updateStorageTime: state.updateStorageTime,
+      weatherStorageTime: state.weatherStorageTime,
+      updateWeatherStorageTime: state.updateWeatherStorageTime,
+      aqiStorageTime: state.aqiStorageTime,
+      updateAQIStorageTime: state.updateAQIStorageTime,
     })),
   );
   const hasLocalWeatherData =
     weatherStoreData !== null &&
-    storageTime !== null &&
-    storageTime > getNewTime();
+    weatherStorageTime !== null &&
+    weatherStorageTime > getNewTime();
   const hasLocalAQIData =
-    aqiStoreData !== null && storageTime !== null && storageTime > getNewTime();
+    aqiStoreData !== null &&
+    aqiStorageTime !== null &&
+    aqiStorageTime > getNewTime();
 
   // either from local or fetch data
   const weatherQuery = useQuery({
@@ -57,32 +63,33 @@ const useFetchWeatherData = () => {
   useEffect(() => {
     if (weatherQuery.data && !hasLocalWeatherData) {
       updateWeatherData(weatherQuery.data as WeatherData);
-      updateStorageTime(getNewTime(garbageCollectionTime));
+      updateWeatherStorageTime(getNewTime(garbageCollectionTime));
     }
   }, [
     weatherQuery.data,
     updateWeatherData,
     hasLocalWeatherData,
-    updateStorageTime,
+    updateWeatherStorageTime,
   ]);
 
   useEffect(() => {
     if (aqiQuery.data && !hasLocalAQIData) {
       updateAQIData(aqiQuery.data as AQIData);
-      updateStorageTime(getNewTime(garbageCollectionTime));
+      updateAQIStorageTime(getNewTime(garbageCollectionTime));
     }
-  }, [aqiQuery.data, updateAQIData, hasLocalAQIData, updateStorageTime]);
+  }, [aqiQuery.data, updateAQIData, hasLocalAQIData, updateAQIStorageTime]);
 
   const dataConfig =
     !hasLocalWeatherData && !hasLocalAQIData
       ? { weatherData: weatherQuery.data, aqiData: aqiQuery.data }
       : { weatherData: weatherStoreData, aqiData: aqiStoreData };
 
+  console.log(weatherStorageTime, aqiStorageTime);
   return {
     ...dataConfig,
     weatherQueryLoading: weatherQuery.isLoading,
     apiQueryLoading: aqiQuery.isLoading,
-    storageTime: storageTime,
+    storageTime: weatherStorageTime,
   };
 };
 export default useFetchWeatherData;
