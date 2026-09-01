@@ -48,7 +48,7 @@ const itemVariants = {
 };
 
 const BentoStructure = () => {
-  let { weatherData, aqiData, weatherQueryLoading, apiQueryLoading } =
+  let { weatherData, aqiData, weatherQueryLoading, aqiQueryLoading } =
     useFetchWeatherData();
 
   //const { weatherData, aqiData } = useOutletContext<DashboardContext>();
@@ -69,7 +69,7 @@ const BentoStructure = () => {
   // fallback loader is data is not ready or isLoading
   if (
     weatherQueryLoading ||
-    apiQueryLoading ||
+    aqiQueryLoading ||
     !weatherData ||
     !aqiData ||
     loadingStatus ||
@@ -85,7 +85,7 @@ const BentoStructure = () => {
   return (
     <>
       <div className="welcome-greet-wrap">
-        <h1>
+        <h1 className="section-title">
           {timeOfTheDayGreeting()} {username}!
         </h1>
       </div>

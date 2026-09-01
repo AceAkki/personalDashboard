@@ -43,7 +43,7 @@ const Weather = () => {
             <div className="weather-main-wrap">
               <div>
                 <h2 className="section-title">Weather</h2>
-                <p>
+                <p className="section-para">
                   Check out the current weather and forecast for your location
                 </p>
               </div>

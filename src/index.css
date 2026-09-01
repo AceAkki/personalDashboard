@@ -43,7 +43,7 @@
 
   --secondary: #e8f0ff;
   --secondary-soft: rgba(232, 240, 255, 0.8);
-  --accent-color: #30AFFF;
+  --accent-color: #30afff;
 }
 
 * {
@@ -110,6 +110,10 @@ section.overflow-unset {
   background: var(--primary);
   color: var(--accent-color);
 } */
+
+.section-para {
+  color: var(--secondary);
+}
 
 .scroll {
   scrollbar-width: thin;
