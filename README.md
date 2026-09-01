@@ -18,6 +18,6 @@ A feature-rich personal dashboard built with **React**, powered by **Zustand** f
 
 ## Todo
 
-- Task with Time Limit or Reminder Time
+- Task with Time Limit or Reminder Time - Added Time selection
 - Pomodoro Reminder or update
-- News section clean up - redesign and filter with search option
+- News section clean up - redesign and filter with search option - Added Filter Option
