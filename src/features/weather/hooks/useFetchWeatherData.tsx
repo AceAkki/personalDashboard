@@ -10,7 +10,7 @@ import { getNewTime } from "../../../global/globalFunctions";
 import type { WeatherData, AQIData } from "../weatherType";
 // to get products data
 const useFetchWeatherData = () => {
-  let garbageCollectionTime = 24 * 60 * 60 * 1000;
+  let garbageCollectionTime = 2 * 60 * 60 * 1000;
   let { latitude, longitude } = useUserStore((state) => state.location);
 
   let {
@@ -88,7 +88,7 @@ const useFetchWeatherData = () => {
   return {
     ...dataConfig,
     weatherQueryLoading: weatherQuery.isLoading,
-    apiQueryLoading: aqiQuery.isLoading,
+    aqiQueryLoading: aqiQuery.isLoading,
     storageTime: weatherStorageTime,
   };
 };

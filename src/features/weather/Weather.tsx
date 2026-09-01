@@ -17,7 +17,7 @@ const Weather = () => {
     weatherData,
     aqiData,
     weatherQueryLoading,
-    apiQueryLoading,
+    aqiQueryLoading,
     storageTime,
   } = useFetchWeatherData();
   // let { weatherData, aqiData } = useAPIStore(
@@ -28,7 +28,7 @@ const Weather = () => {
   // );
   // const { weatherData, aqiData } = useRouteLoaderData("root");
 
-  if (weatherQueryLoading || apiQueryLoading || !weatherData || !aqiData)
+  if (weatherQueryLoading || aqiQueryLoading || !weatherData || !aqiData)
     return (
       <section className="loader-section">
         <FallBackLoader />
