@@ -28,7 +28,7 @@
 
 .quick-links a {
   text-decoration: none;
-  color: var(--primary);
+  color: var(--secondary);
   transition: all 800ms ease-in-out;
 }
 
