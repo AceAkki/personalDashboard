@@ -84,11 +84,11 @@ const useFetchWeatherData = () => {
       ? { weatherData: weatherQuery.data, aqiData: aqiQuery.data }
       : { weatherData: weatherStoreData, aqiData: aqiStoreData };
 
-  console.log(
-    weatherStorageTime,
-    aqiStorageTime,
-    weatherStorageTime > getNewTime(),
-  );
+  // console.log(
+  //   weatherStorageTime,
+  //   aqiStorageTime,
+  //   weatherStorageTime > getNewTime(),
+  // );
   return {
     ...dataConfig,
     weatherQueryLoading: weatherQuery.isLoading,
